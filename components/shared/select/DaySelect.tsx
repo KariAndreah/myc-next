@@ -1,3 +1,5 @@
+'use client';
+
 import { Select } from '@mantine/core';
 import { TbCalendar } from 'react-icons/tb';
 import '@mantine/core/styles.css';

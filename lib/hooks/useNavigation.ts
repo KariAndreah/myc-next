@@ -9,7 +9,6 @@
 //   } from 'react-router-dom';
 // import { useSearchParams } from "react-router-dom";
 
-
 // const useNavigation = () => {
 
 //     const [searchParams, setSearchParams] = useSearchParams();
@@ -22,6 +21,6 @@
 //     const pageSize = searchParams.get("pageSize");
 //     const sortBy = searchParams.get("sortBy");
 //     const navigate = useNavigate();
-//     return (pathname: string, params: string) => 
-//     navigate(`${pathname}=${createSearchParams(params)}`); 
+//     return (pathname: string, params: string) =>
+//     navigate(`${pathname}=${createSearchParams(params)}`);
 // }

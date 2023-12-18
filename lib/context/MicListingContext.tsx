@@ -1,69 +1,64 @@
 'use client';
 
 import { createContext } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
 import { Mic } from '../../models/mic';
-import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
+import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
 
 export const MicListingContext = createContext<MicListingContextState>({
   mics: undefined,
-  params: new URLSearchParams(),
   clearQuery: () => null,
   getQuery: () => null,
   setQuery: () => null,
 });
 
 export const MicListingContextProvider = ({ children }: MicListingContextProps) => {
-  const [params, setQuery, clearQuery, getQuery] = useQuery();
+  // const [params, setQuery, clearQuery, getQuery] = useQuery();
   // const params = new URLSearchParams();
 
   // Get selected objects
   // const params = new URLSearchParams();
-  // const params = useSearchParams();
+  const params = useSearchParams();
 
-  console.log('what is this', new URLSearchParams());
-
-  const manhattanBorough = 'Manhattan';
   const search = {
-    day: params?.get('day') || manhattanBorough,
+    day: params?.get('day'),
     borough: params?.get('borough'),
     startTime: params?.get('startTime'),
     checked: params?.get('free'),
   };
 
-  console.log('what is getQuery?', getQuery(params));
+  // const kari = setQuery(search);
+  // console.log('kari', kari);
 
   console.log('finding search categaories', search);
 
   const { data, isLoading } = useMics(search);
 
-  console.log('tracing', data, isLoading);
+  console.log('Response', data, isLoading);
 
   if (!isLoading && !data?.mics) {
     return <h1>Not found *yet kARI :P</h1>;
   }
 
   return (
-    <MicListingContext.Provider
-      value={{ mics: data?.mics, params, setQuery, getQuery, clearQuery }}
-    >
-      {children}
-    </MicListingContext.Provider>
+    <MicListingContext.Provider value={{ mics: data?.mics }}>{children}</MicListingContext.Provider>
   );
 };
 
 type MicListingContextState = {
   // clearQuery: ClearQuery;
   mics?: Mic[];
+  refetch?: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;
-  params: any;
+  params?: any;
   currentPage?: number;
   endPage?: number;
   totalMics?: number;
-  clearQuery: ClearQuery;
-  getQuery: GetQuery;
-  setQuery: SetQuery;
+  clearQuery?: ClearQuery;
+  getQuery?: GetQuery;
+  setQuery?: SetQuery;
 };
 
 type MicListingContextProps = {
