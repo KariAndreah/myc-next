@@ -19,7 +19,7 @@ export const getMics: MicSearch = async (params) => {
     try {
         const allMics = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
         const response = await request(allMics);
-        return response;
+        return response.json();
     } catch (err: any) {
         throw err;
     }

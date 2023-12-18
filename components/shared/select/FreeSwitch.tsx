@@ -1,22 +1,19 @@
-import { Switch } from "@mantine/core";
-import "@mantine/core/styles.css";
+import { Switch } from '@mantine/core';
+import '@mantine/core/styles.css';
 
-
-const FreeSwitch = ({ checked, setChecked }: FreeSwitchProps) => {
-  return (
-    <Switch
-      defaultChecked
-      labelPosition="left"
-      label="FREE"
-      onChange={(event) => setChecked(event.currentTarget.checked)}
-      checked={checked}
-    />
-  );
-};
+const FreeSwitch = ({ checked, setChecked }: FreeSwitchProps) => (
+  <Switch
+    defaultChecked
+    labelPosition="left"
+    label="FREE"
+    onChange={(event) => setChecked(event.currentTarget.checked)}
+    checked={checked}
+  />
+);
 
 type FreeSwitchProps = {
   setChecked: any;
-  checked: boolean;
+  checked: any;
 };
 
 export default FreeSwitch;

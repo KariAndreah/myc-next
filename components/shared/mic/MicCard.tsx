@@ -1,9 +1,14 @@
 'use client';
 
+import { useContext } from 'react';
 import { Card } from '@mantine/core';
+import { MicListingContext } from '@/lib/context/MicListingContext';
+
 import '@mantine/core/styles.css';
 
-const MicCard = ({ mics }: MicCardProps) => {
+const MicCard = () => {
+  const { mics } = useContext(MicListingContext);
+  console.log('Need the context', mics);
   // console.log(mics);
 
   if (!mics) {

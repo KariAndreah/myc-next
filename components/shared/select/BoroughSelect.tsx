@@ -15,7 +15,7 @@ const BoroughSelect = ({ value, setValue }: BoroughSelectProps) => (
 );
 
 type BoroughSelectProps = {
-  value: string;
+  value: string | null;
   setValue: any;
 };
 

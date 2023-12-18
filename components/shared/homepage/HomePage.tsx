@@ -7,18 +7,9 @@ import PageLayout from '../pagelayout/PageLayout';
 export function HomePage() {
   return (
     <PageLayout>
-      <div className="flex flex-col items-center py-18">
+      <div className="flex flex-col items-center justify-center py-24">
         <Title />
-        <SearchCard
-          borough={undefined}
-          setBorough={undefined}
-          day={undefined}
-          setDay={undefined}
-          checked={undefined}
-          setChecked={undefined}
-          startTime={undefined}
-          setStartTime={undefined}
-        />
+        <SearchCard />
       </div>
     </PageLayout>
   );

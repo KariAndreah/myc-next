@@ -1,9 +1,11 @@
-import { HomePage } from '../../components/shared/homepage/HomePage';
+import { Welcome } from '../../components/Welcome/Welcome';
+import { ColorSchemeToggle } from '../../components/ColorSchemeToggle/ColorSchemeToggle';
 
-export default function Page() {
+export default function HomePage() {
   return (
     <>
-      <HomePage />
+      <Welcome />
+      <ColorSchemeToggle />
     </>
   );
 }
