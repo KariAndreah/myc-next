@@ -1,9 +1,9 @@
-import MicCard from '../../../components/shared/mic/MicCard';
+import { MicDetailPage } from '@/components/shared/micdetailpage/MicDetailPage';
 
 export default function Page() {
   return (
     <>
-      <MicCard />
+      <MicDetailPage />
     </>
   );
 }
