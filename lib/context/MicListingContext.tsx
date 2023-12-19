@@ -35,11 +35,14 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   const { data, isLoading } = useMics(search);
 
-  console.log('Response', data, isLoading);
+  console.log(useMics(search).data);
 
-  if (!isLoading && !data?.mics) {
-    return <h1>Not found *yet kARI :P</h1>;
-  }
+  console.log('Response here', data, isLoading);
+
+  // Commented this out but data is reloading and not working
+  // if (!isLoading && !data?.mics) {
+  //   return <h1>Not found *yet kARI :P</h1>;
+  // }
 
   return (
     <MicListingContext.Provider value={{ mics: data?.mics }}>{children}</MicListingContext.Provider>

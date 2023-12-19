@@ -5,5 +5,6 @@ export const useMics = (params?: object) =>
   // console.log('useMicsHook Works')
   useQuery({
     queryKey: ['mics'],
+    enabled: true,
     queryFn: () => getMics(params),
   });
