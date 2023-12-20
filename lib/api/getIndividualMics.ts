@@ -4,16 +4,17 @@ import { request } from '../utils/request';
 export const getIndividualMics: IndividualMicSearch = async (params) => {
   console.log('The params are in the getMics hook', params);
 
-  const micsSearch = `/${params}`;
+  const micsSearch = `/${params?.id}`;
 
-  console.log('whattt', params);
+  console.log('whattt', micsSearch);
 
   // }
   // eslint-disable-next-line no-useless-catch
   try {
     const allMics = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
-    const response = await request(allMics);
     console.log('this is what is passing', allMics);
+
+    const response = await request(allMics);
     return response;
   } catch (err: any) {
     throw err;

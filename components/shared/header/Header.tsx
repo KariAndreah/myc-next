@@ -34,10 +34,12 @@ const Header = () => {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <h1 className="font-extrabold whitespace-nowrap flex">
-          Open{' '}
-          <span className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">
-            MYC{' '}
-          </span>{' '}
+          <a href="/">
+            Open
+            <span className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">
+              MYC
+            </span>
+          </a>
         </h1>
         <Group gap={5} visibleFrom="xs">
           {items}

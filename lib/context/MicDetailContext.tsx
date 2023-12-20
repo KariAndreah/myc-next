@@ -33,9 +33,9 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
 
   console.log('Response', data, isLoading);
 
-  if (!isLoading && !data?.mics) {
-    return <h1>Not found *yet kARI :P</h1>;
-  }
+  // if (!isLoading && !data?.mics) {
+  //   return <h1>Not found *yet kARI :P</h1>;
+  // }
 
   return <MicDetailContext.Provider value={{ mics: data }}>{children}</MicDetailContext.Provider>;
 };

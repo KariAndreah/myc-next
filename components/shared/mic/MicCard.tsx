@@ -17,14 +17,14 @@ const MicCard = () => {
   if (!mics) {
     return (
       <div className="p-32">
-        <h1>NOT FOUND</h1>
+        <h1>Loading ...</h1>
       </div>
     );
   }
   const openMic = mics?.map((mic: any) => (
     <div key={mic?.id} className="flex shadow-md">
       <Card
-        className="flex w-64 bg-slate-500"
+        className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105"
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
