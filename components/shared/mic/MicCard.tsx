@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
 import { MicListingContext } from '@/lib/context/MicListingContext';
@@ -11,6 +12,8 @@ const MicCard = () => {
   console.log('Need the context', mics);
   // console.log(mics);
 
+  const router = useRouter();
+
   if (!mics) {
     return (
       <div className="p-32">
@@ -19,8 +22,12 @@ const MicCard = () => {
     );
   }
   const openMic = mics?.map((mic: any) => (
-    <div key={mic?.id} className="flex shadow-md ">
-      <Card className="flex w-64 bg-slate-500" component="a" href="google.com">
+    <div key={mic?.id} className="flex shadow-md">
+      <Card
+        className="flex w-64 bg-slate-500"
+        component="a"
+        onClick={() => router.replace(`./mics/${mic?.id}`)}
+      >
         <div className="flex flex-row text-slate-700 text-xl">
           <div>{mic?.name}</div>
         </div>
@@ -47,7 +54,6 @@ const MicCard = () => {
   ));
   return (
     <div>
-      <div>Hi</div>
       <div className="flex flex-row flex-wrap gap-3">{openMic}</div>
     </div>
   );

@@ -2,7 +2,6 @@
 
 import { createContext } from 'react';
 import { usePathname } from 'next/navigation';
-import { Mic } from '../../models/mic';
 import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
 import { useIndividualMics } from '../hooks/useIndividualMics';
 
@@ -38,14 +37,12 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
     return <h1>Not found *yet kARI :P</h1>;
   }
 
-  return (
-    <MicDetailContext.Provider value={{ mics: data?.mics }}>{children}</MicDetailContext.Provider>
-  );
+  return <MicDetailContext.Provider value={{ mics: data }}>{children}</MicDetailContext.Provider>;
 };
 
 type MicDetailContextState = {
   // clearQuery: ClearQuery;
-  mics?: Mic[];
+  mics?: any;
   refetch?: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;

@@ -3,7 +3,6 @@
 import { createContext } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
-import { Mic } from '../../models/mic';
 import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
 
 export const MicListingContext = createContext<MicListingContextState>({
@@ -44,14 +43,12 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   //   return <h1>Not found *yet kARI :P</h1>;
   // }
 
-  return (
-    <MicListingContext.Provider value={{ mics: data?.mics }}>{children}</MicListingContext.Provider>
-  );
+  return <MicListingContext.Provider value={{ mics: data }}>{children}</MicListingContext.Provider>;
 };
 
 type MicListingContextState = {
   // clearQuery: ClearQuery;
-  mics?: Mic[];
+  mics?: any;
   refetch?: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;
