@@ -12,9 +12,9 @@ export const getMics: MicSearch = async (params) => {
 
   let micsSearch = '';
 
-  console.log('The params are in the getMics hook', params);
+  console.log('------- The params are in the getMics hook', params?.cost);
 
-  if (params?.day !== undefined) {
+  if (params) {
     console.log(params?.day, params?.borough);
 
     const search = qs.stringify(params, {
@@ -22,16 +22,19 @@ export const getMics: MicSearch = async (params) => {
       skipNull: true,
     });
 
-    micsSearch = `/findByAll?${search}&pageNo=0&pageSize=10&sortBy=id`;
+    micsSearch = `/findByBoroughsDay?${search}&pageSize=10&sortBy=id`;
 
     console.log('whattt', search);
   }
+
   // }
   // eslint-disable-next-line no-useless-catch
   try {
-    const allMics = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
-    const response = await request(allMics);
-    console.log('this is what is passing', allMics);
+    // const localTest = `http://localhost:8080/mics${micsSearch}`;
+    const localTest = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
+    console.log('mic search should work', micsSearch);
+    const response = await request(localTest);
+    console.log('this is what is passing', localTest);
     return response;
   } catch (err: any) {
     throw err;
@@ -39,12 +42,12 @@ export const getMics: MicSearch = async (params) => {
 };
 
 export type MicSearch = (params?: {
+  borough?: string[];
   day?: string;
-  borough?: string;
   startTime?: string;
   endTime?: string;
   pageNo?: number;
   pageSize?: number;
   sortBy?: string;
-  free?: string;
+  cost?: string;
 }) => Promise<MicResponse | undefined | void>;

@@ -1,11 +1,11 @@
 'use client';
 
-import { Select } from '@mantine/core';
+import { MultiSelect } from '@mantine/core';
 import { TbMapPin } from 'react-icons/tb';
 import '@mantine/core/styles.css';
 
 const BoroughSelect = ({ value, setValue }: BoroughSelectProps) => (
-  <Select
+  <MultiSelect
     label="BOROUGH"
     placeholder="Pick a borough"
     data={['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten-Island']}
@@ -17,7 +17,7 @@ const BoroughSelect = ({ value, setValue }: BoroughSelectProps) => (
 );
 
 type BoroughSelectProps = {
-  value: string | null;
+  value: string[];
   setValue: any;
 };
 

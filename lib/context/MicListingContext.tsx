@@ -20,21 +20,32 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   // const params = new URLSearchParams();
   const params = useSearchParams();
 
+  const pageNumber = Number(params?.get('pageNo'));
+
+  console.log('What is this ', pageNumber);
+
+  let checkFree;
+
+  if (params?.get('free') === 'true') {
+    checkFree = 1;
+  }
+
   const search = {
     day: params?.get('day'),
     borough: params?.get('borough'),
     startTime: params?.get('startTime'),
-    checked: params?.get('free'),
+    checked: checkFree,
+    pageNo: pageNumber.toString(),
   };
 
   // const kari = setQuery(search);
   // console.log('kari', kari);
 
-  console.log('finding search categaories', search);
+  console.log('finding search categories', search);
 
-  const { data, isLoading } = useMics(search);
+  const { data, isLoading, refetch } = useMics(search);
 
-  console.log(useMics(search).data);
+  // console.log(useMics(search).data);
 
   console.log('Response here', data, isLoading);
 
@@ -43,7 +54,11 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   //   return <h1>Not found *yet kARI :P</h1>;
   // }
 
-  return <MicListingContext.Provider value={{ mics: data }}>{children}</MicListingContext.Provider>;
+  return (
+    <MicListingContext.Provider value={{ mics: data, refetch }}>
+      {children}
+    </MicListingContext.Provider>
+  );
 };
 
 type MicListingContextState = {
@@ -53,7 +68,7 @@ type MicListingContextState = {
   // setQuery: SetQuery;
   // getQuery: GetQuery;
   params?: any;
-  currentPage?: number;
+  pageNo?: number;
   endPage?: number;
   totalMics?: number;
   clearQuery?: ClearQuery;

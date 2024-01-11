@@ -4,8 +4,9 @@
 
 body {
   margin: 0;
-  background: url('../public/opaque-modified.jpg');
+  /* background: url('../public/opaque-modified.jpg'); */
   background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
   box-shadow: inset 0 0 0 1000px rgba(227, 248, 251, 0.75);
 }

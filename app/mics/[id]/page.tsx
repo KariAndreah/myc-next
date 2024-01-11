@@ -1,4 +1,4 @@
-import { MicDetailPage } from '@/components/shared/micdetailpage/MicDetailPage';
+import { MicDetailPage } from '@/components/micdetailpage/MicDetailPage';
 
 export default function Page() {
   return (

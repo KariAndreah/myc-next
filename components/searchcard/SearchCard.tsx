@@ -1,12 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
 import SearchButton from '../select/SearchButton';
 import TimeSelect from '../select/TimeSelect';
+// import { handleSearch } from '@/lib/hooks/handleSearch';
 
 // import { useNavigate } from "react-router-dom";
 
@@ -17,15 +18,70 @@ const SearchCard = () => {
   // const [startTime, setStartTime] = useQueryState('startTime');
 
   const [day, setDay] = useState('');
-  const [borough, setBorough] = useState('');
-  const [checked, setChecked] = useState('');
+  const [borough, setBorough] = useState([]);
+  const [cost, setCost] = useState(false);
   const [startTime, setStartTime] = useState('');
+  // const searchParams = useSearchParams();
+  // const pathname = usePathname();
 
   const router = useRouter();
 
   const handleSearch = () => {
-    router.push(`/mics?day=${day}&borough=${borough}`);
+    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}`);
   };
+
+  const inputTerms = {
+    day,
+    borough,
+    cost,
+  };
+
+  console.log('These are the input terms', inputTerms);
+  // const onSearch = () => {
+  //   console.log('Does this get the search to work?', searchTerms);
+  //   handleSearch(searchTerms);
+  // };
+
+  // const handleSearch = (searchTerms: {
+  //   day: string;
+  //   borough: string[];
+  //   cost: boolean;
+  // pageNo: any;
+  // }) => {
+  //   const params = new URLSearchParams(searchParams);
+
+  //   if (searchTerms?.day) {
+  //     params.set('day', searchTerms?.day);
+  //   } else {
+  //     params.delete('day');
+  //   }
+
+  // This is to set the array of boroughs into the terms
+  // if (searchTerms?.borough) {
+  //   searchTerms.borough.map((s: string) => params.append('borough', s));
+  // } else {
+  //   params.delete('borough');
+  // }
+
+  // Setting up free or not
+  // if (searchTerms?.cost) {
+  //   if (searchTerms?.cost === true) {
+  //     params.set('cost', '1');
+  //   }
+  // } else {
+  //   params.delete('cost');
+  // }
+  // if (searchTerms?.pageNo) {
+  //   // eslint-disable-next-line no-unsafe-optional-chaining
+  //   params.set('pageNo', (searchTerms?.pageNo).toString());
+  // } else {
+  //   params.delete('pageNo');
+  // }
+
+  // replace(`mics/${pathname}?${params.toString()}`);
+
+  // console.log('Trying to create a search Function', `${pathname}?${params.toString()}`);
+  // };
 
   return (
     <>
@@ -47,7 +103,7 @@ const SearchCard = () => {
               timePeriod="END TIME"
             ></TimeSelect> */}
             {/* <h2>{endTime}</h2> */}
-            <FreeSwitch checked={checked} setChecked={setChecked} />
+            <FreeSwitch checked={cost} setChecked={setCost} />
           </div>
           {/* <h1>LOOK HERE FOR FREE</h1>
           <h2>{checked}</h2> */}
