@@ -14,8 +14,19 @@ export const getMics: MicSearch = async (params) => {
 
   console.log('------- The params are in the getMics hook', params?.cost);
 
-  if (params) {
-    console.log(params?.day, params?.borough);
+  if (params?.cost) {
+    console.log('Free Search');
+
+    const search = qs.stringify(params, {
+      encode: true,
+      skipNull: true,
+    });
+
+    micsSearch = `/findByBoroughsDayFree?${search}&pageSize=10&sortBy=id`;
+
+    console.log('whattt', search);
+  } else if (params?.cost?.length === 0) {
+    console.log('Non Free Search');
 
     const search = qs.stringify(params, {
       encode: true,

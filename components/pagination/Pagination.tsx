@@ -12,12 +12,24 @@ function MicPagination() {
   console.log('This is my total Pages', totalPages);
 
   return (
+    // <Pagination
+    //   total={totalPages}
+    //   color="rgba(96, 165, 250, 1)"
+    //   withEdges={totalPages > 2}
+    //   value={activePage}
+    //   onChange={handleChange}
+    // />
+
     <Pagination
       total={totalPages}
-      color="rgba(96, 165, 250, 1)"
       withEdges={totalPages > 2}
-      value={activePage}
+      color="rgba(96, 165, 250, 1)"
       onChange={setPage}
+      value={activePage}
+      getItemProps={(page) => ({
+        component: 'a',
+        href: `#pageNo=${page}`,
+      })}
     />
   );
 }

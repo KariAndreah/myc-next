@@ -34,7 +34,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
     day: params?.get('day'),
     borough: params?.get('borough'),
     startTime: params?.get('startTime'),
-    checked: checkFree,
+    cost: checkFree,
     pageNo: pageNumber.toString(),
   };
 
