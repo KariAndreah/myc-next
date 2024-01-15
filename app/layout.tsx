@@ -6,7 +6,7 @@ import './globals.css';
 import { ReactQueryProvider } from './ReactQueryProvider';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
+  title: 'Open MYC',
   description: 'I am using Mantine with Next.js!',
 };
 

@@ -10,9 +10,9 @@ export const getMics: MicSearch = async (params) => {
 
   // Date-time 0000-00-00T15:00:00
 
-  let micsSearch = '';
+  console.log('These params are passing to getMics Hook', params);
 
-  console.log('------- The params are in the getMics hook', params?.cost);
+  let micsSearch = '';
 
   if (params?.cost) {
     console.log('Free Search');
@@ -24,18 +24,18 @@ export const getMics: MicSearch = async (params) => {
 
     micsSearch = `/findByBoroughsDayFree?${search}&pageSize=10&sortBy=id`;
 
-    console.log('whattt', search);
-  } else if (params?.cost?.length === 0) {
+    console.log('This is the Free getMics search: ', search);
+  } else {
     console.log('Non Free Search');
 
-    const search = qs.stringify(params, {
+    const search = qs.stringify(params!, {
       encode: true,
       skipNull: true,
     });
 
     micsSearch = `/findByBoroughsDay?${search}&pageSize=10&sortBy=id`;
 
-    console.log('whattt', search);
+    console.log('This is all cost getMics Search: ', search);
   }
 
   // }
@@ -43,9 +43,9 @@ export const getMics: MicSearch = async (params) => {
   try {
     // const localTest = `http://localhost:8080/mics${micsSearch}`;
     const localTest = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
-    console.log('mic search should work', micsSearch);
+    console.log('Response from mic search in Get Mics', micsSearch);
     const response = await request(localTest);
-    console.log('this is what is passing', localTest);
+    console.log('Full path name of Request', localTest);
     return response;
   } catch (err: any) {
     throw err;

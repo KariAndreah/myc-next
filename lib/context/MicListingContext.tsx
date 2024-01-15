@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
 import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
@@ -17,12 +17,20 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   // const params = new URLSearchParams();
 
   // Get selected objects
-  // const params = new URLSearchParams();
+  // const params = new URLSearchParams(window.location.href);
   const params = useSearchParams();
 
-  const pageNumber = Number(params?.get('pageNo'));
+  let pageNumber;
+  // Condition to get page number if present
+  if (params?.get('pageNo')) {
+    pageNumber = Number(params?.get('pageNo')) - 1;
+  } else {
+    pageNumber = 0;
+  }
 
-  console.log('What is this ', pageNumber);
+  console.log('this page is getting passed to micListingContext', pageNumber);
+
+  console.log('This is the current pageNo in URL in Mic Listing', params?.get('pageNo'));
 
   let checkFree;
 
@@ -35,19 +43,25 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
     borough: params?.get('borough'),
     startTime: params?.get('startTime'),
     cost: checkFree,
-    pageNo: pageNumber.toString(),
+    pageNo: pageNumber,
   };
 
   // const kari = setQuery(search);
   // console.log('kari', kari);
 
-  console.log('finding search categories', search);
+  console.log('Search categoriea option I am passing for the call', search);
 
   const { data, isLoading, refetch } = useMics(search);
 
+  useEffect(() => {
+    refetch();
+    // You can now use the current URL
+    // ...
+  }, [search]);
+
   // console.log(useMics(search).data);
 
-  console.log('Response here', data, isLoading);
+  console.log('Response here in MicListingContext: ', data, isLoading);
 
   // Commented this out but data is reloading and not working
   // if (!isLoading && !data?.mics) {

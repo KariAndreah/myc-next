@@ -27,7 +27,7 @@ const SearchCard = () => {
   const router = useRouter();
 
   const handleSearch = () => {
-    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}`);
+    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&pageNo=1`);
   };
 
   const inputTerms = {
