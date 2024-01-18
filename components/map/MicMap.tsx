@@ -5,7 +5,7 @@ import { Map, APIProvider, AdvancedMarker, Pin } from '@vis.gl/react-google-maps
 import { MicListingContext } from '@/lib/context/MicListingContext';
 
 const MicMap = () => {
-  const position = { lat: 40.73, lng: -74.0 };
+  const position = { lat: 40.7447, lng: -73.936 };
   const { mics } = useContext(MicListingContext);
 
   console.log('Hi Kari from maps', mics);
@@ -30,10 +30,10 @@ const MicMap = () => {
 
   return (
     // <div className="min-w-[calc(100vw-680px-32px)] w-[calc(100vw-680px-32px)] block mr-0 h-[calc(100vh - 195px)]">
-    <div>
+    <div className="flex-1">
       <APIProvider apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}>
-        <div className="w-[50vw] h-[60vh]">
-          <Map zoom={15} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
+        <div className="fixed top-0 right-0  w-[50vw] h-[95vh]">
+          <Map zoom={11} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
             {micPins}
           </Map>
         </div>

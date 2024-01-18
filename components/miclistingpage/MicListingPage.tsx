@@ -7,13 +7,20 @@ import MicPagination from '../pagination/Pagination';
 
 export function MicListingPage() {
   return (
-    <PageLayout>
-      <div className="flex flex-col py-32 px-3 items-center justify-center">
-        <div className="flex flex-row pb-5 justify-around">
-          <MicCard />
+    <PageLayout className="h-[full]">
+      <div className="flex flex-col pb-32 px-3 justify-start">
+        <div className="flex flex-row justify-start pb-5 gap-3">
+          <div className="flex-1 pt-16 min-h-[800px]">
+            <a href="/">
+              <h1 className="underline">Go Back to search</h1>
+            </a>
+            <MicCard />
+            <div className="flex pt-12 justify-center">
+              <MicPagination />
+            </div>
+          </div>
           <MicMap />
         </div>
-        <MicPagination />
       </div>
     </PageLayout>
   );

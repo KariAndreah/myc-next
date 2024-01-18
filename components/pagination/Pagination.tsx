@@ -1,12 +1,10 @@
 import { Pagination } from '@mantine/core';
 import { useContext, useEffect, useState } from 'react';
-// import { parseAsFloat, useQueryState } from 'next-usequerystate';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 // import { parseAsFloat, useQueryState } from 'next-usequerystate';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 
 function MicPagination() {
-  // eslint-disable-next-line no-unsafe-optional-chaining
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -84,22 +82,6 @@ function MicPagination() {
     //   onChange={handleChange}
     // />
     <div className="gap-10">
-      <button
-        className="bg-red border-solid border-4 mx-10"
-        type="button"
-        // onClick={() => onSelect(1)}
-        value={1}
-      >
-        1
-      </button>
-      <button
-        className="bg-red border-solid border-4"
-        type="button"
-        // onClick={() => onSelect(2)}
-        value={2}
-      >
-        2
-      </button>
       <Pagination
         total={totalPages}
         withEdges={totalPages > 2}

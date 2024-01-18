@@ -6,9 +6,9 @@ import Footer from '../footer/Footer';
 function PageLayout({ children, className }: PageLayoutProps) {
   return (
     // bg-cyan-100 <-- blue color I like
-    <div className="h-full bg-black-white bg-cover shadow-box-shadow-background">
+    <div className={`bg-black-white bg-cover shadow-box-shadow-background ${className}`}>
       <Header />
-      <section className={className}>{children}</section>
+      <section>{children}</section>
       <Footer />
     </div>
   );
