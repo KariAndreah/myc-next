@@ -12,7 +12,7 @@ export function MicListingPage() {
         <div className="flex flex-row justify-start pb-5 gap-3">
           <div className="flex-1 pt-16 min-h-[800px]">
             <a href="/">
-              <h1 className="underline">Go Back to search</h1>
+              <h1 className="underline hover:text-blue-800">Go Back to search</h1>
             </a>
             <MicCard />
             <div className="flex pt-12 justify-center">

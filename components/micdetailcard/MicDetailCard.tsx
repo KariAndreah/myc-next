@@ -1,18 +1,15 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
-import { MicListingContext } from '@/lib/context/MicListingContext';
+import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 import '@mantine/core/styles.css';
 
-const MicCard = () => {
-  const { mics } = useContext(MicListingContext);
+const MicDetailCard = () => {
+  const { mics } = useContext(MicDetailContext);
   console.log('Need the context', mics);
   // console.log(mics);
-
-  const router = useRouter();
 
   function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
     const [hourString, minute] = timeString.split(':');
@@ -27,12 +24,11 @@ const MicCard = () => {
       </div>
     );
   }
-  const openMic = mics?.content.map((mic: any) => (
+  const openMic = mics?.map((mic: any) => (
     <div key={mic?.id} className="flex">
       <Card
-        className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105 shadow-md group"
+        className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105 shadow-md group height-[100px]"
         component="a"
-        onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
         <div className="flex flex-row text-slate-700 text-3xl font-semibold group-hover:text-blue-800 group-hover:underline">
           <div>{mic?.name}</div>
@@ -61,8 +57,8 @@ const MicCard = () => {
   return <div className="flex flex-row flex-wrap gap-3 ">{openMic}</div>;
 };
 
-export default MicCard;
+export default MicDetailCard;
 
-export type MicCardProps = {
+export type MicDetailCardProps = {
   mics: any;
 };
