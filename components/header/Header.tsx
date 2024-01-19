@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <h1 className="font-extrabold whitespace-nowrap flex">
+        <h1 className="font-extrabold whitespace-nowrap flex text-3xl">
           <a href="/">
             Open
             <span className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">

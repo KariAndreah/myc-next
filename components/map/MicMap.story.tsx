@@ -1,7 +1,7 @@
-import MicMap from './MicMap';
+// import MicMap from './MicMap';
 
 export default {
   title: 'MicMap',
 };
 
-export const Usage = () => <MicMap />;
+// export const Usage = () => <MicMap />;

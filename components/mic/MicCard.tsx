@@ -28,9 +28,9 @@ const MicCard = () => {
     );
   }
   const openMic = mics?.content.map((mic: any) => (
-    <div key={mic?.id} className="flex">
+    <div key={mic?.id} className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)]">
       <Card
-        className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105 shadow-md group"
+        className="w-[100%] flex  bg-slate-500 cursor-pointer hover:scale-105 shadow-md group  "
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
@@ -58,7 +58,7 @@ const MicCard = () => {
       </Card>
     </div>
   ));
-  return <div className="flex flex-row flex-wrap gap-3 ">{openMic}</div>;
+  return <div className="flex flex-row flex-wrap gap-3 justify-center">{openMic}</div>;
 };
 
 export default MicCard;
