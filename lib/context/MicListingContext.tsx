@@ -1,9 +1,9 @@
 'use client';
 
 import { createContext, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
-import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
+import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
 
 export const MicListingContext = createContext<MicListingContextState>({
   mics: undefined,
@@ -13,12 +13,12 @@ export const MicListingContext = createContext<MicListingContextState>({
 });
 
 export const MicListingContextProvider = ({ children }: MicListingContextProps) => {
-  // const [params, setQuery, clearQuery, getQuery] = useQuery();
+  const [params, setQuery, clearQuery, getQuery] = useQuery();
   // const params = new URLSearchParams();
 
   // Get selected objects
   // const params = new URLSearchParams(window.location.href);
-  const params = useSearchParams();
+  // const params = useSearchParams();
 
   let pageNumber;
   // Condition to get page number if present
@@ -69,7 +69,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   // }
 
   return (
-    <MicListingContext.Provider value={{ mics: data, refetch }}>
+    <MicListingContext.Provider value={{ mics: data, refetch, setQuery, getQuery, clearQuery }}>
       {children}
     </MicListingContext.Provider>
   );

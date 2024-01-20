@@ -1,12 +1,12 @@
 'use client';
 
 import qs from 'query-string';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] => {
   const { push } = useRouter();
-  // const query = useSearchParams();
-  let params = new URLSearchParams();
+  const query = useSearchParams();
+  let params = new URLSearchParams(qs.stringify(query));
 
   const getQuery: GetQuery = (q = {}) => {
     let update = {};
@@ -16,7 +16,10 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] =>
     if (params?.has('borough')) {
       update = { ...update, day: params?.get('borough') };
     }
-
+    if (params?.has('pageNo')) {
+      update = { ...update, day: params?.get('pageNo') };
+    }
+    console.log('Working on Queries ', update);
     return { ...update, ...q };
   };
 
@@ -70,7 +73,7 @@ export type Params = {
   // Search query param - cost
   free?: string;
   // Current results page
-  page?: number;
+  pageNo?: number;
   // Sort Filter
   sort?: string;
 };
