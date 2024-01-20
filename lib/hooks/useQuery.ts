@@ -1,12 +1,12 @@
 'use client';
 
 import qs from 'query-string';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] => {
   const { push } = useRouter();
-  // const query = useSearchParams();
-  let params = new URLSearchParams();
+  const query = useSearchParams();
+  let params = new URLSearchParams(query);
 
   const getQuery: GetQuery = (q = {}) => {
     let update = {};
