@@ -1,9 +1,9 @@
 'use client';
 
 import { createContext, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
-import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
+import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
 
 export const MicListingContext = createContext<MicListingContextState>({
   mics: undefined,
@@ -13,43 +13,11 @@ export const MicListingContext = createContext<MicListingContextState>({
 });
 
 export const MicListingContextProvider = ({ children }: MicListingContextProps) => {
-  // const [params, setQuery, clearQuery, getQuery] = useQuery();
-  // const params = new URLSearchParams();
+  const [params, setQuery, clearQuery, getQuery] = useQuery();
 
-  // Get selected objects
-  // const params = new URLSearchParams(window.location.href);
-  const params = useSearchParams();
+  const search = getQuery();
 
-  let pageNumber;
-  // Condition to get page number if present
-  if (params?.get('pageNo')) {
-    pageNumber = Number(params?.get('pageNo')) - 1;
-  } else {
-    pageNumber = 0;
-  }
-
-  console.log('this page is getting passed to micListingContext', pageNumber);
-
-  console.log('This is the current pageNo in URL in Mic Listing', params?.get('pageNo'));
-
-  let checkFree;
-
-  if (params?.get('free') === 'true') {
-    checkFree = 1;
-  }
-
-  const search = {
-    day: params?.get('day'),
-    borough: params?.get('borough'),
-    startTime: params?.get('startTime'),
-    cost: checkFree,
-    pageNo: pageNumber,
-  };
-
-  // const kari = setQuery(search);
-  // console.log('kari', kari);
-
-  console.log('Search categoriea option I am passing for the call', search);
+  console.log('SEARCH CATEGORIES I AM PASSING', search);
 
   const { data, isLoading, refetch } = useMics(search);
 
@@ -61,15 +29,17 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   // console.log(useMics(search).data);
 
-  console.log('Response here in MicListingContext: ', data, isLoading);
+  console.log('MIC LISTING RESPONSE ', data, isLoading);
 
   // Commented this out but data is reloading and not working
   // if (!isLoading && !data?.mics) {
-  //   return <h1>Not found *yet kARI :P</h1>;
+  //   return <h1>Loading :P</h1>;
   // }
 
   return (
-    <MicListingContext.Provider value={{ mics: data, refetch }}>
+    <MicListingContext.Provider
+      value={{ mics: data, refetch, getQuery, clearQuery, setQuery, params }}
+    >
       {children}
     </MicListingContext.Provider>
   );
