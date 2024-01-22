@@ -1,21 +1,46 @@
 'use client';
 
 import qs from 'query-string';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] => {
+  const pathname = usePathname();
   const { push } = useRouter();
   const query = useSearchParams();
   let params = new URLSearchParams(query);
 
   const getQuery: GetQuery = (q = {}) => {
     let update = {};
+
+    // Getting day param
     if (params?.has('day')) {
       update = { ...update, day: params?.get('day') };
     }
+
+    // Getting borough param
     if (params?.has('borough')) {
-      update = { ...update, day: params?.get('borough') };
+      update = { ...update, borough: params?.get('borough') };
     }
+
+    // Getting page number param
+    let pageNumber;
+    // Condition to get page number if present
+    if (params?.get('pageNo')) {
+      pageNumber = Number(params?.get('pageNo')) - 1;
+      update = { ...update, pageNo: pageNumber };
+    } else {
+      pageNumber = 0;
+      update = { ...update, pageNo: pageNumber };
+    }
+
+    // Getting if free param
+    let checkFree;
+    if (params?.get('free') === 'true') {
+      checkFree = 1;
+      update = { ...update, cost: checkFree };
+    }
+
+    console.log('RESPONSE FROM GETQUERY', update);
 
     return { ...update, ...q };
   };
@@ -27,13 +52,17 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] =>
     }
 
     const currentParams = qs.parse(params.toString());
+
+    console.log('CURRENT PARAMS IN SET QUERY', currentParams);
     const update = { ...currentParams, ...q };
 
     params = new URLSearchParams(update);
 
+    console.log('SET QUERY IS WORKING, HERE ARE THE PARAMS BEING PUSHED', params.toString());
+
     // eslint-disable-next-line no-sequences
     return (
-      push(params.toString()),
+      push(`${pathname}?${params.toString()}`),
       {
         shallow: true,
         scroll: true,
@@ -52,9 +81,12 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] =>
     }
 
     params = new URLSearchParams(currentParams as Record<string, string>);
-    return push(params.toString(), {
-      scroll: true,
-    });
+    return (
+      push(`${pathname}${params.toString()}`),
+      {
+        scroll: true,
+      }
+    );
   };
   return [params, setQuery, clearQuery, getQuery];
 };
