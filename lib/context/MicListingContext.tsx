@@ -3,17 +3,18 @@
 import { createContext, useEffect } from 'react';
 // import { useSearchParams } from 'next/navigation';
 import { useMics } from '../hooks/useMics';
-import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
+import { ClearQuery, GetQuery, SetPagination, SetQuery, useQuery } from '../hooks/useQuery';
 
 export const MicListingContext = createContext<MicListingContextState>({
   mics: undefined,
   clearQuery: () => null,
   getQuery: () => null,
   setQuery: () => null,
+  setPagination: () => null,
 });
 
 export const MicListingContextProvider = ({ children }: MicListingContextProps) => {
-  const [params, setQuery, clearQuery, getQuery] = useQuery();
+  const [params, setQuery, clearQuery, getQuery, setPagination] = useQuery();
 
   const search = getQuery();
 
@@ -38,7 +39,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   return (
     <MicListingContext.Provider
-      value={{ mics: data, refetch, getQuery, clearQuery, setQuery, params }}
+      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params }}
     >
       {children}
     </MicListingContext.Provider>
@@ -58,6 +59,7 @@ type MicListingContextState = {
   clearQuery?: ClearQuery;
   getQuery?: GetQuery;
   setQuery?: SetQuery;
+  setPagination?: SetPagination;
 };
 
 type MicListingContextProps = {
