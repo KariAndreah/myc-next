@@ -3,9 +3,9 @@
 import qs from 'query-string';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] => {
+export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, SetPagination] => {
   const pathname = usePathname();
-  const { push } = useRouter();
+  const router = useRouter();
   const query = useSearchParams();
   let params = new URLSearchParams(query);
 
@@ -62,7 +62,22 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] =>
 
     // eslint-disable-next-line no-sequences
     return (
-      push(`${pathname}?${params.toString()}`),
+      router.push(`${pathname}?${params.toString()}`),
+      {
+        shallow: true,
+        scroll: true,
+      }
+    );
+  };
+
+  const setPagination: SetPagination = (q) => {
+    if (!q) {
+      console.log('working with null big dog');
+      return null;
+    }
+    console.log('Working backwards bigdog', q.toString());
+    return (
+      router.push(`${pathname}?${q}`),
       {
         shallow: true,
         scroll: true,
@@ -82,13 +97,13 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery] =>
 
     params = new URLSearchParams(currentParams as Record<string, string>);
     return (
-      push(`${pathname}${params.toString()}`),
+      router.push(`${pathname}${params.toString()}`),
       {
         scroll: true,
       }
     );
   };
-  return [params, setQuery, clearQuery, getQuery];
+  return [params, setQuery, clearQuery, getQuery, setPagination];
 };
 
 export type Params = {
@@ -102,12 +117,18 @@ export type Params = {
   // Search query param - cost
   free?: string;
   // Current results page
-  page?: number;
+  pageNo?: number;
   // Sort Filter
   sort?: string;
 };
 
 export type SetQuery = (query?: Record<string, any>, clear?: boolean, append?: boolean) => void;
+
+export type SetPagination = (
+  query?: Record<string, any>,
+  clear?: boolean,
+  append?: boolean
+) => void;
 
 export type ClearQuery = (query?: Record<string, any>, clearAll?: boolean) => void;
 
