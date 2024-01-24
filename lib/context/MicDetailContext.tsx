@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
 import { useIndividualMics } from '../hooks/useIndividualMics';
@@ -29,7 +29,13 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
 
   console.log('finding search categaories', search);
 
-  const { data, isLoading } = useIndividualMics(search);
+  const { data, isLoading, refetch } = useIndividualMics(search);
+
+  useEffect(() => {
+    refetch();
+    // You can now use the current URL
+    // ...
+  }, [search]);
 
   console.log('Response', data, isLoading);
 

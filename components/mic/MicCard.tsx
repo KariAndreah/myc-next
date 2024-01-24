@@ -28,7 +28,10 @@ const MicCard = () => {
     );
   }
   const openMic = mics?.content.map((mic: any) => (
-    <div key={mic?.id} className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)]">
+    <div
+      key={mic?.id}
+      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px]"
+    >
       <Card
         className="w-[100%] flex  bg-slate-500 cursor-pointer hover:scale-105 shadow-md group  "
         component="a"

@@ -7,14 +7,14 @@ const MicMap = ({ mics }: MicMapType) => {
 
   console.log('Hi Kari from maps', mics);
 
-  const micPins = mics?.content.map((mic: any) => (
+  const micPins = mics?.content?.map((mic: any) => (
     //  positionB = {lat:`${mic?.address.latitude}`, lng:`${mic?.address.longitude}` }
 
     <div key={mic?.id} className="flex shadow-md">
       <AdvancedMarker
         position={{
-          lat: parseFloat(`${mic?.address.latitude}`),
-          lng: parseFloat(`${mic?.address.longitude}`),
+          lat: parseFloat(`${mic?.address?.latitude}`),
+          lng: parseFloat(`${mic?.address?.longitude}`),
         }}
         // onMouseOver={{}}
       >
@@ -29,7 +29,7 @@ const MicMap = ({ mics }: MicMapType) => {
     // <div className="min-w-[calc(100vw-680px-32px)] w-[calc(100vw-680px-32px)] block mr-0 h-[calc(100vh - 195px)]">
     <APIProvider apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}>
       <div className="fixed top-0 right-0  w-[50vw] h-[95vh]">
-        <Map zoom={11} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
+        <Map zoom={12} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
           {micPins}
         </Map>
       </div>

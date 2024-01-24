@@ -24,7 +24,7 @@ const MicDetailCard = () => {
       </div>
     );
   }
-  const openMic = mics?.map((mic: any) => (
+  const openMic = mics?.content.map((mic: any) => (
     <div key={mic?.id} className="flex">
       <Card
         className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105 shadow-md group height-[100px]"
