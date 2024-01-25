@@ -1,50 +1,50 @@
 'use client';
 
-import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import classes from './Filter.module.css';
+import { Button, Container } from '@mantine/core';
 import '@mantine/core/styles.css';
-
-const links = [
-  { link: '/about', label: 'About' },
-  { link: '/signin', label: 'Sign In/ Register' },
-];
+import { useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import BoroughSelect from '../select/BoroughSelect';
+import DaySelect from '../select/DaySelect';
+import FreeSwitch from '../select/FreeSwitch';
+import { MicListingContext } from '@/lib/context/MicListingContext';
 
 const Filter = () => {
-  const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const { params } = useContext(MicListingContext);
 
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
+  const getAllBoroughs = params.get('borough');
+
+  const allBoroughsArray = getAllBoroughs.split(',');
+  const [day, setDay] = useState(params.getAll('day'));
+  const [borough, setBorough] = useState(allBoroughsArray);
+  const val = params.get('free') === 'true';
+
+  const [cost, setCost] = useState(val);
+
+  console.log('What is passing in the switch', params.get('free'));
+
+  console.log('What is passing in the switch passing', Boolean(params.get('free')));
+
+  console.log('query in the FILTERS', params.toString());
+
+  const findingBorough = params.get('borough');
+
+  console.log('boroughs from FILTERS', findingBorough);
+
+  const router = useRouter();
+
+  const handleSearch = () => {
+    console.log('this is clicking');
+    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&pageNo=1`);
+  };
 
   return (
-    <header className={classes.header}>
-      <Container size="md" className={classes.inner}>
-        <h1 className="font-extrabold whitespace-nowrap flex text-3xl">
-          <a href="/">
-            Open
-            <span className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">
-              MYC
-            </span>
-          </a>
-        </h1>
-        <Group gap={5} visibleFrom="xs">
-          {items}
-        </Group>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+    <header className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white">
+      <Container size="md" className=" flex h-[rem(56px)] space-between items-center">
+        <BoroughSelect value={borough} setValue={setBorough} />
+        <DaySelect value={day} setValue={setDay} />
+        <FreeSwitch checked={cost} setChecked={setCost} />
+        <Button onClick={handleSearch}>Update Search </Button>
       </Container>
     </header>
   );

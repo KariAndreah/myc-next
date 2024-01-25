@@ -13,6 +13,9 @@ export function MicDetailPage() {
   return (
     <PageLayout className="h-[full]">
       <div className="flex flex-row py-16 ">
+        <a href="/">
+          <h1 className="underline hover:text-blue-800">Go Back to search</h1>
+        </a>
         <div className="flex flex-1 justify-center items-center">
           <MicPage />
         </div>

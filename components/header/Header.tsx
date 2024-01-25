@@ -5,13 +5,14 @@ import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './Header.module.css';
 import '@mantine/core/styles.css';
+import Filter from '../filter/Filter';
 
 const links = [
   { link: '/about', label: 'About' },
   { link: '/signin', label: 'Sign In/ Register' },
 ];
 
-const Header = () => {
+const Header = ({ hasFilter }: HeaderProps) => {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
 
@@ -46,8 +47,13 @@ const Header = () => {
         </Group>
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
+      {hasFilter ? <Filter /> : null}{' '}
     </header>
   );
 };
 
 export default Header;
+
+export type HeaderProps = {
+  hasFilter?: boolean;
+};

@@ -1,7 +1,5 @@
 .Filter {
-  height: rem(50px);
-  margin-bottom: rem(120px);
-  background-color: var(--mantine-color-body);
+  background-color: white;
   border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   position: fixed;
   width: 100%;
