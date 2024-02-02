@@ -6,7 +6,7 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 function MicPagination() {
   // const [activePage, setPage] = useQueryState('pageNo', parseAsFloat);
   const { mics, setPagination, params } = useContext(MicListingContext);
-  const [activePage, setPage] = useState(Number(params.get('pageNo')));
+  const [activePage, setPage] = useState(Number(params.get('page')));
 
   const totalPages = mics?.totalPages;
 
@@ -39,10 +39,10 @@ function MicPagination() {
   useEffect(() => {
     console.log('this us effect is working', params.toString());
 
-    if (!params.has('pageNo')) {
-      params.delete('pageNo');
+    if (!params.has('page')) {
+      params.delete('page');
     } else {
-      params.set('pageNo', activePage.toString());
+      params.set('page', activePage.toString());
     }
     console.log('What is current', params.toString());
 

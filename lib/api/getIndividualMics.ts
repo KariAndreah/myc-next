@@ -11,12 +11,13 @@ export const getIndividualMics: IndividualMicSearch = async (params) => {
   // }
   // eslint-disable-next-line no-useless-catch
   try {
-    const allMics = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
+    const allMics = `${process.env.NEXT_PUBLIC_API}/mic/${micsSearch}`;
     console.log('this is what is passing', allMics);
 
     const response = await request(allMics);
     return response;
   } catch (err: any) {
+    console.log('THERE IS AN ERROR', err);
     throw err;
   }
 };

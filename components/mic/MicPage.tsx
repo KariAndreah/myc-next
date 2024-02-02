@@ -29,30 +29,30 @@ const MicPage = () => {
   return (
     <Card className="flex flex-1 w-full bg-slate-500 gap-5 m-10">
       <div className="flex flex-row text-slate-700 text-4xl pt-5">
-        <div>{mics.content[0]?.name}</div>
+        <div>{mics[0]?.name}</div>
       </div>
       <div className="flex flex-row gap-1 text-green-700 text-sm">
-        <div>{mics.content[0]?.address?.number}</div>
-        <div>{mics.content[0]?.address?.streetName}</div>
-        <div>{mics.content[0]?.address?.zipcode}</div>
-        <div>{mics.content[0]?.borough}</div>
+        <div>{mics[0]?.unit_number}</div>
+        <div>{mics[0]?.street_name}</div>
+        <div>{mics[0]?.zipcode}</div>
+        <div>{mics[0]?.borough}</div>
       </div>
       <div className="flex flex-row pt-8">
-        <div className="pr-1">{mics.content.day}</div>
-        <div>{mics.content[0]?.time}</div>
+        <div className="pr-1">{mics?.day}</div>
+        <div>{mics[0]?.start_time}</div>
       </div>
 
       <div className="flex flex-row text-sm">
         <h1 className="text-sm">Cost: </h1>
-        <div>{mics.content[0]?.cost?.costAmount}</div>
+        <div>{mics[0]?.cost_amount}</div>
       </div>
       <div className="flex flex-row text-sm">
         <h1 className="text-sm">Host: </h1>
-        <div>{mics.content[0]?.host?.firstHost}</div>
+        <div>{mics?.host?.firstHost}</div>
       </div>
       <div className="flex flex-row">
         <div>Notes: </div>
-        <div>{mics.content[0]?.signup?.instructions}</div>
+        <div>{mics?.signup?.instructions}</div>
       </div>
       <div>
         <h1>Reviews: </h1>

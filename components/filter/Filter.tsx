@@ -4,6 +4,7 @@ import { Button, Container } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { TbSearch } from 'react-icons/tb';
 import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
@@ -35,16 +36,18 @@ const Filter = () => {
 
   const handleSearch = () => {
     console.log('this is clicking');
-    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&pageNo=1`);
+    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
   };
 
   return (
-    <header className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white">
-      <Container size="md" className=" flex h-[rem(56px)] space-between items-center">
+    <header className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2 ">
+      <Container size="md" className=" flex h-[rem(56px)] space-between items-center py-3 gap-3">
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
         <FreeSwitch checked={cost} setChecked={setCost} />
-        <Button onClick={handleSearch}>Update Search </Button>
+        <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
+          Update
+        </Button>
       </Container>
     </header>
   );

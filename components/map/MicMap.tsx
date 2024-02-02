@@ -1,27 +1,63 @@
 'use client';
 
-import { Map, APIProvider, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import { Map, APIProvider } from '@vis.gl/react-google-maps';
+// import { useState } from 'react';
+import MarkerWithInfowindow from './MarkerWithInfoWindow';
+// const micTag = document.createElement('div');
 
 const MicMap = ({ mics }: MicMapType) => {
+  // const [infowindowShown, setInfowindowShown] = useState(false);
+
+  // const toggleInfoWindow = () => setInfowindowShown((previousState) => !previousState);
+  // const closeInfoWindow = () => setInfowindowShown(false);
+
+  function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
+    const [hourString, minute] = timeString.split(':');
+    const hour = +hourString % 24;
+    return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
+  }
+
   const position = { lat: 40.7447, lng: -73.936 };
 
   console.log('Hi Kari from maps', mics);
 
-  const micPins = mics?.content?.map((mic: any) => (
+  const micPins = mics?.mics?.map((mic: any) => {
     //  positionB = {lat:`${mic?.address.latitude}`, lng:`${mic?.address.longitude}` }
 
-    <div key={mic?.id} className="flex shadow-md">
-      <AdvancedMarker
-        position={{
-          lat: parseFloat(`${mic?.address?.latitude}`),
-          lng: parseFloat(`${mic?.address?.longitude}`),
-        }}
-        // onMouseOver={{}}
-      >
-        <Pin />
-      </AdvancedMarker>
-    </div>
-  ));
+    // micTag.textContent = mic?.name;
+
+    // micTag.innerHTML = `<div>${mic?.name}</div> `;
+
+    console.log('this is passing in the map', mics);
+
+    const me = 'kari';
+    console.log(me);
+
+    return (
+      <div key={mic?.id} className="flex shadow-md">
+        {/* <AdvancedMarker
+          // className="hover: scale-150 "
+          position={{
+            lat: parseFloat(`${mic?.latitude}`),
+            lng: parseFloat(`${mic?.longitude}`),
+          }}
+          // onMouseOver={{}}
+          title={`${mic?.name}`}
+          onClick={toggleInfoWindow}
+        >
+          <Pin />
+          {infowindowShown && <InfoWindow onCloseClick={closeInfoWindow}>{mic?.name}</InfoWindow>}
+        </AdvancedMarker> */}
+        <MarkerWithInfowindow
+          latitude={mic?.latitude}
+          longitude={mic?.longitude}
+          name={mic?.name}
+          day={mic?.day}
+          time={formatTime(mic?.start_time)}
+        />
+      </div>
+    );
+  });
 
   console.log('MIC PINS', micPins);
 

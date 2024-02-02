@@ -15,22 +15,29 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     // Getting day param
     if (params?.has('day')) {
       update = { ...update, day: params?.get('day') };
+    } else {
+      update = { ...update, day: '' };
     }
 
     // Getting borough param
-    if (params?.has('borough')) {
+    if (params?.get('borough') === '') {
+      update = {
+        ...update,
+        borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+      };
+    } else if (params?.has('borough')) {
       update = { ...update, borough: params?.get('borough') };
     }
 
     // Getting page number param
     let pageNumber;
     // Condition to get page number if present
-    if (params?.get('pageNo')) {
-      pageNumber = Number(params?.get('pageNo')) - 1;
-      update = { ...update, pageNo: pageNumber };
+    if (params?.get('page')) {
+      pageNumber = Number(params?.get('page'));
+      update = { ...update, page: pageNumber };
     } else {
       pageNumber = 0;
-      update = { ...update, pageNo: pageNumber };
+      update = { ...update, page: pageNumber };
     }
 
     // Getting if free param
@@ -117,7 +124,7 @@ export type Params = {
   // Search query param - cost
   free?: string;
   // Current results page
-  pageNo?: number;
+  page?: number;
   // Sort Filter
   sort?: string;
 };

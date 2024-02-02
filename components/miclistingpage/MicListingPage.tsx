@@ -13,7 +13,7 @@ export function MicListingPage() {
   return (
     <PageLayout className="h-[full]" hasFilter>
       <div className="flex flex-col pb-32 px-3 justify-start">
-        <div className="flex flex-row justify-start pb-5">
+        <div className="flex flex-row justify-start pb-5 mt-32">
           <div className="flex-1 pt-16 min-h-[800px]">
             <MicCard />
             <div className="flex pt-12 justify-center">

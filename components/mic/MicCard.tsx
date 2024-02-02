@@ -20,20 +20,20 @@ const MicCard = () => {
     return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   }
 
-  if (!mics) {
+  if (mics === undefined) {
     return (
       <div className="p-32">
         <h1>Loading ...</h1>
       </div>
     );
   }
-  const openMic = mics?.content.map((mic: any) => (
+  const openMic = mics?.mics.map((mic: any) => (
     <div
       key={mic?.id}
-      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px]"
+      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[1px] border-stone-300 shadow-lg shadow-slate-300 hover:scale-105 hover:border-blue-800"
     >
       <Card
-        className="w-[100%] flex  bg-slate-500 cursor-pointer hover:scale-105 shadow-md group  "
+        className="w-[100%] flex  bg-slate-500 cursor-pointer  group"
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
@@ -42,21 +42,18 @@ const MicCard = () => {
         </div>
 
         <div className="flex flex-row gap-1 text-green-700 text-sm">
-          <div>{mic.address.number}</div>
-          <div>{mic.address.streetName}</div>
+          <div>{mic.unit_number}</div>
+          <div>{mic.street_name}</div>
         </div>
         <div className="text-sm font-bold">{mic.borough}</div>
-        <div className="pt-8 flex flex-row gap-1">
-          <div>{mic?.day}</div>
-          <div>{formatTime(mic?.time)}</div>
+        <div className="pt-8 flex flex-row">
+          <div>{mic?.occurrence}</div>
+          <div className="pr-1">{mic?.day}</div>
+          <div>{formatTime(mic?.start_time)}</div>
         </div>
         <div className="flex flex-row  text-blue-700 ">
           <h1 className="text-sm text-blue-700">Cost: </h1>
-          <div className="pl-1 text-sm"> {mic?.cost.costAmount}</div>
-        </div>
-        <div className="flex flex-row">
-          <div className="text-sm">Notes: </div>
-          <div>{mic?.notes}</div>
+          <div className="pl-1 text-sm"> {mic?.cost_amount}</div>
         </div>
       </Card>
     </div>

@@ -53,7 +53,7 @@ type MicListingContextState = {
   // setQuery: SetQuery;
   // getQuery: GetQuery;
   params?: any;
-  pageNo?: number;
+  page?: number;
   endPage?: number;
   totalMics?: number;
   clearQuery?: ClearQuery;
