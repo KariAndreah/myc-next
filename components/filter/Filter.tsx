@@ -13,11 +13,22 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 const Filter = () => {
   const { params } = useContext(MicListingContext);
 
+  console.log('This is to find all of the params', params.toString());
   const getAllBoroughs = params.get('borough');
-
   const allBoroughsArray = getAllBoroughs.split(',');
+
+  console.log('this is the borough Param', allBoroughsArray);
+
+  let boroughsArray: any;
+
+  if (allBoroughsArray.includes('All')) {
+    boroughsArray = [];
+  } else {
+    boroughsArray = allBoroughsArray;
+  }
+
   const [day, setDay] = useState(params.getAll('day'));
-  const [borough, setBorough] = useState(allBoroughsArray);
+  const [borough, setBorough] = useState(boroughsArray);
   const val = params.get('free') === 'true';
 
   const [cost, setCost] = useState(val);
@@ -36,7 +47,7 @@ const Filter = () => {
 
   const handleSearch = () => {
     console.log('this is clicking');
-    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
+    router.push(`/mics?day=${day}&borough=${borough}&time=00:00:00&free=${cost}&page=1`);
   };
 
   return (

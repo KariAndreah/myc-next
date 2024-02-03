@@ -8,8 +8,10 @@ import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 const MicPage = () => {
   const { mics } = useContext(MicDetailContext);
-  console.log('Need the context', mics);
+  console.log('Need the context MIC DETAILS', mics.mics[0].name);
   // console.log(mics);
+
+  const mic = mics.mics[0];
 
   // This is causing an error I don't like:
   // function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
@@ -29,30 +31,30 @@ const MicPage = () => {
   return (
     <Card className="flex flex-1 w-full bg-slate-500 gap-5 m-10">
       <div className="flex flex-row text-slate-700 text-4xl pt-5">
-        <div>{mics[0]?.name}</div>
+        <div>{mic.name}</div>
       </div>
       <div className="flex flex-row gap-1 text-green-700 text-sm">
-        <div>{mics[0]?.unit_number}</div>
-        <div>{mics[0]?.street_name}</div>
-        <div>{mics[0]?.zipcode}</div>
-        <div>{mics[0]?.borough}</div>
+        <div>{mic.unit_number}</div>
+        <div>{mic.street_name}</div>
+        <div>{mic.zipcode}</div>
+        <div>{mic.borough}</div>
       </div>
       <div className="flex flex-row pt-8">
         <div className="pr-1">{mics?.day}</div>
-        <div>{mics[0]?.start_time}</div>
+        <div>{mic.start_time}</div>
       </div>
 
       <div className="flex flex-row text-sm">
         <h1 className="text-sm">Cost: </h1>
-        <div>{mics[0]?.cost_amount}</div>
+        <div>{mic.cost_amount}</div>
       </div>
       <div className="flex flex-row text-sm">
         <h1 className="text-sm">Host: </h1>
-        <div>{mics?.host?.firstHost}</div>
+        <div>{mic.first_host}</div>
       </div>
       <div className="flex flex-row">
         <div>Notes: </div>
-        <div>{mics?.signup?.instructions}</div>
+        <div>{mic.instructions}</div>
       </div>
       <div>
         <h1>Reviews: </h1>

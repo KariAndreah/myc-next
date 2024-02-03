@@ -13,20 +13,38 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     let update = {};
 
     // Getting day param
-    if (params?.has('day')) {
-      update = { ...update, day: params?.get('day') };
+    if (params?.get('day') === '') {
+      update = { ...update, day: ['All'] };
     } else {
-      update = { ...update, day: '' };
+      update = { ...update, day: params?.get('day') };
     }
 
+    // if (params?.has('day')) {
+    //   update = { ...update, day: params?.get('day') };
+    // } else {
+    //   update = { ...update, day: '' };
+    // }
+
     // Getting borough param
-    if (params?.get('borough') === '') {
+    if (params?.get('borough') === 'All') {
       update = {
         ...update,
-        borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+        // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+        borough: ['All'],
       };
     } else if (params?.has('borough')) {
       update = { ...update, borough: params?.get('borough') };
+    }
+
+    // Getting time param
+    if (params?.get('time') === '00:00:00') {
+      update = {
+        ...update,
+        // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+        time: '00:00:00',
+      };
+    } else if (params?.has('time')) {
+      update = { ...update, time: params?.get('time') };
     }
 
     // Getting page number param

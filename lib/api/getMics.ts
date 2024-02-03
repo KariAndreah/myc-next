@@ -22,7 +22,7 @@ export const getMics: MicSearch = async (params) => {
       skipNull: true,
     });
 
-    micsSearch = `/boroughDayFree?${search}`;
+    micsSearch = `/freeBoroughDayTime?${search}`;
 
     console.log('This is the Free getMics search: ', search);
   } else {
@@ -33,7 +33,7 @@ export const getMics: MicSearch = async (params) => {
       skipNull: true,
     });
 
-    micsSearch = `/boroughDay?${search}`;
+    micsSearch = `/boroughDayTime?${search}`;
 
     console.log('This is all cost getMics Search: ', search);
   }

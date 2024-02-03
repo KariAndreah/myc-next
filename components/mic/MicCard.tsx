@@ -27,6 +27,13 @@ const MicCard = () => {
       </div>
     );
   }
+
+  // let mic_cost: any;
+
+  // if (mics.mics[0].cost_id === 1) {
+  //   mic_cost = 'Free';
+  // }
+
   const openMic = mics?.mics.map((mic: any) => (
     <div
       key={mic?.id}
@@ -47,13 +54,13 @@ const MicCard = () => {
         </div>
         <div className="text-sm font-bold">{mic.borough}</div>
         <div className="pt-8 flex flex-row">
-          <div>{mic?.occurrence}</div>
           <div className="pr-1">{mic?.day}</div>
-          <div>{formatTime(mic?.start_time)}</div>
+          <div className="pr-1 ">{formatTime(mic?.start_time)}</div>
+          <div className="font-semibold">{mic?.schedule}</div>
         </div>
-        <div className="flex flex-row  text-blue-700 ">
+        <div className="flex flex-row ">
           <h1 className="text-sm text-blue-700">Cost: </h1>
-          <div className="pl-1 text-sm"> {mic?.cost_amount}</div>
+          <div className="pl-1 text-sm"> {mic?.cost_id === 1 ? 'Free' : mic?.cost_amount}</div>
         </div>
       </Card>
     </div>

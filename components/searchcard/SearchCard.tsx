@@ -26,13 +26,38 @@ const SearchCard = () => {
 
   const router = useRouter();
 
+  // const handleSearch = () => {
+  //   router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
+  // };
+  let boroughQuery: any;
+  let dayQuery: any;
+  let timeQuery: any;
+  if (borough.length > 0) {
+    boroughQuery = borough;
+  } else {
+    boroughQuery = 'All';
+  }
+  if (day === '') {
+    dayQuery = 'All';
+  } else {
+    dayQuery = day;
+  }
+  if (startTime === '') {
+    timeQuery = '00:00:00';
+  } else {
+    timeQuery = startTime;
+  }
+
   const handleSearch = () => {
-    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
+    router.push(
+      `/mics?day=${dayQuery}&borough=${boroughQuery}&time=${timeQuery}&free=${cost}&page=1`
+    );
   };
 
   const inputTerms = {
-    day,
-    borough,
+    dayQuery,
+    boroughQuery,
+    timeQuery,
     cost,
   };
 
