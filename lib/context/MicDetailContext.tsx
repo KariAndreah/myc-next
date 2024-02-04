@@ -2,7 +2,7 @@
 
 import { createContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { ClearQuery, GetQuery, SetQuery } from '../hooks/useQuery';
+import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
 import { useIndividualMics } from '../hooks/useIndividualMics';
 
 export const MicDetailContext = createContext<MicDetailContextState>({
@@ -13,21 +13,25 @@ export const MicDetailContext = createContext<MicDetailContextState>({
 });
 
 export const MicDetailContextProvider = ({ children }: MicDetailContextProps) => {
-  // const [params, setQuery, clearQuery, getQuery] = useQuery();
+  const [params, getQuery] = useQuery();
   // const params = new URLSearchParams();
 
   // Get selected objects
   // const params = new URLSearchParams();
-  const params = usePathname();
+  const params2 = usePathname();
+  console.log('PARAMS', params);
 
+  console.log('these are params2', params2.split('/')[2]);
+
+  const searchDetails = getQuery();
   const search = {
-    id: params?.substring(6),
+    id: params2.split('/')[2],
   };
 
   // const kari = setQuery(search);
   // console.log('kari', kari);
 
-  console.log('finding search categaories', search);
+  console.log('Find the mics detail - - - - - - - - - -', searchDetails);
 
   const { data, isLoading, refetch } = useIndividualMics(search);
 

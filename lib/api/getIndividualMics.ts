@@ -4,7 +4,7 @@ import { request } from '../utils/request';
 export const getIndividualMics: IndividualMicSearch = async (params) => {
   console.log('The params are in the getMics hook', params);
 
-  const micsSearch = `/${params?.id}`;
+  const micsSearch = `${params?.id}`;
 
   console.log('whattt', micsSearch);
 

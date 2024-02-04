@@ -11,7 +11,7 @@ const MicPage = () => {
   // console.log('Need the context MIC DETAILS', mics.mics[0].name);
   // console.log(mics);
 
-  const mic = mics.mics[0];
+  // const mic = mics.mics[0];
 
   // This is causing an error I don't like:
   // function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
@@ -33,6 +33,8 @@ const MicPage = () => {
       </div>
     );
   }
+
+  const mic = mics.mics[0];
 
   return (
     <Card className="flex flex-1 bg-slate-500 gap-5">
