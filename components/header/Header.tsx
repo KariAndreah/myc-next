@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './Header.module.css';
@@ -16,6 +17,9 @@ const Header = ({ hasFilter }: HeaderProps) => {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
 
+  const router = useRouter();
+
+  console.log('router', router);
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -25,6 +29,7 @@ const Header = ({ hasFilter }: HeaderProps) => {
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
+        router.push(link.link);
       }}
     >
       {link.label}
