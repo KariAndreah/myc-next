@@ -44,23 +44,23 @@ const MicCard = () => {
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
-        <div className="flex flex-row text-slate-700 text-3xl font-semibold group-hover:text-blue-800 group-hover:underline">
-          <div>{mic?.name}</div>
+        <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-800 group-hover:underline">
+          <h1>{mic?.name}</h1>
         </div>
 
-        <div className="flex flex-row gap-1 text-green-700 text-sm">
-          <div>{mic.unit_number}</div>
-          <div>{mic.street_name}</div>
+        <div className="flex flex-row gap-1 text-green-700">
+          <p>{mic.unit_number}</p>
+          <p>{mic.street_name}</p>
         </div>
-        <div className="text-sm font-bold">{mic.borough}</div>
+        <p className=" font-bold">{mic.borough}</p>
         <div className="pt-8 flex flex-row">
-          <div className="pr-1">{mic?.day}</div>
-          <div className="pr-1 ">{formatTime(mic?.start_time)}</div>
-          <div className="font-semibold">{mic?.schedule}</div>
+          <p className="pr-1">{mic?.day}</p>
+          <p className="pr-1 ">{formatTime(mic?.start_time)}</p>
+          <p className="font-semibold">{mic?.schedule}</p>
         </div>
-        <div className="flex flex-row ">
-          <h1 className="text-sm text-blue-700">Cost: </h1>
-          <div className="pl-1 text-sm"> {mic?.cost_id === 1 ? 'Free' : mic?.cost_amount}</div>
+        <div className="flex flex-row  text-blue-700">
+          <p>Cost: </p>
+          <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.cost_amount}</p>
         </div>
       </Card>
     </div>

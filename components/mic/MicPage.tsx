@@ -37,33 +37,35 @@ const MicPage = () => {
   const mic = mics.mics[0];
 
   return (
-    <Card className="flex flex-1 bg-slate-500 gap-5">
-      <div className="flex flex-row text-slate-700 text-4xl pt-5">
-        <div>{mic.name}</div>
+    <Card className="flex flex-1 bg-slate-500">
+      <div className="flex flex-col text-slate-700 text-4xl pt-5">
+        <h1 className="font-bold">{mic.name}</h1>
+        <h5>{mic.venue}</h5>
+        <h6>{mic.neighborhood}</h6>
       </div>
-      <div className="flex flex-row gap-1 text-green-700 text-lg">
-        <div>{mic.unit_number}</div>
-        <div>{mic.street_name},</div>
-        <div>{mic.zipcode},</div>
-        <div>{mic.borough}</div>
+      <div className="flex flex-row gap-1 text-green-700">
+        <p>{mic.unit_number}</p>
+        <p>{mic.street_name},</p>
+        <p>{mic.zipcode},</p>
+        <p className="font-semibold">{mic.borough}</p>
       </div>
       <div className="flex flex-row pt-8">
-        <div className="pr-1">{mic?.day}</div>
-        <div>{formatTime(mic.start_time)}</div>
-        <div className="font-semibold">{mic?.schedule}</div>
+        <p className="pr-1">{mic?.day}</p>
+        <p className="pr-1">{formatTime(mic.start_time)}</p>
+        <p className="font-semibold">{mic?.schedule}</p>
       </div>
 
-      <div className="flex flex-row text-sm">
-        <h1 className="text-sm">Cost: </h1>
-        <div>{mic.cost_amount}</div>
-      </div>
-      <div className="flex flex-row text-sm">
-        <h1 className="text-sm">Host: </h1>
-        <div>{mic.first_host}</div>
+      <div className="flex flex-row">
+        <p className="pr-1">Cost: </p>
+        <p>{mic.cost_amount}</p>
       </div>
       <div className="flex flex-row">
-        <div>Notes: </div>
-        <div>{mic.instructions}</div>
+        <p className="pr-1">Hosts: </p>
+        <p>{mic.first_host}</p>
+      </div>
+      <div className="flex flex-row">
+        <p className="pr-1">Notes: </p>
+        <p>{mic.instructions}</p>
       </div>
       {/* <div>
         <h1>Reviews: </h1>
