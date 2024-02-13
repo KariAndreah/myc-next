@@ -20,10 +20,10 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   console.log('SEARCH CATEGORIES I AM PASSING', search);
 
-  const { data, isLoading, refetch } = useMics(search);
+  const { data, isLoading, refetch, error } = useMics(search);
 
   useEffect(() => {
-    refetch();
+    // refetch();
     // You can now use the current URL
     // ...
   }, [search]);
@@ -39,7 +39,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   return (
     <MicListingContext.Provider
-      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params }}
+      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params, error }}
     >
       {children}
     </MicListingContext.Provider>
@@ -50,6 +50,7 @@ type MicListingContextState = {
   // clearQuery: ClearQuery;
   mics?: any;
   refetch?: any;
+  error?: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;
   params?: any;

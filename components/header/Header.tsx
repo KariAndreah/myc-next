@@ -7,19 +7,20 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './Header.module.css';
 import '@mantine/core/styles.css';
 import Filter from '../filter/Filter';
+import MobileFilterButton from '../filter/MobileFilterButton';
 
 const links = [
   { link: '/about', label: 'About' },
+  { link: 'https://forms.gle/xAaTnwZNi2mq3UDE9', label: 'Submit a Mic' },
   { link: '/signin', label: 'Sign In/ Register' },
 ];
 
-const Header = ({ hasFilter }: HeaderProps) => {
+const Header = ({ hasFilter, hasMobileFilter }: HeaderProps) => {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
 
   const router = useRouter();
 
-  console.log('router', router);
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -53,6 +54,11 @@ const Header = ({ hasFilter }: HeaderProps) => {
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
       {hasFilter ? <Filter /> : null}{' '}
+      {hasMobileFilter ? (
+        <div className="block md:hidden">
+          <MobileFilterButton />{' '}
+        </div>
+      ) : null}{' '}
     </header>
   );
 };
@@ -61,4 +67,5 @@ export default Header;
 
 export type HeaderProps = {
   hasFilter?: boolean;
+  hasMobileFilter?: boolean;
 };

@@ -17,7 +17,6 @@ export const getIndividualMics: IndividualMicSearch = async (params) => {
     const response = await request(allMics);
     return response;
   } catch (err: any) {
-    console.log('THERE IS AN ERROR', err);
     throw err;
   }
 };

@@ -65,8 +65,6 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = { ...update, cost: checkFree };
     }
 
-    console.log('RESPONSE FROM GETQUERY', update);
-
     return { ...update, ...q };
   };
 
@@ -76,18 +74,31 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       return null;
     }
 
+    console.log('This is q in setQuery', q);
+
     const currentParams = qs.parse(params.toString());
 
-    console.log('CURRENT PARAMS IN SET QUERY', currentParams);
+    console.log('This is current params from ', currentParams);
+
     const update = { ...currentParams, ...q };
 
     params = new URLSearchParams(update);
 
-    console.log('SET QUERY IS WORKING, HERE ARE THE PARAMS BEING PUSHED', params.toString());
+    console.log('This is the setQuery', params);
+
+    console.log(
+      `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&time=${q.timeQuery}&free=${q.cost}&page=1`
+    );
+
+    // router.push(
+    //   `/mics?day=${dayQuery}&borough=${boroughQuery}&time=${timeQuery}&free=${cost}&page=1`
+    // );
 
     // eslint-disable-next-line no-sequences
     return (
-      router.push(`${pathname}?${params.toString()}`),
+      router.push(
+        `/mics?day=${currentParams.dayQuery}&borough=${currentParams.boroughQuery}&time=${currentParams.timeQuery}&free=${currentParams.cost}&page=1`
+      ),
       {
         shallow: true,
         scroll: true,
@@ -97,10 +108,8 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
 
   const setPagination: SetPagination = (q) => {
     if (!q) {
-      console.log('working with null big dog');
       return null;
     }
-    console.log('Working backwards bigdog', q.toString());
     return (
       router.push(`${pathname}?${q}`),
       {

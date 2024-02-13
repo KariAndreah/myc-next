@@ -19,8 +19,6 @@ const MicMap = ({ mics }: MicMapType) => {
 
   const position = { lat: 40.7447, lng: -73.936 };
 
-  console.log('Hi Kari from maps', mics);
-
   const micPins = mics?.mics?.map((mic: any) => {
     //  positionB = {lat:`${mic?.address.latitude}`, lng:`${mic?.address.longitude}` }
 
@@ -28,10 +26,7 @@ const MicMap = ({ mics }: MicMapType) => {
 
     // micTag.innerHTML = `<div>${mic?.name}</div> `;
 
-    console.log('this is passing in the map', mics);
-
-    const me = 'kari';
-    console.log(me);
+    console.log('mic map working');
 
     return (
       <div key={mic?.id} className="flex shadow-md">

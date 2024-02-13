@@ -6,5 +6,6 @@ export const useIndividualMics = (params?: object) =>
   useQuery({
     queryKey: ['mics'],
     enabled: true,
+    retry: false,
     queryFn: () => getIndividualMics(params),
   });

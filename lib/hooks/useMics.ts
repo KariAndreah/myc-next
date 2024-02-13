@@ -6,5 +6,6 @@ export const useMics = (params?: object) =>
   useQuery({
     queryKey: ['mics'],
     enabled: true,
+    retry: false,
     queryFn: () => getMics(params),
   });

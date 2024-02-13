@@ -34,8 +34,6 @@ export const handleSearch = ({ terms }: handleSearchTypes) => {
   } else {
     params.delete('page');
   }
-
-  console.log('Trying to create a search Function', params);
 };
 
 export type handleSearchTypes = {

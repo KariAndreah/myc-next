@@ -8,7 +8,7 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 import '@mantine/core/styles.css';
 
 const MicCard = () => {
-  const { mics } = useContext(MicListingContext);
+  const { mics, error } = useContext(MicListingContext);
   console.log('Need the context', mics);
   // console.log(mics);
 
@@ -28,6 +28,18 @@ const MicCard = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="p-32">
+        <h1>No mics Found</h1>
+      </div>
+    );
+  }
+
+  // if (mics.has('message') === true) {
+  //   return <div>No mics</div>;
+  // }
+
   // let mic_cost: any;
 
   // if (mics.mics[0].cost_id === 1) {
@@ -37,14 +49,14 @@ const MicCard = () => {
   const openMic = mics?.mics.map((mic: any) => (
     <div
       key={mic?.id}
-      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[1px] border-stone-300 shadow-lg shadow-slate-300 hover:scale-105 hover:border-blue-800"
+      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[1px] border-stone-300 shadow-lg shadow-slate-300 hover:scale-105 hover:border-blue-700"
     >
       <Card
         className="w-[100%] flex  bg-slate-500 cursor-pointer  group"
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
-        <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-800 group-hover:underline">
+        <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-700 group-hover:underline">
           <h1>{mic?.name}</h1>
         </div>
 
