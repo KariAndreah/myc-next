@@ -12,7 +12,7 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 
 // import { useNavigate } from "react-router-dom";
 
-const MobileFilter = () => {
+const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   const { params, setQuery } = useContext(MicListingContext);
 
   // console.log('This is to find all of the params', params.toString());
@@ -76,6 +76,7 @@ const MobileFilter = () => {
 
   const handleSearch = () => {
     setQuery!(inputTerms);
+    onSubmit();
   };
 
   return (
@@ -109,3 +110,7 @@ const MobileFilter = () => {
 };
 
 export default MobileFilter;
+
+export type MobileFilterProps = {
+  onSubmit: any;
+};

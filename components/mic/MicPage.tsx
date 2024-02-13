@@ -36,9 +36,9 @@ const MicPage = () => {
 
   if (mics.message === 'No mics found') {
     return (
-      <div className="p-32">
+      <div className="p-32 flex flex-col">
         <h1>404 ... </h1>
-        <TbMicrophoneOff />
+        <TbMicrophoneOff size={32} />
         <p>No Mics Found</p>
       </div>
     );

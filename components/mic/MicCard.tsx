@@ -30,10 +30,10 @@ const MicCard = () => {
 
   if (mics.message === 'No mics found') {
     return (
-      <div className="p-32">
-        <h1>404 ... </h1>
-        <TbMicrophoneOff />
-        <p>No Mics Found</p>
+      <div className="p-32 flex flex-col items-center">
+        <h1 className="text-red-600">404 ... </h1>
+        <TbMicrophoneOff size={64} color="rgb(220 38 38)" />
+        <p className="text-red-600">No Mics Found</p>
       </div>
     );
   }

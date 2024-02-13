@@ -16,7 +16,6 @@ export function MicListingPage() {
       <div className="flex flex-col pb-32 px-3 justify-start">
         <div className="flex flex-row justify-start pb-5 mt-32">
           <div className="flex-1 pt-16 min-h-[800px]">
-            <h1>Mics on {params.day}</h1>
             <MicCard />
             <div className="flex pt-12 justify-center">
               <MicPagination />

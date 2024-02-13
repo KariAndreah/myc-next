@@ -16,11 +16,11 @@ const MobileFilterButton = () => {
     <div>
       <div className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2 p-2">
         <Button type="submit" value="Search" onClick={open} rightSection={<TbFilter size={20} />}>
-          Mobile Filter
+          Mic Filter
         </Button>
       </div>
-      <Modal opened={opened} onClose={close} title="Search Filters" centered>
-        <MobileFilter />
+      <Modal opened={opened} onClose={close} title="Update Mic Search" centered>
+        <MobileFilter onSubmit={close} />
       </Modal>
     </div>
   );
