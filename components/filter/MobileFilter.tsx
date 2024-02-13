@@ -1,35 +1,51 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useContext, useState } from 'react';
 import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
 import SearchButton from '../select/SearchButton';
 import TimeSelect from '../select/TimeSelect';
+import { MicListingContext } from '@/lib/context/MicListingContext';
 
 // import { handleSearch } from '@/lib/hooks/handleSearch';
 
 // import { useNavigate } from "react-router-dom";
 
 const MobileFilter = () => {
-  // const [day, setDay] = useQueryState('day');
-  // const [borough, setBorough] = useQueryState('borough');
-  // const [checked, setChecked] = useQueryState('free');
-  // const [startTime, setStartTime] = useQueryState('startTime');
+  const { params, setQuery } = useContext(MicListingContext);
 
-  const [day, setDay] = useState('');
-  const [borough, setBorough] = useState([]);
-  const [cost, setCost] = useState(false);
-  const [startTime, setStartTime] = useState('');
-  // const searchParams = useSearchParams();
-  // const pathname = usePathname();
+  // console.log('This is to find all of the params', params.toString());
+  const getAllBoroughs = params.get('borough');
+  const allBoroughsArray = getAllBoroughs.split(',');
 
-  const router = useRouter();
+  // console.log('this is the borough Param', allBoroughsArray);
 
-  // const handleSearch = () => {
-  //   router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
-  // };
+  let boroughsArray: any;
+
+  if (allBoroughsArray.includes('All')) {
+    boroughsArray = [];
+  } else {
+    boroughsArray = allBoroughsArray;
+  }
+
+  const [day, setDay] = useState(params.getAll('day'));
+  const [startTime, setStartTime] = useState(params.getAll('time'));
+  const [borough, setBorough] = useState(boroughsArray);
+  const val = params.get('free') === 'true';
+
+  const [cost, setCost] = useState(val);
+
+  // console.log('What is passing in the switch', params.get('free'));
+
+  // console.log('What is passing in the switch passing', Boolean(params.get('free')));
+
+  // console.log('query in the FILTERS', params.toString());
+
+  const findingBorough = params.get('borough');
+
+  console.log('boroughs from FILTERS', findingBorough);
+
   let boroughQuery: any;
   let dayQuery: any;
   let timeQuery: any;
@@ -49,12 +65,6 @@ const MobileFilter = () => {
     timeQuery = startTime;
   }
 
-  const handleSearch = () => {
-    router.push(
-      `/mics?day=${dayQuery}&borough=${boroughQuery}&time=${timeQuery}&free=${cost}&page=1`
-    );
-  };
-
   const inputTerms = {
     dayQuery,
     boroughQuery,
@@ -62,56 +72,15 @@ const MobileFilter = () => {
     cost,
   };
 
-  console.log('These are the input terms', inputTerms);
-  // const onSearch = () => {
-  //   console.log('Does this get the search to work?', searchTerms);
-  //   handleSearch(searchTerms);
-  // };
+  console.log('Looking here', inputTerms);
 
-  // const handleSearch = (searchTerms: {
-  //   day: string;
-  //   borough: string[];
-  //   cost: boolean;
-  // pageNo: any;
-  // }) => {
-  //   const params = new URLSearchParams(searchParams);
-
-  //   if (searchTerms?.day) {
-  //     params.set('day', searchTerms?.day);
-  //   } else {
-  //     params.delete('day');
-  //   }
-
-  // This is to set the array of boroughs into the terms
-  // if (searchTerms?.borough) {
-  //   searchTerms.borough.map((s: string) => params.append('borough', s));
-  // } else {
-  //   params.delete('borough');
-  // }
-
-  // Setting up free or not
-  // if (searchTerms?.cost) {
-  //   if (searchTerms?.cost === true) {
-  //     params.set('cost', '1');
-  //   }
-  // } else {
-  //   params.delete('cost');
-  // }
-  // if (searchTerms?.pageNo) {
-  //   // eslint-disable-next-line no-unsafe-optional-chaining
-  //   params.set('pageNo', (searchTerms?.pageNo).toString());
-  // } else {
-  //   params.delete('pageNo');
-  // }
-
-  // replace(`mics/${pathname}?${params.toString()}`);
-
-  // console.log('Trying to create a search Function', `${pathname}?${params.toString()}`);
-  // };
+  const handleSearch = () => {
+    setQuery!(inputTerms);
+  };
 
   return (
     <div className="w-full h-[full]">
-      <div className="flex flex-col shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-4 gap-4 bg-white">
+      <div className="flex flex-col shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-2 gap-4 bg-white">
         <div className="flex flex-col gap-2">
           <BoroughSelect value={borough} setValue={setBorough} />
           {/* <h1>LOOK HERE FOR BOROUGH</h1>

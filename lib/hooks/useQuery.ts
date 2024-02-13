@@ -74,30 +74,9 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       return null;
     }
 
-    console.log('This is q in setQuery', q);
-
-    const currentParams = qs.parse(params.toString());
-
-    console.log('This is current params from ', currentParams);
-
-    const update = { ...currentParams, ...q };
-
-    params = new URLSearchParams(update);
-
-    console.log('This is the setQuery', params);
-
-    console.log(
-      `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&time=${q.timeQuery}&free=${q.cost}&page=1`
-    );
-
-    // router.push(
-    //   `/mics?day=${dayQuery}&borough=${boroughQuery}&time=${timeQuery}&free=${cost}&page=1`
-    // );
-
-    // eslint-disable-next-line no-sequences
     return (
       router.push(
-        `/mics?day=${currentParams.dayQuery}&borough=${currentParams.boroughQuery}&time=${currentParams.timeQuery}&free=${currentParams.cost}&page=1`
+        `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&time=${q.timeQuery}&free=${q.cost}&page=1`
       ),
       {
         shallow: true,

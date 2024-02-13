@@ -23,7 +23,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   const { data, isLoading, refetch, error } = useMics(search);
 
   useEffect(() => {
-    // refetch();
+    refetch();
     // You can now use the current URL
     // ...
   }, [search]);
