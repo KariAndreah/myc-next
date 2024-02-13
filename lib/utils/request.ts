@@ -5,15 +5,15 @@ export const request = async (input: RequestInfo | URL) => {
   headers.append('GET', 'POST');
   headers.append('content-type', 'application/json');
 
-  // eslint-disable-next-line no-useless-catch
   try {
     const req = await fetch(input, { headers });
     const response = await req.json();
-    if (!req.ok) {
-      throw response;
-    }
+    // if (!req.ok) {
+    //   throw response;
+    // }
     return response;
   } catch (err) {
+    console.log('here is an error');
     throw err;
   }
 };

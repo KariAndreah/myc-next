@@ -28,6 +28,14 @@ const MicCard = () => {
     );
   }
 
+  if (mics.message === 'No mics found') {
+    return (
+      <div className="p-32">
+        <h1>No Mics Found</h1>
+      </div>
+    );
+  }
+
   if (error) {
     return (
       <div className="p-32">
