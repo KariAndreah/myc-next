@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-
 import '@mantine/core/styles.css';
 
 const MicCard = () => {
@@ -31,7 +31,9 @@ const MicCard = () => {
   if (mics.message === 'No mics found') {
     return (
       <div className="p-32">
-        <h1>No Mics Found</h1>
+        <h1>404 ... </h1>
+        <TbMicrophoneOff />
+        <p>No Mics Found</p>
       </div>
     );
   }

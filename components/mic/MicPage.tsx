@@ -2,8 +2,8 @@
 
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
-
 import '@mantine/core/styles.css';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 const MicPage = () => {
@@ -30,6 +30,16 @@ const MicPage = () => {
     return (
       <div className="p-32">
         <h1>Loading ...</h1>
+      </div>
+    );
+  }
+
+  if (mics.message === 'No mics found') {
+    return (
+      <div className="p-32">
+        <h1>404 ... </h1>
+        <TbMicrophoneOff />
+        <p>No Mics Found</p>
       </div>
     );
   }
