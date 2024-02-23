@@ -38,18 +38,14 @@ export const getMics: MicSearch = async (params) => {
     console.log('This is all cost getMics Search: ', search);
   }
 
-  // }
-  // eslint-disable-next-line no-useless-catch
-  try {
-    // const localTest = `http://localhost:8080/mics${micsSearch}`;
-    const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
-    console.log('Response from mic search in Get Mics', micsSearch);
-    const response = await request(localTest);
-    console.log('Full path name of Request', localTest);
-    return response;
-  } catch (err: any) {
-    throw err;
-  }
+  const localTest = `http://localhost:9999/mics${micsSearch}`;
+  // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
+  console.log('Response from mic search in Get Mics', micsSearch);
+
+  console.log('this is passing ---------- KARI', localTest);
+  const response = await request(localTest);
+
+  return response;
 };
 
 export type MicSearch = (params?: {

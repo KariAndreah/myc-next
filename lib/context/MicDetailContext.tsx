@@ -2,6 +2,7 @@
 
 import { createContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
 import { useIndividualMics } from '../hooks/useIndividualMics';
 
@@ -29,17 +30,21 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   // const kari = setQuery(search);
   // console.log('kari', kari);
 
-  const { data, refetch } = useIndividualMics(search);
+  const { data, isLoading } = useIndividualMics(search);
 
   useEffect(() => {
-    refetch();
+    // refetch();
     // You can now use the current URL
     // ...
   }, [search]);
 
-  // if (!isLoading && !data?.mics) {
-  //   return <h1>Not found *yet kARI :P</h1>;
-  // }
+  if (!isLoading && !data?.mics) {
+    <div className="p-32 flex flex-col">
+      <h1>404 ... </h1>
+      <TbMicrophoneOff size={32} />
+      <p>No Mics Found</p>
+    </div>;
+  }
 
   return <MicDetailContext.Provider value={{ mics: data }}>{children}</MicDetailContext.Provider>;
 };

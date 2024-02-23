@@ -2,6 +2,7 @@
 
 import { createContext, useEffect } from 'react';
 // import { useSearchParams } from 'next/navigation';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { useMics } from '../hooks/useMics';
 import { ClearQuery, GetQuery, SetPagination, SetQuery, useQuery } from '../hooks/useQuery';
 
@@ -23,7 +24,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   const { data, isLoading, refetch, error } = useMics(search);
 
   useEffect(() => {
-    refetch();
+    // refetch();
     // You can now use the current URL
     // ...
   }, [search]);
@@ -33,9 +34,21 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
   console.log('MIC LISTING RESPONSE ', data, isLoading);
 
   // Commented this out but data is reloading and not working
-  // if (!isLoading && !data?.mics) {
-  //   return <h1>Loading :P</h1>;
-  // }
+  if (!isLoading && !data?.mics) {
+    <div className="p-32 flex flex-col">
+      <h1>404 ... </h1>
+      <TbMicrophoneOff size={32} />
+      <p>No Mics Found</p>
+    </div>;
+  }
+
+  if (error) {
+    <div className="p-32 flex flex-col">
+      <h1>404 ... </h1>
+      <TbMicrophoneOff size={32} />
+      <p>No Mics Found</p>
+    </div>;
+  }
 
   return (
     <MicListingContext.Provider
