@@ -1,0 +1,39 @@
+{
+  "currentPage": 1,
+  "totalPages": 1,
+  "totalMics": 1,
+  "mics": [
+    {
+      "id": "1",
+      "borough": "Manhattan",
+      "confirmed": "2023-04-09T04:00:00.000Z",
+      "day": "Sunday",
+      "name": "Grisly Pear",
+      "start_time": "14:00:00",
+      "address_id": "1",
+      "cost_id": "3",
+      "host_id": "1",
+      "signup_id": "1",
+      "notes": "",
+      "occurrence_id": "1",
+      "city": "Manhattan",
+      "country": "US",
+      "latitude": "40.72992",
+      "longitude": "-74.00096",
+      "venue": "Grisly Pear",
+      "state": "NY",
+      "street_name": "MacDougal",
+      "unit_number": 107,
+      "zipcode": null,
+      "neighborhood": "Greenwich Village",
+      "cost_amount": "5$ ",
+      "fifth_host": null,
+      "first_host": "Espi Rivera",
+      "fourth_host": null,
+      "second_host": null,
+      "third_host": null,
+      "schedule": "Weekly",
+      "instructions": "Show Up, Go up"
+    }
+  ]
+}

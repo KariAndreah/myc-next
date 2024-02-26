@@ -17,13 +17,13 @@ const MicDetailCard = () => {
     return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   }
 
-  if (!mics) {
-    return (
-      <div className="p-32">
-        <h1>Loading ...</h1>
-      </div>
-    );
-  }
+  // if (!mics) {
+  //   return (
+  //     <div className="p-32">
+  //       <h1>Loading ...</h1>
+  //     </div>
+  //   );
+  // }
   const openMic = mics?.content.map((mic: any) => (
     <div key={mic?.id} className="flex">
       <Card

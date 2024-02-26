@@ -23,15 +23,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   const { data, isLoading, refetch, error } = useMics(search);
 
-  useEffect(() => {
-    // refetch();
-    // You can now use the current URL
-    // ...
-  }, [search]);
-
-  // console.log(useMics(search).data);
-
-  console.log('MIC LISTING RESPONSE ', data, isLoading);
+  console.log('this is the data -----', data);
 
   // Commented this out but data is reloading and not working
   if (!isLoading && !data?.mics) {
@@ -49,6 +41,16 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
       <p>No Mics Found</p>
     </div>;
   }
+
+  useEffect(() => {
+    refetch();
+    // You can now use the current URL
+    // ...
+  }, []);
+
+  // console.log(useMics(search).data);
+
+  console.log('MIC LISTING RESPONSE ', data, isLoading);
 
   return (
     <MicListingContext.Provider

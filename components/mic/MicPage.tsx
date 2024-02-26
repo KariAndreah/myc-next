@@ -3,7 +3,7 @@
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
 import '@mantine/core/styles.css';
-import { TbMicrophoneOff } from 'react-icons/tb';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 const MicPage = () => {
@@ -34,15 +34,15 @@ const MicPage = () => {
     );
   }
 
-  if (mics.message === 'No mics found') {
-    return (
-      <div className="p-32 flex flex-col">
-        <h1>404 ... </h1>
-        <TbMicrophoneOff size={32} />
-        <p>No Mics Found</p>
-      </div>
-    );
-  }
+  // if (mics.message === 'No mics found') {
+  //   return (
+  //     <div className="p-32 flex flex-col">
+  //       <h1>404 ... </h1>
+  //       <TbMicrophoneOff size={32} />
+  //       <p>No Mics Found</p>
+  //     </div>
+  //   );
+  // }
 
   const mic = mics.mics[0];
 

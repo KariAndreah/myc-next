@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
-import { TbMicrophoneOff } from 'react-icons/tb';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 import '@mantine/core/styles.css';
 
@@ -20,23 +20,23 @@ const MicCard = () => {
     return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   }
 
-  if (mics === undefined) {
-    return (
-      <div className="p-32">
-        <h1>Loading ...</h1>
-      </div>
-    );
-  }
+  // if (mics === undefined) {
+  //   return (
+  //     <div className="p-32">
+  //       <h1>Loading ...</h1>
+  //     </div>
+  //   );
+  // }
 
-  if (mics.message === 'No mics found') {
-    return (
-      <div className="p-32 flex flex-col items-center">
-        <h1 className="text-red-600">404 ... </h1>
-        <TbMicrophoneOff size={64} color="rgb(220 38 38)" />
-        <p className="text-red-600">No Mics Found</p>
-      </div>
-    );
-  }
+  // if (mics.message === 'No mics found') {
+  //   return (
+  //     <div className="p-32 flex flex-col items-center">
+  //       <h1 className="text-red-600">404 ... </h1>
+  //       <TbMicrophoneOff size={64} color="rgb(220 38 38)" />
+  //       <p className="text-red-600">No Mics Found</p>
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -46,6 +46,7 @@ const MicCard = () => {
     );
   }
 
+  console.log('is it making it here?', mics);
   // if (mics.has('message') === true) {
   //   return <div>No mics</div>;
   // }

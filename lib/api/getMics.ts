@@ -9,6 +9,9 @@ export const getMics: MicSearch = async (params) => {
   // if(day=== 'Monday'){
 
   // Date-time 0000-00-00T15:00:00
+  if (!params) {
+    throw new Error('Missing required search params');
+  }
 
   console.log('These params are passing to getMics Hook', params);
 
@@ -27,25 +30,23 @@ export const getMics: MicSearch = async (params) => {
     console.log('This is the Free getMics search: ', search);
   } else {
     console.log('Non Free Search');
+  }
 
+  try {
     const search = qs.stringify(params!, {
       encode: true,
       skipNull: true,
     });
-
     micsSearch = `/boroughDayTime?${search}`;
 
-    console.log('This is all cost getMics Search: ', search);
+    const localTest = `http://localhost:9999/mics${micsSearch}`;
+    // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
+    // console.log('Response from mic search in Get Mics', micsSearch);
+    console.log('getMics Request Results', await request(localTest));
+    return await request(localTest);
+  } catch (err) {
+    throw Error('No mic found');
   }
-
-  const localTest = `http://localhost:9999/mics${micsSearch}`;
-  // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
-  console.log('Response from mic search in Get Mics', micsSearch);
-
-  console.log('this is passing ---------- KARI', localTest);
-  const response = await request(localTest);
-
-  return response;
 };
 
 export type MicSearch = (params?: {
