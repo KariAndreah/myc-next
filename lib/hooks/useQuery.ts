@@ -13,9 +13,7 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     let update = {};
 
     // Getting day param
-    if (params?.get('day') === '') {
-      update = { ...update, day: ['All'] };
-    } else {
+    if (params?.has('day')) {
       update = { ...update, day: params?.get('day') };
     }
 
@@ -37,32 +35,43 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     }
 
     // Getting time param
-    if (params?.get('time') === '00:00:00') {
-      update = {
-        ...update,
-        // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
-        time: '00:00:00',
-      };
-    } else if (params?.has('time')) {
-      update = { ...update, time: params?.get('time') };
-    }
+    // if (params?.get('time') === '00:00:00') {
+    //   update = {
+    //     ...update,
+    //     // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+    //     time: '00:00:00',
+    //   };
+    // } else if (params?.has('time')) {
+    //   update = { ...update, time: params?.get('time') };
+    // }
 
     // Getting page number param
     let pageNumber;
     // Condition to get page number if present
-    if (params?.get('page')) {
-      pageNumber = Number(params?.get('page'));
-      update = { ...update, page: pageNumber };
+    if (params?.get('pageNo')) {
+      pageNumber = Number(params?.get('pageNo'));
+      update = { ...update, pageNo: pageNumber };
     } else {
       pageNumber = 0;
-      update = { ...update, page: pageNumber };
+      update = { ...update, pageNo: pageNumber };
+    }
+
+    // Getting page size param
+    let pageSize;
+    // Condition to get page number if present
+    if (params?.get('pageSize')) {
+      pageSize = Number(params?.get('pageSize'));
+      update = { ...update, pageSize };
+    } else {
+      pageSize = 10;
+      update = { ...update, pageSize };
     }
 
     // Getting if free param
     let checkFree;
     if (params?.get('free') === 'true') {
-      checkFree = 1;
-      update = { ...update, cost: checkFree };
+      checkFree = 'true';
+      update = { ...update, free: checkFree };
     }
 
     return { ...update, ...q };
@@ -76,7 +85,9 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
 
     return (
       router.push(
-        `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&time=${q.timeQuery}&free=${q.cost}&page=1`
+        `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&free=${q.free}&pageNo=${
+          q.pageNo || 1
+        }&pageSize=${q.pageSize || 10}`
       ),
       {
         shallow: true,
@@ -89,6 +100,7 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     if (!q) {
       return null;
     }
+    console.log('This is what I am passing a q', q.toString());
     return (
       router.push(`${pathname}?${q}`),
       {

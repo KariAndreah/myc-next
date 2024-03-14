@@ -72,8 +72,8 @@ const MicCard = () => {
         </div>
 
         <div className="flex flex-row gap-1 text-green-700">
-          <p>{mic.unit_number}</p>
-          <p>{mic.street_name}</p>
+          <p>{mic.mic_address.unit_number}</p>
+          <p>{mic.mic_address.street_name}</p>
         </div>
         <p className=" font-bold">{mic.borough}</p>
         <div className="pt-8 flex flex-row">
@@ -83,7 +83,7 @@ const MicCard = () => {
         </div>
         <div className="flex flex-row  text-blue-700">
           <p>Cost: </p>
-          <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.cost_amount}</p>
+          <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
         </div>
       </Card>
     </div>

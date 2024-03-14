@@ -44,8 +44,8 @@ const MicMap = ({ mics }: MicMapType) => {
           {infowindowShown && <InfoWindow onCloseClick={closeInfoWindow}>{mic?.name}</InfoWindow>}
         </AdvancedMarker> */}
         <MarkerWithInfowindow
-          latitude={mic?.latitude}
-          longitude={mic?.longitude}
+          latitude={mic?.mic_address.latitude}
+          longitude={mic?.mic_address.longitude}
           name={mic?.name}
           day={mic?.day}
           time={formatTime(mic?.start_time)}

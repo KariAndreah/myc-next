@@ -46,7 +46,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
     refetch();
     // You can now use the current URL
     // ...
-  }, []);
+  }, [search]);
 
   // console.log(useMics(search).data);
 

@@ -15,19 +15,16 @@ export const getMics: MicSearch = async (params) => {
 
   console.log('These params are passing to getMics Hook', params);
 
-  let micsSearch = '';
+  let micsSearch: any = '';
 
   if (params?.cost) {
     console.log('Free Search');
 
-    const search = qs.stringify(params, {
-      encode: true,
-      skipNull: true,
-    });
+    const free = '&free=true';
 
-    micsSearch = `/freeBoroughDayTime?${search}`;
+    micsSearch.concat(`${free}`);
 
-    console.log('This is the Free getMics search: ', search);
+    console.log('This is the Free getMics search: ', free);
   } else {
     console.log('Non Free Search');
   }
@@ -37,8 +34,8 @@ export const getMics: MicSearch = async (params) => {
       encode: true,
       skipNull: true,
     });
-    micsSearch = `/boroughDayTime?${search}`;
-
+    micsSearch = `?${search}`;
+    console.log('micsSearch ----->', micsSearch);
     const localTest = `http://localhost:9999/mics${micsSearch}`;
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
@@ -52,9 +49,9 @@ export const getMics: MicSearch = async (params) => {
 export type MicSearch = (params?: {
   borough?: string[];
   day?: string;
-  startTime?: string;
-  endTime?: string;
-  page?: number;
+  // startTime?: string;
+  // endTime?: string;
+  pageNo?: number;
   pageSize?: number;
   sortBy?: string;
   cost?: string;

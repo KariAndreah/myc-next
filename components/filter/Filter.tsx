@@ -8,7 +8,7 @@ import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-import TimeSelect from '../select/TimeSelect';
+// import TimeSelect from '../select/TimeSelect';
 
 const Filter = () => {
   const { params, setQuery } = useContext(MicListingContext);
@@ -28,7 +28,7 @@ const Filter = () => {
   }
 
   const [day, setDay] = useState(params.getAll('day'));
-  const [startTime, setStartTime] = useState(params.getAll('time'));
+  // const [startTime, setStartTime] = useState(params.getAll('time'));
   const [borough, setBorough] = useState(boroughsArray);
   const val = params.get('free') === 'true';
 
@@ -57,11 +57,11 @@ const Filter = () => {
   } else {
     dayQuery = day;
   }
-  if (startTime === '') {
-    timeQuery = '00:00:00';
-  } else {
-    timeQuery = startTime;
-  }
+  // if (startTime === '') {
+  //   timeQuery = '00:00:00';
+  // } else {
+  //   timeQuery = startTime;
+  // }
 
   const inputTerms = {
     dayQuery,
@@ -81,7 +81,7 @@ const Filter = () => {
       <Container size="md" className=" flex h-[rem(56px)] space-between items-center py-3 gap-3">
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
-        <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" />
+        {/* <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" /> */}
         <FreeSwitch checked={cost} setChecked={setCost} />
         <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
           Update
