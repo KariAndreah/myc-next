@@ -17,30 +17,62 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = { ...update, day: params?.get('day') };
     }
 
+    // if (params?.has('day')) {
+    //   update = { ...update, day: params?.get('day') };
+    // } else {
+    //   update = { ...update, day: '' };
+    // }
+
     // Getting borough param
-    if (params?.has('borough')) {
+    if (params?.get('borough') === 'All') {
+      update = {
+        ...update,
+        // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+        borough: ['All'],
+      };
+    } else if (params?.has('borough')) {
       update = { ...update, borough: params?.get('borough') };
     }
+
+    // Getting time param
+    // if (params?.get('time') === '00:00:00') {
+    //   update = {
+    //     ...update,
+    //     // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+    //     time: '00:00:00',
+    //   };
+    // } else if (params?.has('time')) {
+    //   update = { ...update, time: params?.get('time') };
+    // }
 
     // Getting page number param
     let pageNumber;
     // Condition to get page number if present
     if (params?.get('pageNo')) {
-      pageNumber = Number(params?.get('pageNo')) - 1;
+      pageNumber = Number(params?.get('pageNo'));
       update = { ...update, pageNo: pageNumber };
     } else {
       pageNumber = 0;
       update = { ...update, pageNo: pageNumber };
     }
 
+    // Getting page size param
+    let pageSize;
+    // Condition to get page number if present
+    if (params?.get('pageSize')) {
+      pageSize = Number(params?.get('pageSize'));
+      update = { ...update, pageSize };
+    } else {
+      pageSize = 10;
+      update = { ...update, pageSize };
+    }
+
     // Getting if free param
     let checkFree;
     if (params?.get('free') === 'true') {
-      checkFree = 1;
-      update = { ...update, cost: checkFree };
+      checkFree = 'true';
+      update = { ...update, free: checkFree };
     }
-
-    console.log('RESPONSE FROM GETQUERY', update);
 
     return { ...update, ...q };
   };
@@ -51,18 +83,12 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       return null;
     }
 
-    const currentParams = qs.parse(params.toString());
-
-    console.log('CURRENT PARAMS IN SET QUERY', currentParams);
-    const update = { ...currentParams, ...q };
-
-    params = new URLSearchParams(update);
-
-    console.log('SET QUERY IS WORKING, HERE ARE THE PARAMS BEING PUSHED', params.toString());
-
-    // eslint-disable-next-line no-sequences
     return (
-      router.push(`${pathname}?${params.toString()}`),
+      router.push(
+        `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&free=${q.free}&pageNo=${
+          q.pageNo || 1
+        }&pageSize=${q.pageSize || 10}`
+      ),
       {
         shallow: true,
         scroll: true,
@@ -72,10 +98,9 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
 
   const setPagination: SetPagination = (q) => {
     if (!q) {
-      console.log('working with null big dog');
       return null;
     }
-    console.log('Working backwards bigdog', q.toString());
+    console.log('This is what I am passing a q', q.toString());
     return (
       router.push(`${pathname}?${q}`),
       {
@@ -117,7 +142,7 @@ export type Params = {
   // Search query param - cost
   free?: string;
   // Current results page
-  pageNo?: number;
+  page?: number;
   // Sort Filter
   sort?: string;
 };

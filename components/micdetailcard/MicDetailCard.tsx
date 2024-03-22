@@ -8,7 +8,7 @@ import '@mantine/core/styles.css';
 
 const MicDetailCard = () => {
   const { mics } = useContext(MicDetailContext);
-  console.log('Need the context', mics);
+  console.log('Mic Detail Context:', mics);
   // console.log(mics);
 
   function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
@@ -17,14 +17,14 @@ const MicDetailCard = () => {
     return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   }
 
-  if (!mics) {
-    return (
-      <div className="p-32">
-        <h1>Loading ...</h1>
-      </div>
-    );
-  }
-  const openMic = mics?.map((mic: any) => (
+  // if (!mics) {
+  //   return (
+  //     <div className="p-32">
+  //       <h1>Loading ...</h1>
+  //     </div>
+  //   );
+  // }
+  const openMic = mics?.content.map((mic: any) => (
     <div key={mic?.id} className="flex">
       <Card
         className="flex w-64 bg-slate-500 cursor-pointer hover:scale-105 shadow-md group height-[100px]"

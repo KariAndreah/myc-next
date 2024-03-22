@@ -1,23 +1,32 @@
+import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
 import { request } from '../utils/request';
 
 export const getIndividualMics: IndividualMicSearch = async (params) => {
   console.log('The params are in the getMics hook', params);
 
-  const micsSearch = `/${params?.id}`;
+  if (!params) {
+    throw new Error('Missing required search params');
+  }
 
-  console.log('whattt', micsSearch);
+  console.log('These params are passing to getMics Hook', params);
 
-  // }
-  // eslint-disable-next-line no-useless-catch
   try {
-    const allMics = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
-    console.log('this is what is passing', allMics);
+    let micsSearch = `${params?.id}`;
 
-    const response = await request(allMics);
-    return response;
-  } catch (err: any) {
-    throw err;
+    const search = qs.stringify(params!, {
+      encode: true,
+      skipNull: true,
+    });
+    micsSearch = `${params?.id}`;
+    console.log('This is all cost getMics Search: ', search);
+    const localTest = `http://localhost:9999/mic?id=${micsSearch}`;
+    // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
+    // console.log('Response from mic search in Get Mics', micsSearch);
+
+    return await request(localTest);
+  } catch (err) {
+    throw Error('No individual mic found');
   }
 };
 

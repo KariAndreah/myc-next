@@ -8,16 +8,14 @@ import MicPagination from '../pagination/Pagination';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 
 export function MicListingPage() {
-  const { mics } = useContext(MicListingContext);
+  const { mics, params } = useContext(MicListingContext);
 
+  console.log('Params in the Mic Listing page:', params.toString());
   return (
-    <PageLayout className="h-[full]">
+    <PageLayout className="h-[full]" hasFilter hasMobileFilter>
       <div className="flex flex-col pb-32 px-3 justify-start">
-        <div className="flex flex-row justify-start pb-5">
+        <div className="flex flex-row justify-start pb-5 mt-32">
           <div className="flex-1 pt-16 min-h-[800px]">
-            <a href="/">
-              <h1 className="underline hover:text-blue-800">Go Back to search</h1>
-            </a>
             <MicCard />
             <div className="flex pt-12 justify-center">
               <MicPagination />

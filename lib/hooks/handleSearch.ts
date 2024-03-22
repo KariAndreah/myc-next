@@ -28,14 +28,12 @@ export const handleSearch = ({ terms }: handleSearchTypes) => {
   } else {
     params.delete('cost');
   }
-  if (terms?.pageNo) {
+  if (terms?.page) {
     // eslint-disable-next-line no-unsafe-optional-chaining
-    params.set('pageNo', (terms?.pageNo).toString());
+    params.set('page', (terms?.page).toString());
   } else {
-    params.delete('pageNo');
+    params.delete('page');
   }
-
-  console.log('Trying to create a search Function', params);
 };
 
 export type handleSearchTypes = {
@@ -44,7 +42,7 @@ export type handleSearchTypes = {
     day?: string;
     startTime?: string;
     endTime?: string;
-    pageNo?: number;
+    page?: number;
     pageSize?: number;
     sortBy?: string;
     cost?: boolean;

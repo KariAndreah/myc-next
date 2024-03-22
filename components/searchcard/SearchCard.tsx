@@ -6,7 +6,7 @@ import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
 import SearchButton from '../select/SearchButton';
-import TimeSelect from '../select/TimeSelect';
+// import TimeSelect from '../select/TimeSelect';
 // import { handleSearch } from '@/lib/hooks/handleSearch';
 
 // import { useNavigate } from "react-router-dom";
@@ -20,23 +20,46 @@ const SearchCard = () => {
   const [day, setDay] = useState('');
   const [borough, setBorough] = useState([]);
   const [cost, setCost] = useState(false);
-  const [startTime, setStartTime] = useState('');
+  // const [startTime, setStartTime] = useState('');
   // const searchParams = useSearchParams();
   // const pathname = usePathname();
 
   const router = useRouter();
 
+  // const handleSearch = () => {
+  //   router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
+  // };
+  let boroughQuery: any;
+  let dayQuery: any;
+  let timeQuery: any;
+  if (borough.length > 0) {
+    boroughQuery = borough;
+  } else {
+    boroughQuery = 'All';
+  }
+  if (day === '') {
+    dayQuery = 'All';
+  } else {
+    dayQuery = day;
+  }
+  // if (startTime === '') {
+  //   timeQuery = '00:00:00';
+  // } else {
+  //   timeQuery = startTime;
+  // }
+
   const handleSearch = () => {
-    router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&pageNo=1`);
+    router.push(`/mics?day=${dayQuery}&borough=${boroughQuery}&free=${cost}&pageNo=${1}`);
   };
 
   const inputTerms = {
-    day,
-    borough,
+    dayQuery,
+    boroughQuery,
+    timeQuery,
     cost,
   };
 
-  console.log('These are the input terms', inputTerms);
+  console.log('Input terms in Search Card:', inputTerms);
   // const onSearch = () => {
   //   console.log('Does this get the search to work?', searchTerms);
   //   handleSearch(searchTerms);
@@ -88,14 +111,16 @@ const SearchCard = () => {
       <div className="w-full md:max-w-4xl pb-12">
         <div className="flex flex-col mx-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-4 md:p-6 gap-4 mt-4 bg-white">
           <div className="flex flex-col md:flex-row gap-4 md:mb-2 md:items-center">
-            <BoroughSelect value={borough} setValue={setBorough} />
+            <div className="md:w-[50%]">
+              <BoroughSelect value={borough} setValue={setBorough} />
+            </div>
             {/* <h1>LOOK HERE FOR BOROUGH</h1>
           <h2>{borough}</h2> */}
             <DaySelect value={day} setValue={setDay} />
             {/* <h1>LOOK HERE FOR Day</h1>
           <h2>{day}</h2> */}
 
-            <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" />
+            {/* <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" /> */}
             {/* <h2>{startTime}</h2> */}
             {/* <TimeSelect
               value={endTime}

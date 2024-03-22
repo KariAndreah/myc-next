@@ -1,7 +1,5 @@
-.header {
-  height: rem(50px);
-  margin-bottom: rem(120px);
-  background-color: var(--mantine-color-body);
+.Filter {
+  background-color: white;
   border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   position: fixed;
   width: 100%;
@@ -29,9 +27,4 @@
     background-color: var(--mantine-color-blue-filled);
     color: var(--mantine-color-white);
   }
-}
-
-.link:hover {
-  text-decoration: underline;
-  color: blue;
 }

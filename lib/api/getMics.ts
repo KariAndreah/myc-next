@@ -1,62 +1,58 @@
 import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
-import { request } from '../utils/request';
+// import { request } from '../utils/request';
+import { micsResults } from '@/mocks/PrismaMicsMock';
 
-export const getMics: MicSearch = async (params) => {
+export const getMics: any = async (params: any) => {
   // if(checked){
   //     params.concat(`/findByAllFree?day=${day}&borough=${borough}&startTime=${startTime}&endTime=${endTime}`)
   // }
   // if(day=== 'Monday'){
 
   // Date-time 0000-00-00T15:00:00
+  if (!params) {
+    throw new Error('Missing required search params');
+  }
 
   console.log('These params are passing to getMics Hook', params);
 
-  let micsSearch = '';
+  let micsSearch: any = '';
 
   if (params?.cost) {
     console.log('Free Search');
 
-    const search = qs.stringify(params, {
-      encode: true,
-      skipNull: true,
-    });
+    const free = '&free=true';
 
-    micsSearch = `/findByBoroughsDayFree?${search}&pageSize=10&sortBy=id`;
+    micsSearch.concat(`${free}`);
 
-    console.log('This is the Free getMics search: ', search);
+    console.log('This is the Free getMics search: ', free);
   } else {
     console.log('Non Free Search');
+  }
 
+  try {
     const search = qs.stringify(params!, {
       encode: true,
       skipNull: true,
     });
-
-    micsSearch = `/findByBoroughsDay?${search}&pageSize=10&sortBy=id`;
-
-    console.log('This is all cost getMics Search: ', search);
-  }
-
-  // }
-  // eslint-disable-next-line no-useless-catch
-  try {
-    // const localTest = `http://localhost:8080/mics${micsSearch}`;
-    const localTest = `https://open-myc-api-b3fdf5fc5994.herokuapp.com/mics${micsSearch}`;
-    console.log('Response from mic search in Get Mics', micsSearch);
-    const response = await request(localTest);
-    console.log('Full path name of Request', localTest);
-    return response;
-  } catch (err: any) {
-    throw err;
+    micsSearch = `?${search}`;
+    console.log('micsSearch ----->', micsSearch);
+    // const localTest = `http://localhost:9999/mics${micsSearch}`;
+    // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
+    // console.log('Response from mic search in Get Mics', micsSearch);
+    // console.log('getMics Request Results', await request(localTest));
+    // return await request(localTest);
+    return micsResults;
+  } catch (err) {
+    throw Error('No mic found');
   }
 };
 
 export type MicSearch = (params?: {
   borough?: string[];
   day?: string;
-  startTime?: string;
-  endTime?: string;
+  // startTime?: string;
+  // endTime?: string;
   pageNo?: number;
   pageSize?: number;
   sortBy?: string;

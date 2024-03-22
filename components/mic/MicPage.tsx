@@ -2,14 +2,16 @@
 
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
-
 import '@mantine/core/styles.css';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 const MicPage = () => {
   const { mics } = useContext(MicDetailContext);
-  // console.log('Need the context', mics);
+  // console.log('Need the context MIC DETAILS', mics.mics[0].name);
   // console.log(mics);
+
+  // const mic = mics.mics[0];
 
   // This is causing an error I don't like:
   // function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
@@ -17,6 +19,12 @@ const MicPage = () => {
   //   const hour = +hourString % 24;
   //   return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   // }
+
+  function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
+    const [hourString, minute] = timeString.split(':');
+    const hour = +hourString % 24;
+    return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
+  }
 
   if (!mics) {
     return (
@@ -26,37 +34,52 @@ const MicPage = () => {
     );
   }
 
+  // if (mics.message === 'No mics found') {
+  //   return (
+  //     <div className="p-32 flex flex-col">
+  //       <h1>404 ... </h1>
+  //       <TbMicrophoneOff size={32} />
+  //       <p>No Mics Found</p>
+  //     </div>
+  //   );
+  // }
+
+  const mic = mics.mics[0];
+
   return (
-    <Card className="flex flex-1 w-full bg-slate-500 gap-5 m-10">
-      <div className="flex flex-row text-slate-700 text-4xl pt-5">
-        <div>{mics.name}</div>
+    <Card className="flex flex-1 bg-slate-500">
+      <div className="flex flex-col text-slate-700 text-4xl pt-5">
+        <h1 className="font-bold">{mic.name}</h1>
+        <h5>{mic.venue}</h5>
+        <h6>{mic.neighborhood}</h6>
       </div>
-      <div className="flex flex-row gap-1 text-green-700 text-sm">
-        <div>{mics.address?.number}</div>
-        <div>{mics.address?.streetName}</div>
-        <div>{mics.address?.zipcode}</div>
-        <div>{mics.borough}</div>
+      <div className="flex flex-row gap-1 text-green-700">
+        <p>{mic.unit_number}</p>
+        <p>{mic.street_name},</p>
+        <p>{mic.zipcode},</p>
+        <p className="font-semibold">{mic.borough}</p>
       </div>
       <div className="flex flex-row pt-8">
-        <div className="pr-1">{mics.day}</div>
-        <div>{mics?.time}</div>
+        <p className="pr-1">{mic?.day}</p>
+        <p className="pr-1">{formatTime(mic.start_time)}</p>
+        <p className="font-semibold">{mic?.schedule}</p>
       </div>
 
-      <div className="flex flex-row text-sm">
-        <h1 className="text-sm">Cost: </h1>
-        <div>{mics.cost?.costAmount}</div>
-      </div>
-      <div className="flex flex-row text-sm">
-        <h1 className="text-sm">Host: </h1>
-        <div>{mics.host?.firstHost}</div>
+      <div className="flex flex-row">
+        <p className="pr-1">Cost: </p>
+        <p>{mic.cost_amount}</p>
       </div>
       <div className="flex flex-row">
-        <div>Notes: </div>
-        <div>{mics.signup?.instructions}</div>
+        <p className="pr-1">Hosts: </p>
+        <p>{mic.first_host}</p>
       </div>
-      <div>
+      <div className="flex flex-row">
+        <p className="pr-1">Notes: </p>
+        <p>{mic.instructions}</p>
+      </div>
+      {/* <div>
         <h1>Reviews: </h1>
-      </div>
+      </div> */}
     </Card>
   );
 };

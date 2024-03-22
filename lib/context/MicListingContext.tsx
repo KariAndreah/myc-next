@@ -2,6 +2,7 @@
 
 import { createContext, useEffect } from 'react';
 // import { useSearchParams } from 'next/navigation';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { useMics } from '../hooks/useMics';
 import { ClearQuery, GetQuery, SetPagination, SetQuery, useQuery } from '../hooks/useQuery';
 
@@ -18,9 +19,28 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   const search = getQuery();
 
-  console.log('SEARCH CATEGORIES I AM PASSING', search);
+  console.log('SEARCH CATEGORIES I AM PASSING in Mic Listing Context Provider to useMics', search);
 
-  const { data, isLoading, refetch } = useMics(search);
+  const { data, isLoading, refetch, error } = useMics(search);
+
+  console.log('This is data from Mic Listing Context: ', data);
+
+  // Commented this out but data is reloading and not working
+  if (!isLoading && !data?.mics) {
+    <div className="p-32 flex flex-col">
+      <h1>404 ... </h1>
+      <TbMicrophoneOff size={32} />
+      <p>No Mics Found</p>
+    </div>;
+  }
+
+  if (error) {
+    <div className="p-32 flex flex-col">
+      <h1>404 ... </h1>
+      <TbMicrophoneOff size={32} />
+      <p>No Mics Found</p>
+    </div>;
+  }
 
   useEffect(() => {
     refetch();
@@ -32,14 +52,9 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   console.log('MIC LISTING RESPONSE ', data, isLoading);
 
-  // Commented this out but data is reloading and not working
-  // if (!isLoading && !data?.mics) {
-  //   return <h1>Loading :P</h1>;
-  // }
-
   return (
     <MicListingContext.Provider
-      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params }}
+      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params, error }}
     >
       {children}
     </MicListingContext.Provider>
@@ -50,10 +65,11 @@ type MicListingContextState = {
   // clearQuery: ClearQuery;
   mics?: any;
   refetch?: any;
+  error?: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;
   params?: any;
-  pageNo?: number;
+  page?: number;
   endPage?: number;
   totalMics?: number;
   clearQuery?: ClearQuery;

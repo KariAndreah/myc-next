@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-
 import '@mantine/core/styles.css';
 
 const MicCard = () => {
-  const { mics } = useContext(MicListingContext);
+  const { mics, error } = useContext(MicListingContext);
   console.log('Need the context', mics);
   // console.log(mics);
 
@@ -20,40 +20,70 @@ const MicCard = () => {
     return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   }
 
-  if (!mics) {
+  // if (mics === undefined) {
+  //   return (
+  //     <div className="p-32">
+  //       <h1>Loading ...</h1>
+  //     </div>
+  //   );
+  // }
+
+  // if (mics.message === 'No mics found') {
+  //   return (
+  //     <div className="p-32 flex flex-col items-center">
+  //       <h1 className="text-red-600">404 ... </h1>
+  //       <TbMicrophoneOff size={64} color="rgb(220 38 38)" />
+  //       <p className="text-red-600">No Mics Found</p>
+  //     </div>
+  //   );
+  // }
+
+  if (error) {
     return (
       <div className="p-32">
-        <h1>Loading ...</h1>
+        <h1>No mics Found</h1>
       </div>
     );
   }
-  const openMic = mics?.content.map((mic: any) => (
-    <div key={mic?.id} className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)]">
+
+  console.log('Mics in the MicCard', mics);
+  // if (mics.has('message') === true) {
+  //   return <div>No mics</div>;
+  // }
+
+  // let mic_cost: any;
+
+  // if (mics.mics[0].cost_id === 1) {
+  //   mic_cost = 'Free';
+  // }
+
+  const openMic = mics?.mics.map((mic: any) => (
+    <div
+      key={mic?.id}
+      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[1px] border-stone-300 shadow-lg shadow-slate-300 hover:scale-105 hover:border-blue-700"
+    >
       <Card
-        className="w-[100%] flex  bg-slate-500 cursor-pointer hover:scale-105 shadow-md group  "
+        className="w-[100%] flex  bg-slate-500 cursor-pointer  group"
         component="a"
         onClick={() => router.replace(`./mics/${mic?.id}`)}
       >
-        <div className="flex flex-row text-slate-700 text-3xl font-semibold group-hover:text-blue-800 group-hover:underline">
-          <div>{mic?.name}</div>
+        <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-700 group-hover:underline">
+          <h1>{mic?.name}</h1>
         </div>
 
-        <div className="flex flex-row gap-1 text-green-700 text-sm">
-          <div>{mic.address.number}</div>
-          <div>{mic.address.streetName}</div>
+        <div className="flex flex-row gap-1 text-green-700">
+          <p>{mic.mic_address.unit_number}</p>
+          <p>{mic.mic_address.street_name}</p>
         </div>
-        <div className="text-sm font-bold">{mic.borough}</div>
-        <div className="pt-8 flex flex-row gap-1">
-          <div>{mic?.day}</div>
-          <div>{formatTime(mic?.time)}</div>
+        <p className=" font-bold">{mic.borough}</p>
+        <div className="pt-8 flex flex-row">
+          <p className="pr-1">{mic?.day}</p>
+          <p className="pr-1 ">{formatTime(mic?.start_time)}</p>
+          <p className="font-semibold">{mic?.schedule}</p>
         </div>
-        <div className="flex flex-row  text-blue-700 ">
-          <h1 className="text-sm text-blue-700">Cost: </h1>
-          <div className="pl-1 text-sm"> {mic?.cost.costAmount}</div>
-        </div>
-        <div className="flex flex-row">
-          <div className="text-sm">Notes: </div>
-          <div>{mic?.notes}</div>
+        <div className="flex flex-row  text-blue-700">
+          <p>Cost: </p>
+          <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
         </div>
       </Card>
     </div>
