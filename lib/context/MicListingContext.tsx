@@ -19,11 +19,11 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   const search = getQuery();
 
-  console.log('SEARCH CATEGORIES I AM PASSING', search);
+  console.log('SEARCH CATEGORIES I AM PASSING in Mic Listing Context Provider to useMics', search);
 
   const { data, isLoading, refetch, error } = useMics(search);
 
-  console.log('this is the data -----', data);
+  console.log('This is data from Mic Listing Context: ', data);
 
   // Commented this out but data is reloading and not working
   if (!isLoading && !data?.mics) {

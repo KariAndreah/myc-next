@@ -20,7 +20,7 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   // Get selected objects
   // const params = new URLSearchParams();
   const params2 = usePathname();
-  console.log('PARAMS', params);
+  console.log('Params inside of Mic Detail Context:', params);
 
   // const searchDetails = getQuery();
   const search = {

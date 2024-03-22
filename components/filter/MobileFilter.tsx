@@ -42,9 +42,9 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
 
   // console.log('query in the FILTERS', params.toString());
 
-  const findingBorough = params.get('borough');
+  // const findingBorough = params.get('borough');
 
-  console.log('boroughs from FILTERS', findingBorough);
+  // console.log('boroughs from FILTERS', findingBorough);
 
   let boroughQuery: any;
   let dayQuery: any;
@@ -72,7 +72,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     cost,
   };
 
-  console.log('Looking here', inputTerms);
+  console.log('Input terms from Mobile Filters:', inputTerms);
 
   const handleSearch = () => {
     setQuery!(inputTerms);

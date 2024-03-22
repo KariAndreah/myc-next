@@ -59,7 +59,7 @@ const SearchCard = () => {
     cost,
   };
 
-  console.log('These are the input terms', inputTerms);
+  console.log('Input terms in Search Card:', inputTerms);
   // const onSearch = () => {
   //   console.log('Does this get the search to work?', searchTerms);
   //   handleSearch(searchTerms);

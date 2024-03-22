@@ -1,7 +1,7 @@
 export const micsResults = {
-  currentPage: 1,
-  totalPages: 2,
-  totalMics: 14,
+  totalMics: 1,
+  offset: 0,
+  limit: 15,
   mics: [
     {
       id: '1',

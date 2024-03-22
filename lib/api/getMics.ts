@@ -1,8 +1,9 @@
 import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
-import { request } from '../utils/request';
+// import { request } from '../utils/request';
+import { micsResults } from '@/mocks/PrismaMicsMock';
 
-export const getMics: MicSearch = async (params) => {
+export const getMics: any = async (params: any) => {
   // if(checked){
   //     params.concat(`/findByAllFree?day=${day}&borough=${borough}&startTime=${startTime}&endTime=${endTime}`)
   // }
@@ -36,11 +37,12 @@ export const getMics: MicSearch = async (params) => {
     });
     micsSearch = `?${search}`;
     console.log('micsSearch ----->', micsSearch);
-    const localTest = `http://localhost:9999/mics${micsSearch}`;
+    // const localTest = `http://localhost:9999/mics${micsSearch}`;
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
-    console.log('getMics Request Results', await request(localTest));
-    return await request(localTest);
+    // console.log('getMics Request Results', await request(localTest));
+    // return await request(localTest);
+    return micsResults;
   } catch (err) {
     throw Error('No mic found');
   }

@@ -13,9 +13,8 @@ export function MicDetailPage() {
   const { mics } = useContext(MicDetailContext);
   const router = useRouter();
 
-  console.log('return in details', mics);
+  console.log('Mic Detail Page, Mic Detail Context:', mics);
 
-  console.log(' this is what Im looking at', mics);
   return (
     <PageLayout className="h-[100%]">
       <div className="flex flex-row py-16 justify-start gap-10">

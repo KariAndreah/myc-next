@@ -8,7 +8,7 @@ import '@mantine/core/styles.css';
 
 const MicDetailCard = () => {
   const { mics } = useContext(MicDetailContext);
-  console.log('Need the context', mics);
+  console.log('Mic Detail Context:', mics);
   // console.log(mics);
 
   function formatTime(timeString: { split: (arg0: string) => [any, any] }) {

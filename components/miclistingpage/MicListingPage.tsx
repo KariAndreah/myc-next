@@ -10,7 +10,7 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 export function MicListingPage() {
   const { mics, params } = useContext(MicListingContext);
 
-  console.log('these are the Params', params.toString());
+  console.log('Params in the Mic Listing page:', params.toString());
   return (
     <PageLayout className="h-[full]" hasFilter hasMobileFilter>
       <div className="flex flex-col pb-32 px-3 justify-start">
