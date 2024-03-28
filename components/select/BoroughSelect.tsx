@@ -8,7 +8,7 @@ const BoroughSelect = ({ value, setValue }: BoroughSelectProps) => (
   <MultiSelect
     label="BOROUGH"
     placeholder="Pick a borough"
-    data={['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten-Island']}
+    data={['manhattan', 'brooklyn', 'queens', 'bronx', 'staten-island']}
     value={value}
     clearable
     onChange={setValue}

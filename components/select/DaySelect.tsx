@@ -12,7 +12,7 @@ const DaySelect = ({ value, setValue }: DaySelectProps) => (
     onChange={setValue}
     clearable
     leftSection={<TbCalendar />}
-    data={['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}
+    data={['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']}
   />
 );
 
