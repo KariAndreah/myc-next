@@ -45,26 +45,29 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     //   update = { ...update, time: params?.get('time') };
     // }
 
-    // Getting page number param
-    let pageNumber;
-    // Condition to get page number if present
-    if (params?.get('pageNo')) {
-      pageNumber = Number(params?.get('pageNo'));
-      update = { ...update, pageNo: pageNumber };
-    } else {
-      pageNumber = 0;
-      update = { ...update, pageNo: pageNumber };
-    }
-
     // Getting page size param
     let pageSize;
     // Condition to get page number if present
     if (params?.get('pageSize')) {
       pageSize = Number(params?.get('pageSize'));
-      update = { ...update, pageSize };
+      update = { ...update, limit: pageSize };
     } else {
       pageSize = 10;
-      update = { ...update, pageSize };
+      update = { ...update, limit: pageSize };
+    }
+
+    // Getting page number param
+    let pageNumber;
+    // Condition to get page number if present
+    if (params?.get('pageNo')) {
+      const page = parseInt(params?.get('pageNo')!, 10) || 1;
+      const offset = (page - 1) * pageSize;
+
+      pageNumber = Number(params?.get('pageNo'));
+      update = { ...update, offset };
+    } else {
+      pageNumber = 0;
+      update = { ...update, offset: pageNumber };
     }
 
     // Getting if free param

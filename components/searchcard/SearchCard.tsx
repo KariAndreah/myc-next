@@ -35,10 +35,10 @@ const SearchCard = () => {
   if (borough.length > 0) {
     boroughQuery = borough;
   } else {
-    boroughQuery = 'All';
+    boroughQuery = 'all';
   }
   if (day === '') {
-    dayQuery = 'All';
+    dayQuery = 'all';
   } else {
     dayQuery = day;
   }

@@ -44,38 +44,40 @@ const MicPage = () => {
   //   );
   // }
 
-  const mic = mics.mics[0];
+  const { mic } = mics;
+
+  console.log('This is on the PAGE', mics);
 
   return (
     <Card className="flex flex-1 bg-slate-500">
       <div className="flex flex-col text-slate-700 text-4xl pt-5">
-        <h1 className="font-bold">{mic.name}</h1>
-        <h5>{mic.venue}</h5>
-        <h6>{mic.neighborhood}</h6>
+        <h1 className="font-bold">{mic?.name}</h1>
+        <h5>{mic?.venue}</h5>
+        <h6>{mic?.neighborhood}</h6>
       </div>
       <div className="flex flex-row gap-1 text-green-700">
-        <p>{mic.unit_number}</p>
-        <p>{mic.street_name},</p>
-        <p>{mic.zipcode},</p>
-        <p className="font-semibold">{mic.borough}</p>
+        <p>{mic?.mic_address.unit_number}</p>
+        <p>{mic?.mic_address.street_name},</p>
+        <p>{mic?.mic_address.zipcode},</p>
+        <p className="font-semibold">{mic?.mic_address.borough}</p>
       </div>
       <div className="flex flex-row pt-8">
         <p className="pr-1">{mic?.day}</p>
-        <p className="pr-1">{formatTime(mic.start_time)}</p>
+        <p className="pr-1">{formatTime(mic?.start_time)}</p>
         <p className="font-semibold">{mic?.schedule}</p>
       </div>
 
       <div className="flex flex-row">
         <p className="pr-1">Cost: </p>
-        <p>{mic.cost_amount}</p>
+        <p>{mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
       </div>
       <div className="flex flex-row">
         <p className="pr-1">Hosts: </p>
-        <p>{mic.first_host}</p>
+        <p>{mic?.first_host}</p>
       </div>
       <div className="flex flex-row">
         <p className="pr-1">Notes: </p>
-        <p>{mic.instructions}</p>
+        <p>{mic?.instructions}</p>
       </div>
       {/* <div>
         <h1>Reviews: </h1>

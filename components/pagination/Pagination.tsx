@@ -8,7 +8,11 @@ function MicPagination() {
   const { mics, setPagination, params } = useContext(MicListingContext);
   const [activePage, setPage] = useState(Number(params.get('pageNo')));
 
-  const totalPages = mics?.totalPages;
+  // const totalPages2 = mics?.totalPages;
+
+  const totalPages = Math.ceil(Number(mics?.totalMics) / Number(mics?.limit));
+
+  console.log('is this what Im looking for:', totalPages);
 
   console.log('This is my active Pages', activePage);
 
