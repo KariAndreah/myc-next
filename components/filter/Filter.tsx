@@ -13,26 +13,37 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 const Filter = () => {
   const { params, setQuery } = useContext(MicListingContext);
 
-  // console.log('This is to find all of the params', params.toString());
+  // Getting Borough params to auto-populate search
   const getAllBoroughs = params.get('borough');
   const allBoroughsArray = getAllBoroughs.split(',');
 
-  // console.log('this is the borough Param', allBoroughsArray);
-
   let boroughsArray: any;
 
-  if (allBoroughsArray.includes('All')) {
+  if (allBoroughsArray.includes('all')) {
     boroughsArray = [];
   } else {
     boroughsArray = allBoroughsArray;
   }
 
-  const [day, setDay] = useState(params.getAll('day'));
-  // const [startTime, setStartTime] = useState(params.getAll('time'));
-  const [borough, setBorough] = useState(boroughsArray);
+  // Getting Day params to auto-populate search
+  const getAllDays = params.get('day');
+
+  let daysArray: any;
+
+  if (getAllDays.includes('all')) {
+    daysArray = '';
+  } else {
+    daysArray = getAllDays;
+  }
+
+  // const [day, setDay] = useState([]);
+  // // const [startTime, setStartTime] = useState(params.getAll('time'));
+  // const [borough, setBorough] = useState([]);
+
+  // Getting Cost params to auto-populate search
   const val = params.get('free') === 'true';
 
-  const [cost, setCost] = useState(val);
+  // const [cost, setCost] = useState(val);
 
   // console.log('What is passing in the switch', params.get('free'));
 
@@ -44,35 +55,41 @@ const Filter = () => {
 
   // console.log('boroughs from FILTERS', findingBorough);
 
+  const [borough, setBorough] = useState(boroughsArray);
+  const [free, setFree] = useState(val);
+  const [day, setDay] = useState(daysArray);
+  // const [startTime, setStartTime] = useState('');
+  // const searchParams = useSearchParams();
+  // const pathname = usePathname();
+
+  // const handleSearch = () => {
+  //   router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
+  // };
   let boroughQuery: any;
   let dayQuery: any;
   let timeQuery: any;
   if (borough.length > 0) {
     boroughQuery = borough;
   } else {
-    boroughQuery = 'All';
+    boroughQuery = 'all';
   }
   if (day === '') {
-    dayQuery = 'All';
+    dayQuery = 'all';
   } else {
     dayQuery = day;
   }
-  // if (startTime === '') {
-  //   timeQuery = '00:00:00';
-  // } else {
-  //   timeQuery = startTime;
-  // }
 
   const inputTerms = {
     dayQuery,
     boroughQuery,
     timeQuery,
-    cost,
+    free,
   };
 
   console.log('Input Terms from Filter', inputTerms);
 
   const handleSearch = () => {
+    console.log(free);
     setQuery!(inputTerms);
   };
 
@@ -82,7 +99,7 @@ const Filter = () => {
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
         {/* <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" /> */}
-        <FreeSwitch checked={cost} setChecked={setCost} />
+        <FreeSwitch checked={free} setChecked={setFree} />
         <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
           Update
         </Button>

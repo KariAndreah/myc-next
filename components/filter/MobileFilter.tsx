@@ -23,7 +23,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
 
   let boroughsArray: any;
 
-  if (allBoroughsArray.includes('All')) {
+  if (allBoroughsArray.includes('all')) {
     boroughsArray = [];
   } else {
     boroughsArray = allBoroughsArray;
@@ -34,7 +34,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   const [borough, setBorough] = useState(boroughsArray);
   const val = params.get('free') === 'true';
 
-  const [cost, setCost] = useState(val);
+  const [free, setFree] = useState(val);
 
   // console.log('What is passing in the switch', params.get('free'));
 
@@ -52,10 +52,10 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   if (borough.length > 0) {
     boroughQuery = borough;
   } else {
-    boroughQuery = 'All';
+    boroughQuery = 'all';
   }
   if (day === '') {
-    dayQuery = 'All';
+    dayQuery = 'all';
   } else {
     dayQuery = day;
   }
@@ -69,12 +69,13 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     dayQuery,
     boroughQuery,
     timeQuery,
-    cost,
+    free,
   };
 
   console.log('Input terms from Mobile Filters:', inputTerms);
 
   const handleSearch = () => {
+    console.log('Mobile filter', free);
     setQuery!(inputTerms);
     onSubmit();
   };
@@ -98,7 +99,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
               timePeriod="END TIME"
             ></TimeSelect> */}
           {/* <h2>{endTime}</h2> */}
-          <FreeSwitch checked={cost} setChecked={setCost} />
+          <FreeSwitch checked={free} setChecked={setFree} />
         </div>
         {/* <h1>LOOK HERE FOR FREE</h1>
           <h2>{checked}</h2> */}
