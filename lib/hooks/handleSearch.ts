@@ -21,12 +21,12 @@ export const handleSearch = ({ terms }: handleSearchTypes) => {
   }
 
   // Setting up free or not
-  if (terms?.cost) {
-    if (terms?.cost === true) {
-      params.set('cost', '1');
+  if (terms?.free) {
+    if (terms?.free === true) {
+      params.set('free', '1');
     }
   } else {
-    params.delete('cost');
+    params.delete('free');
   }
   if (terms?.page) {
     // eslint-disable-next-line no-unsafe-optional-chaining
@@ -45,6 +45,6 @@ export type handleSearchTypes = {
     page?: number;
     pageSize?: number;
     sortBy?: string;
-    cost?: boolean;
+    free?: boolean;
   };
 };

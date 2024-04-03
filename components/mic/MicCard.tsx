@@ -58,35 +58,31 @@ const MicCard = () => {
   // }
 
   const openMic = mics?.mics.map((mic: any) => (
-    <div
+    <Card
+      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[12px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 hover:scale-105 rounded-lg group hover:cursor-pointer"
+      component="a"
+      onClick={() => router.replace(`./mics/${mic?.id}`)}
       key={mic?.id}
-      className="flex w-[calc(50vw-22px)] lg:w-[calc(30vw-100px)] min-w-[350px] md:min-w-[200px] border-[1px] border-stone-300 shadow-lg shadow-slate-300 hover:scale-105 hover:border-blue-700"
     >
-      <Card
-        className="w-[100%] flex  bg-slate-500 cursor-pointer  group"
-        component="a"
-        onClick={() => router.replace(`./mics/${mic?.id}`)}
-      >
-        <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-700 group-hover:underline">
-          <h1>{mic?.name}</h1>
-        </div>
+      <div className="flex flex-row text-slate-700 font-semibold group-hover:text-blue-700 group-hover:underline">
+        <h1 className="text-lg">{mic?.name}</h1>
+      </div>
 
-        <div className="flex flex-row gap-1 text-green-700">
-          <p>{mic.mic_address.unit_number}</p>
-          <p>{mic.mic_address.street_name}</p>
-        </div>
-        <p className=" font-bold">{mic.borough}</p>
-        <div className="pt-8 flex flex-row">
-          <p className="pr-1">{mic?.day}</p>
-          <p className="pr-1 ">{formatTime(mic?.start_time)}</p>
-          <p className="font-semibold">{mic?.schedule}</p>
-        </div>
-        <div className="flex flex-row  text-blue-700">
-          <p>Cost: </p>
-          <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
-        </div>
-      </Card>
-    </div>
+      <div className="flex flex-row gap-1 text-green-700">
+        <p>{mic.mic_address.unit_number}</p>
+        <p>{mic.mic_address.street_name}</p>
+      </div>
+      <p className="font-bold">{mic.borough}</p>
+      <div className="pt-8 flex flex-row">
+        <p className="pr-1">{mic?.day}</p>
+        <p className="pr-1 ">{formatTime(mic?.start_time)}</p>
+        <p className="font-semibold">{mic?.schedule}</p>
+      </div>
+      <div className="flex flex-row  text-blue-700">
+        <p>Cost: </p>
+        <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
+      </div>
+    </Card>
   ));
   return <div className="flex flex-row flex-wrap gap-3 justify-center">{openMic}</div>;
 };

@@ -19,7 +19,7 @@ const SearchCard = () => {
 
   const [day, setDay] = useState('');
   const [borough, setBorough] = useState([]);
-  const [cost, setCost] = useState(false);
+  const [free, setFree] = useState(false);
   // const [startTime, setStartTime] = useState('');
   // const searchParams = useSearchParams();
   // const pathname = usePathname();
@@ -49,14 +49,14 @@ const SearchCard = () => {
   // }
 
   const handleSearch = () => {
-    router.push(`/mics?day=${dayQuery}&borough=${boroughQuery}&free=${cost}&pageNo=${1}`);
+    router.push(`/mics?day=${dayQuery}&borough=${boroughQuery}&free=${free}&pageNo=${1}`);
   };
 
   const inputTerms = {
     dayQuery,
     boroughQuery,
     timeQuery,
-    cost,
+    free,
   };
 
   console.log('Input terms in Search Card:', inputTerms);
@@ -128,7 +128,7 @@ const SearchCard = () => {
               timePeriod="END TIME"
             ></TimeSelect> */}
             {/* <h2>{endTime}</h2> */}
-            <FreeSwitch checked={cost} setChecked={setCost} />
+            <FreeSwitch checked={free} setChecked={setFree} />
           </div>
           {/* <h1>LOOK HERE FOR FREE</h1>
           <h2>{checked}</h2> */}
