@@ -1,8 +1,10 @@
 import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
-import { request } from '../utils/request';
+// import { request } from '../utils/request';
+import { micResult } from '@/mocks/PrismaMicMock';
 
-export const getIndividualMics: IndividualMicSearch = async (params) => {
+// You need to put the IndividualMicSearch Type back later
+export const getIndividualMics: any = async (params: any) => {
   console.log('The params are in the getMics hook', params);
 
   if (!params) {
@@ -23,8 +25,9 @@ export const getIndividualMics: IndividualMicSearch = async (params) => {
     const localTest = `http://localhost:9999/mic?id=${micsSearch}`;
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
-
-    return await request(localTest);
+    console.log(localTest);
+    // return await request(localTest);
+    return micResult;
   } catch (err) {
     throw Error('No individual mic found');
   }

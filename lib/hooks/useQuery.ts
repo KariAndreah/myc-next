@@ -35,15 +35,15 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     }
 
     // Getting time param
-    // if (params?.get('time') === '00:00:00') {
-    //   update = {
-    //     ...update,
-    //     // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
-    //     time: '00:00:00',
-    //   };
-    // } else if (params?.has('time')) {
-    //   update = { ...update, time: params?.get('time') };
-    // }
+    if (params?.get('start-time') === '00:00:00') {
+      update = {
+        ...update,
+        // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
+        time: '00:00:00',
+      };
+    } else if (params?.has('start-time')) {
+      update = { ...update, time: params?.get('start-time') };
+    }
 
     // Getting page size param
     let pageSize;
@@ -88,9 +88,9 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
 
     return (
       router.push(
-        `/mics?day=${q.dayQuery}&borough=${q.boroughQuery}&free=${q.free}&pageNo=${
-          q.pageNo || 1
-        }&pageSize=${q.pageSize || 10}`
+        `/mics?borough=${q.boroughQuery}&day=${q.dayQuery}&start-time=${q.timeQuery}&free=${
+          q.free
+        }&pageNo=${q.pageNo || 1}&pageSize=${q.pageSize || 10}`
       ),
       {
         shallow: true,

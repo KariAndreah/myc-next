@@ -5,7 +5,7 @@ import BoroughSelect from '../select/BoroughSelect';
 import DaySelect from '../select/DaySelect';
 import FreeSwitch from '../select/FreeSwitch';
 import SearchButton from '../select/SearchButton';
-// import TimeSelect from '../select/TimeSelect';
+import TimeSelect from '../select/TimeSelect';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 
 // import { handleSearch } from '@/lib/hooks/handleSearch';
@@ -30,7 +30,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   }
 
   const [day, setDay] = useState(params.getAll('day'));
-  // const [startTime, setStartTime] = useState(params.getAll('time'));
+  const [startTime, setStartTime] = useState(params.getAll('time'));
   const [borough, setBorough] = useState(boroughsArray);
   const val = params.get('free') === 'true';
 
@@ -59,11 +59,11 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   } else {
     dayQuery = day;
   }
-  // if (startTime === '') {
-  //   timeQuery = '00:00:00';
-  // } else {
-  //   timeQuery = startTime;
-  // }
+  if (startTime === '') {
+    timeQuery = '00:00:00';
+  } else {
+    timeQuery = startTime;
+  }
 
   const inputTerms = {
     dayQuery,
@@ -91,7 +91,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
           {/* <h1>LOOK HERE FOR Day</h1>
           <h2>{day}</h2> */}
 
-          {/* <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" /> */}
+          <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" />
           {/* <h2>{startTime}</h2> */}
           {/* <TimeSelect
               value={endTime}

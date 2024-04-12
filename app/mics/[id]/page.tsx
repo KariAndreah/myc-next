@@ -3,10 +3,8 @@ import { MicDetailContextProvider } from '@/lib/context/MicDetailContext';
 
 export default function Page() {
   return (
-    <>
-      <MicDetailContextProvider>
-        <MicDetailPage />
-      </MicDetailContextProvider>
-    </>
+    <MicDetailContextProvider>
+      <MicDetailPage />
+    </MicDetailContextProvider>
   );
 }
