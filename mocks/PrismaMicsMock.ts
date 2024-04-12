@@ -35,7 +35,7 @@ export const micsResults = {
       },
       mic_occurrence: {
         occurrence_id: 1,
-        schedule: 'Weekly',
+        schedule: 'First',
       },
     },
     {
@@ -70,7 +70,7 @@ export const micsResults = {
       },
       mic_occurrence: {
         occurrence_id: 1,
-        schedule: 'Weekly',
+        schedule: 'First of the Month',
       },
     },
     {

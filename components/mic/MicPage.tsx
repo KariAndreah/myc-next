@@ -59,7 +59,7 @@ const MicPage = () => {
         <p>{mic?.mic_address.unit_number}</p>
         <p>{mic?.mic_address.street_name},</p>
         <p>{mic?.mic_address.zipcode},</p>
-        <p className="font-semibold">{mic?.mic_address.borough}</p>
+        <p className="font-semibold">{mic?.borough}</p>
       </div>
       <div className="flex flex-row pt-8">
         <p className="pr-1">{mic?.day}</p>
