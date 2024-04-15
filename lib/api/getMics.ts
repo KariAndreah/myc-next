@@ -1,7 +1,7 @@
 import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
-// import { request } from '../utils/request';
-import { micsResults } from '@/mocks/PrismaMicsMock';
+import { request } from '../utils/request';
+// import { micsResults } from '@/mocks/PrismaMicsMock';
 
 export const getMics: any = async (params: any) => {
   // if(checked){
@@ -37,12 +37,13 @@ export const getMics: any = async (params: any) => {
     });
     micsSearch = `?${search}`;
     console.log('micsSearch ----->', micsSearch);
-    // const localTest = `http://localhost:9999/mics${micsSearch}`;
+    const localTest = `http://localhost:9999/api/v1/micTimes${micsSearch}`;
+    console.log('this is the request url Kari ', localTest);
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
     // console.log('getMics Request Results', await request(localTest));
-    // return await request(localTest);
-    return micsResults;
+    return await request(localTest);
+    // return micsResults;
   } catch (err) {
     throw Error('No mic found');
   }

@@ -6,6 +6,7 @@ import { Card } from '@mantine/core';
 // import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 import '@mantine/core/styles.css';
+import changeTime from '@/lib/utils/changeTime';
 
 const MicCard = () => {
   const { mics, error } = useContext(MicListingContext);
@@ -13,12 +14,6 @@ const MicCard = () => {
   // console.log(mics);
 
   const router = useRouter();
-
-  function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
-    const [hourString, minute] = timeString.split(':');
-    const hour = +hourString % 24;
-    return `${hour % 12 || 12}:${minute}${hour < 12 ? 'am' : 'pm'}`;
-  }
 
   // if (mics === undefined) {
   //   return (
@@ -67,9 +62,9 @@ const MicCard = () => {
       withBorder
     >
       <div className="flex flex-row gap-10 ">
-        <div className="pr-3 pt-2 border-r-2 border-[slate-700]border-black">
+        <div className="pr-4 pt-2 border-r-2 border-[slate-700]border-black">
           <p className="pr-1 font-bold ">{mic?.day}</p>
-          <p className="pr-1 ">{formatTime(mic?.start_time)}</p>
+          <p>{changeTime(mic?.start_time)}</p>
           <p className="text-slate-[700] text-xs pt-2">{mic?.mic_occurrence?.schedule}</p>
         </div>
         <div className="pt-1">
