@@ -5,6 +5,7 @@ import { Card } from '@mantine/core';
 import '@mantine/core/styles.css';
 // import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
+import changeTime from '@/lib/utils/changeTime';
 
 const MicPage = () => {
   const { mics } = useContext(MicDetailContext);
@@ -19,12 +20,6 @@ const MicPage = () => {
   //   const hour = +hourString % 24;
   //   return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   // }
-
-  function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
-    const [hourString, minute] = timeString.split(':');
-    const hour = +hourString % 24;
-    return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
-  }
 
   if (!mics) {
     return (
@@ -63,7 +58,7 @@ const MicPage = () => {
       </div>
       <div className="flex flex-row pt-8">
         <p className="pr-1">{mic?.day}</p>
-        <p className="pr-1">{formatTime(mic?.start_time)}</p>
+        <p className="pr-1">{changeTime(mic?.start_time)}</p>
         <p className="font-semibold">{mic?.schedule}</p>
       </div>
 

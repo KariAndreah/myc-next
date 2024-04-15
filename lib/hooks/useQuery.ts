@@ -39,10 +39,10 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = {
         ...update,
         // borough: ['Manhattan', 'Queens', 'Staten-Island', 'Bronx', 'Brooklyn'],
-        time: '00:00:00',
+        'start-time': '00:00:00',
       };
     } else if (params?.has('start-time')) {
-      update = { ...update, time: params?.get('start-time') };
+      update = { ...update, 'start-time': params?.get('start-time') };
     }
 
     // Getting page size param
@@ -141,7 +141,7 @@ export type Params = {
   // Search query param - day
   day?: string;
   // Search query param - starttime
-  startTime?: string;
+  'start-time'?: string;
   // Search query param - cost
   free?: string;
   // Current results page

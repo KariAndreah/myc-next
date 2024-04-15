@@ -73,7 +73,7 @@ const Filter = () => {
   } else {
     boroughQuery = 'all';
   }
-  if (day === '') {
+  if (!day) {
     dayQuery = 'all';
   } else {
     dayQuery = day;
@@ -103,7 +103,7 @@ const Filter = () => {
       <Container size="md" className=" flex h-[rem(56px)] space-between items-center py-3 gap-3">
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
-        <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START TIME" />
+        <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START AFTER" />
         <FreeSwitch checked={free} setChecked={setFree} />
         <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
           Update
