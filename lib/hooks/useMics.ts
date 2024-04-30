@@ -6,7 +6,7 @@ export const useMics = (params?: object) => {
   console.log('useMics.ts Request results');
 
   return useQuery({
-    queryKey: ['mics'],
+    queryKey: ['mics', params],
     enabled: false,
     retry: false,
     queryFn: () => getMics(params),

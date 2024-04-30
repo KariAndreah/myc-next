@@ -22,7 +22,8 @@ export const getIndividualMics: any = async (params: any) => {
     });
     micsSearch = `${params?.id}`;
     console.log('This is all cost getMics Search: ', search);
-    const localTest = `http://localhost:9999/api/v1/mic?id=${micsSearch}`;
+    const localTest = `${process.env.NEXT_PUBLIC_API_URL}micHost?id=${micsSearch}`;
+
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
     console.log(localTest);

@@ -37,7 +37,9 @@ export const getMics: any = async (params: any) => {
     });
     micsSearch = `?${search}`;
     console.log('micsSearch ----->', micsSearch);
-    const localTest = `http://localhost:9999/api/v1/micTimes${micsSearch}`;
+    console.log('this is what I am missing kari', process.env.NEXT_PUBLIC_API_URL);
+
+    const localTest = `${process.env.NEXT_PUBLIC_API_URL}micTimes${micsSearch}`;
     console.log('this is the request url Kari ', localTest);
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);

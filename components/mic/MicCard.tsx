@@ -3,10 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Card } from '@mantine/core';
-// import { TbMicrophoneOff } from 'react-icons/tb';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
 import '@mantine/core/styles.css';
 import changeTime from '@/lib/utils/changeTime';
+import ChatPagination2 from '../pagination/ChatPagination2';
 
 const MicCard = () => {
   const { mics, error } = useContext(MicListingContext);
@@ -52,23 +53,32 @@ const MicCard = () => {
   //   mic_cost = 'Free';
   // }
 
+  if (mics?.totalMics === 0) {
+    return (
+      <div className="p-32">
+        <TbMicrophoneOff size={32} />
+        <h1>No mics Found</h1>
+      </div>
+    );
+  }
+
   const openMic = mics?.mics.map((mic: any) => (
     <Card
-      className="flex lg:max-w-[calc(50vw-50px)] min-w-[350px] border-[12px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300  group hover:cursor-pointer"
+      className="flex lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[12px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300  group hover:cursor-pointer"
       component="div"
       onClick={() => router.replace(`./mics/${mic?.id}`)}
       key={mic?.id}
       color="blue"
       withBorder
     >
-      <div className="flex flex-row gap-10 ">
-        <div className="pr-4 pt-2 border-r-2 border-[slate-700]border-black">
+      <div className="flex flex-row gap-3 lg:gap-10 ">
+        <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]">
           <p className="pr-1 font-bold ">{mic?.day}</p>
           <p>{changeTime(mic?.start_time)}</p>
           <p className="text-slate-[700] text-xs pt-2">{mic?.mic_occurrence?.schedule}</p>
         </div>
         <div className="pt-1">
-          <div className="flex text-[slate-700 ]font-semibold group-hover:text-blue-700 ">
+          <div className="flex text-[slate-700]font-semibold group-hover:text-blue-700 ">
             <h1 className="text-xl font-bold text-blue-700 group-hover:underline">{mic?.name}</h1>
           </div>
 
@@ -85,7 +95,14 @@ const MicCard = () => {
       </div>
     </Card>
   ));
-  return <div className="flex flex-col gap-3 justify-center align-center">{openMic}</div>;
+  return (
+    <div className="flex flex-col justify-center align-middle p-6 pt-40">
+      <div className="flex flex-col gap-2">{openMic}</div>
+      <div className="flex justify-center pt-16">
+        <ChatPagination2 />
+      </div>
+    </div>
+  );
 };
 
 export default MicCard;

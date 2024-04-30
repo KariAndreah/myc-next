@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import MicMap from '../map/MicMap';
 import MicCard from '../mic/MicCard';
 import PageLayout from '../pagelayout/PageLayout';
-import MicPagination from '../pagination/Pagination';
 import { MicListingContext } from '@/lib/context/MicListingContext';
+import ChatPagination2 from '../pagination/ChatPagination2';
 
 export function MicListingPage() {
   const { mics, params } = useContext(MicListingContext);
@@ -18,7 +18,7 @@ export function MicListingPage() {
           <div className="flex-1 pt-12 min-h-[800px]">
             <MicCard />
             <div className="flex pt-12 justify-center">
-              <MicPagination />
+              <ChatPagination2 />
             </div>
           </div>
           <div className="hidden flex-1 lg:flex">

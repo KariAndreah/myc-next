@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { Card } from '@mantine/core';
 import '@mantine/core/styles.css';
 // import { TbMicrophoneOff } from 'react-icons/tb';
+import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import changeTime from '@/lib/utils/changeTime';
 
@@ -29,6 +30,17 @@ const MicPage = () => {
     );
   }
 
+  console.log('This is the mics in micPage', mics);
+
+  if (mics?.totalMics === 0) {
+    return (
+      <div className="p-32">
+        <TbMicrophoneOff size={32} />
+        <h1>No mics Found</h1>
+      </div>
+    );
+  }
+
   // if (mics.message === 'No mics found') {
   //   return (
   //     <div className="p-32 flex flex-col">
@@ -42,6 +54,14 @@ const MicPage = () => {
   const { mic } = mics;
 
   console.log('This is on the PAGE', mics);
+
+  console.log('MicPage: Mic host is passing', mics.mic.host_mics);
+
+  // const hostLoop = mics?.mic.host_mics.map((x: any) => x.mic_host.first_host);
+
+  const hostLoop = mics?.mic.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
+
+  console.log('MicPage: Are these the hosts?', hostLoop);
 
   return (
     <Card className="flex flex-1 bg-slate-500">
@@ -60,6 +80,7 @@ const MicPage = () => {
         <p className="pr-1">{mic?.day}</p>
         <p className="pr-1">{changeTime(mic?.start_time)}</p>
         <p className="font-semibold">{mic?.schedule}</p>
+        <p className="font-semibold">{mic?.mic_occurrence?.schedule}</p>
       </div>
 
       <div className="flex flex-row">
@@ -68,11 +89,12 @@ const MicPage = () => {
       </div>
       <div className="flex flex-row">
         <p className="pr-1">Hosts: </p>
-        <p>{mic?.first_host}</p>
+        <p>{mic?.host_mics[0]?.first_host}</p>
+        <p>{hostLoop}</p>
       </div>
       <div className="flex flex-row">
         <p className="pr-1">Notes: </p>
-        <p>{mic?.instructions}</p>
+        <p>{mic?.signup_instructions.instructions}</p>
       </div>
       {/* <div>
         <h1>Reviews: </h1>

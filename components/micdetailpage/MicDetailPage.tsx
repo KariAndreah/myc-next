@@ -6,8 +6,8 @@ import { Button } from '@mantine/core';
 import { TbArrowLeft } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import PageLayout from '../pagelayout/PageLayout';
-import MicMap from '../map/MicMap';
 import MicPage from '../mic/MicPage';
+import MicIndividualMap from '../map/MicIndividualMap';
 
 export function MicDetailPage() {
   const { mics } = useContext(MicDetailContext);
@@ -27,7 +27,7 @@ export function MicDetailPage() {
           </div>
         </div>
         <div className="hidden flex-1 lg:flex">
-          <MicMap mics={mics} />
+          <MicIndividualMap mics={mics} />
         </div>
       </div>
     </PageLayout>

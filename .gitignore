@@ -130,3 +130,8 @@ dist
 .pnp.*
 
 .DS_Store
+
+# Docker files
+Dockerfile
+.dockerignore
+

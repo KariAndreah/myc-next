@@ -30,13 +30,15 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   // const kari = setQuery(search);
   // console.log('kari', kari);
 
-  const { data, isLoading, refetch } = useIndividualMics(search);
+  const { data, isLoading, refetch, isError } = useIndividualMics(search);
 
   useEffect(() => {
     refetch();
     // You can now use the current URL
     // ...
-  }, []);
+  }, [params]);
+
+  console.log('Mic Detail Context Works', data);
 
   if (!isLoading && !data?.mics) {
     <div className="p-32 flex flex-col">
@@ -45,6 +47,9 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
       <p>No Mics Found</p>
     </div>;
   }
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error fetching mic</div>;
 
   return (
     <MicDetailContext.Provider value={{ mics: data, refetch }}>

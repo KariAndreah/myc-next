@@ -77,11 +77,13 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = { ...update, free: checkFree };
     }
 
+    console.log('this is the update kari', update);
+    console.log('This is the Q', q);
+
     return { ...update, ...q };
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const setQuery: SetQuery = (q, append = false) => {
+  const setQuery: SetQuery = (q) => {
     if (!q) {
       return null;
     }
@@ -107,7 +109,7 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     return (
       router.push(`${pathname}?${q}`),
       {
-        shallow: true,
+        shallow: false,
         scroll: true,
       }
     );

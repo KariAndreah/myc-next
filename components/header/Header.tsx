@@ -27,6 +27,7 @@ const Header = ({ hasFilter, hasMobileFilter }: HeaderProps) => {
       href={link.link}
       className={classes.link}
       data-active={active === link.link || undefined}
+      aria-label="Toggle Header"
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);

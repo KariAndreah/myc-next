@@ -1,10 +1,15 @@
-import { MicListingPage } from '../../components/miclistingpage/MicListingPage';
+'use client';
+
+import { Suspense } from 'react';
+import { MicListingPage2 } from '../../components/miclistingpage/MicListingPage2';
 import { MicListingContextProvider } from '@/lib/context/MicListingContext';
 
 export default function Page() {
   return (
-    <MicListingContextProvider>
-      <MicListingPage />
-    </MicListingContextProvider>
+    <Suspense>
+      <MicListingContextProvider>
+        <MicListingPage2 />
+      </MicListingContextProvider>
+    </Suspense>
   );
 }

@@ -54,7 +54,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   } else {
     boroughQuery = 'all';
   }
-  if (!day.length) {
+  if (!day) {
     dayQuery = 'all';
   } else {
     dayQuery = day;
