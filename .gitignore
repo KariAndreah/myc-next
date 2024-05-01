@@ -131,7 +131,6 @@ dist
 
 .DS_Store
 
-# Docker files
-Dockerfile
+# Docker file
 .dockerignore
 
