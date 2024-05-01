@@ -1,31 +1,21 @@
 'use client';
 
 import { useContext } from 'react';
-import MicMap from '../map/MicMap';
+import MicMap2 from '../map/MicMap';
 import MicCard from '../mic/MicCard';
 import PageLayout from '../pagelayout/PageLayout';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-import ChatPagination2 from '../pagination/ChatPagination2';
+// import ChatPagination2 from '../pagination/ChatPagination2';
 
-export function MicListingPage() {
+export function MicListingPage2() {
   const { mics, params } = useContext(MicListingContext);
 
   console.log('Params in the Mic Listing page:', params.toString());
   return (
-    <PageLayout className="h-[full]" hasFilter hasMobileFilter>
-      <div className="flex flex-col pb-32 px-3 justify-start">
-        <div className="flex flex-row justify-start pb-5 mt-32">
-          <div className="flex-1 pt-12 min-h-[800px]">
-            <MicCard />
-            <div className="flex pt-12 justify-center">
-              <ChatPagination2 />
-            </div>
-          </div>
-          <div className="hidden flex-1 lg:flex">
-            <MicMap mics={mics} />
-          </div>
-        </div>
-      </div>
+    <PageLayout className="marker:pb-16" hasFilter hasMobileFilter>
+      <MicCard />
+      {/* <ChatPagination2 /> */}
+      <MicMap2 mics={mics} />
     </PageLayout>
   );
 }

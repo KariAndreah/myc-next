@@ -1,18 +1,11 @@
 'use client';
 
 import { Map, APIProvider } from '@vis.gl/react-google-maps';
-// import { useState } from 'react';
 import { TbMicrophoneOff } from 'react-icons/tb';
 import MarkerWithInfowindow from './MarkerWithInfoWindow';
 import changeTime from '@/lib/utils/changeTime';
-// const micTag = document.createElement('div');
 
-const MicMap = ({ mics }: MicMapType) => {
-  // const [infowindowShown, setInfowindowShown] = useState(false);
-
-  // const toggleInfoWindow = () => setInfowindowShown((previousState) => !previousState);
-  // const closeInfoWindow = () => setInfowindowShown(false);
-
+const MicMap2 = ({ mics }: MicMap2Type) => {
   const position = { lat: 40.7447, lng: -73.936 };
 
   if (mics?.totalMics === 0) {
@@ -25,29 +18,10 @@ const MicMap = ({ mics }: MicMapType) => {
   }
 
   const micPins = mics?.mics?.map((mic: any) => {
-    //  positionB = {lat:`${mic?.address.latitude}`, lng:`${mic?.address.longitude}` }
-
-    // micTag.textContent = mic?.name;
-
-    // micTag.innerHTML = `<div>${mic?.name}</div> `;
-
     console.log('mic map working');
 
     return (
       <div key={mic?.id} className="flex shadow-md">
-        {/* <AdvancedMarker
-          // className="hover: scale-150 "
-          position={{
-            lat: parseFloat(`${mic?.latitude}`),
-            lng: parseFloat(`${mic?.longitude}`),
-          }}
-          // onMouseOver={{}}
-          title={`${mic?.name}`}
-          onClick={toggleInfoWindow}
-        >
-          <Pin />
-          {infowindowShown && <InfoWindow onCloseClick={closeInfoWindow}>{mic?.name}</InfoWindow>}
-        </AdvancedMarker> */}
         <MarkerWithInfowindow
           latitude={mic?.mic_address.latitude}
           longitude={mic?.mic_address.longitude}
@@ -59,14 +33,10 @@ const MicMap = ({ mics }: MicMapType) => {
     );
   });
 
-  console.log('MIC PINS', micPins);
-
   return (
-    // <div className="min-w-[calc(100vw-680px-32px)] w-[calc(100vw-680px-32px)] block mr-0 h-[calc(100vh - 195px)]">
     <APIProvider apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}>
-      {/* <div className="fixed top-0 right-0  w-[50vw] h-[95vh]"> */}
-      <div className="flex w-auto top-auto  h-auto lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh]">
-        <Map zoom={12} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
+      <div className="flex w-[100vw] top-auto  h-[65vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh]">
+        <Map zoom={10} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
           {micPins}
         </Map>
       </div>
@@ -74,8 +44,8 @@ const MicMap = ({ mics }: MicMapType) => {
   );
 };
 
-export default MicMap;
+export default MicMap2;
 
-export type MicMapType = {
+export type MicMap2Type = {
   mics: any;
 };

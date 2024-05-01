@@ -4,7 +4,7 @@ import { TbArrowLeft } from 'react-icons/tb';
 
 export function BackButton() {
   return (
-    <div>
+    <div className="pt-16">
       <Button
         onClick={() => router.back()}
         size="compact-md"

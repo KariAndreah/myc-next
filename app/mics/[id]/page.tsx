@@ -1,6 +1,6 @@
 'use client';
 
-import { MicDetailPage2 } from '@/components/micdetailpage/MicDetailPage2';
+import { MicDetailPage2 } from '@/components/micdetailpage/MicDetailPage';
 import { MicDetailContextProvider } from '@/lib/context/MicDetailContext';
 
 export default function Page() {
