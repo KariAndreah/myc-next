@@ -30,7 +30,7 @@ const MicIndividualMap2 = ({ mics }: MicIndividualMap2Type) => {
 
   return (
     <APIProvider apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}>
-      <div className="flex w-[100vw] h-[50vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh] pb-16 lg:pb-4 bottom-0">
+      <div className="flex w-[100vw] h-[65vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh] pb-16 lg:pb-4 bottom-0">
         <Map zoom={12} center={positionB} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
           <div key={mics.mic?.id} className="flex shadow-md">
             <MarkerWithInfowindow

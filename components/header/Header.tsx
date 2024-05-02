@@ -8,15 +8,17 @@ import classes from './Header.module.css';
 import '@mantine/core/styles.css';
 import Filter from '../filter/Filter';
 import MobileFilterButton from '../filter/MobileFilterButton';
+import { HeaderDrawer } from '../header-drawer/header-drawer';
+import { BackButton } from '../buttons/BackButton';
 
 const links = [
   { link: '/about', label: 'About' },
-  { link: 'https://forms.gle/xAaTnwZNi2mq3UDE9', label: 'Submit a Mic' },
-  { link: '/signin', label: 'Sign In/ Register' },
+  // { link: 'https://forms.gle/xAaTnwZNi2mq3UDE9', label: 'Submit a Mic' },
+  // { link: '/signin', label: 'Sign In/ Register' },
 ];
 
-const Header = ({ hasFilter, hasMobileFilter }: HeaderProps) => {
-  const [opened, { toggle }] = useDisclosure(false);
+const Header = ({ hasFilter, hasMobileFilter, hasBackButton }: HeaderProps) => {
+  const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
 
   const router = useRouter();
@@ -49,11 +51,17 @@ const Header = ({ hasFilter, hasMobileFilter }: HeaderProps) => {
             </span>
           </a>
         </h1>
+        <HeaderDrawer opened={opened} close={close} />
+        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
+      {hasBackButton ? (
+        <div className="block">
+          <BackButton />{' '}
+        </div>
+      ) : null}{' '}
       {hasFilter ? <Filter /> : null}{' '}
       {hasMobileFilter ? (
         <div className="block md:hidden">
@@ -69,4 +77,5 @@ export default Header;
 export type HeaderProps = {
   hasFilter?: boolean;
   hasMobileFilter?: boolean;
+  hasBackButton?: boolean;
 };

@@ -7,12 +7,20 @@ import '@mantine/core/styles.css';
 const DaySelect = ({ value, setValue }: DaySelectProps) => (
   <Select
     label="DAY"
-    placeholder="Pick a day"
+    placeholder="Pick day"
     value={value}
     onChange={setValue}
     clearable
     leftSection={<TbCalendar />}
-    data={['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']}
+    data={[
+      { value: 'sunday', label: 'Sunday' },
+      { value: 'monday', label: 'Monday' },
+      { value: 'tuesday', label: 'Tuesday' },
+      { value: 'wednesday', label: 'Wednesday' },
+      { value: 'thursday', label: 'Thursday' },
+      { value: 'friday', label: 'Friday' },
+      { value: 'saturday', label: 'Saturday' },
+    ]}
   />
 );
 

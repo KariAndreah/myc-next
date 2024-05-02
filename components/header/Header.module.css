@@ -9,8 +9,9 @@
 }
 
 .inner {
-  height: rem(56px);
   display: flex;
+  height: rem(56px);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -25,9 +26,8 @@
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
 
-  [data-mantine-color-scheme] &[data-active] {
-    background-color: var(--mantine-color-blue-filled);
-    color: var(--mantine-color-white);
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
   }
 }
 

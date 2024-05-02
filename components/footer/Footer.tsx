@@ -4,8 +4,8 @@ import classes from './Footer.module.css';
 import '@mantine/core/styles.css';
 
 const links = [
-  { link: '#', label: 'Contact' },
-  { link: '#', label: 'Privacy' },
+  { link: '/about', label: 'Contact' },
+  // { link: '#', label: 'Privacy' },
 ];
 
 const Footer = () => {

@@ -1,10 +1,14 @@
+'use client';
+
 import { Button } from '@mantine/core';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { TbArrowLeft } from 'react-icons/tb';
 
 export function BackButton() {
+  const router = useRouter();
+
   return (
-    <div className="pt-16">
+    <div className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2 p-2">
       <Button
         onClick={() => router.back()}
         size="compact-md"

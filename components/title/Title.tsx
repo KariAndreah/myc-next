@@ -11,7 +11,7 @@ export const Title = () => (
     <Text className={classes.subtitle} ta="center">
       The easiest way to find comedy open mics in the 5 Boroughs
     </Text> */}
-    <h1 className="font-black text-4xl lg:text-7xl md:text-6xl text-center">
+    <h1 className="font-black text-5xl lg:text-7xl md:text-6xl text-center">
       Welcome to{' '}
       <span className="whitespace-nowrap">
         Open

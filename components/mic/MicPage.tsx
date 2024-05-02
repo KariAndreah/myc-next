@@ -7,7 +7,8 @@ import '@mantine/core/styles.css';
 import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import changeTime from '@/lib/utils/changeTime';
-import { BackButton } from '../buttons/BackButton';
+// import { BackButton } from '../buttons/BackButton';
+import capitalizeDay from '@/lib/utils/capitalizeDay';
 
 const MicPage = () => {
   const { mics } = useContext(MicDetailContext);
@@ -65,41 +66,42 @@ const MicPage = () => {
   console.log('MicPage: Are these the hosts?', hostLoop);
 
   return (
-    <div className="flex flex-col gap-6 lg:w-[50%] w-auto pb-16 min-w-[300px]">
-      <div className="pl-16">
+    <div className="flex flex-col gap-6 lg:w-[50%] w-auto py-32 min-w-[300px] bg-black-white bg-cover shadow-box-shadow-background lg:min-h-[100vh]  text-slate-700">
+      {/* <div className="pl-6">
         <BackButton />
-      </div>
-      <Container fluid className="flex-col bg-white p-12 ">
-        <div className="flex flex-col text-slate-700 text-4xl pt-5">
-          <h1 className="font-bold">{mic?.name}</h1>
-          <h5>{mic?.venue}</h5>
-          <h6>{mic?.neighborhood}</h6>
-        </div>
-        <div className="flex flex-row gap-1 text-green-700">
-          <p>{mic?.mic_address.unit_number}</p>
-          <p>{mic?.mic_address.street_name},</p>
-          <p>{mic?.mic_address.zipcode},</p>
-          <p className="font-semibold">{mic?.borough}</p>
-        </div>
-        <div className="flex flex-row pt-8">
-          <p className="pr-1">{mic?.day}</p>
+      </div> */}
+      <Container fluid className="flex flex-col-reverse md:flex-row p-3 pb-6 bg-white ">
+        <div className="flex flex-row md:flex-col pt-6 pl-0 lg:pl-2 pr-6 border-none md:border-[slate-500] md:border-solid border-r-2 text-base md:text-3xl ">
+          <p className="pr-1 font-bold pl-4 md:pl-0">{capitalizeDay(mic.day.toString())}</p>
           <p className="pr-1">{changeTime(mic?.start_time)}</p>
-          <p className="font-semibold">{mic?.schedule}</p>
-          <p className="font-semibold">{mic?.mic_occurrence?.schedule}</p>
+          <p className="font-semibold pt-6">{mic?.schedule}</p>
+          <p className="font-semibold text-base md:text-xl">{mic?.mic_occurrence?.schedule}</p>
+          <div className="flex flex-row text-green-700 text-base md:text-xl pl-3 md:pl-0 ">
+            <p>Cost: </p>
+            <p className="font-bold">{mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
+          </div>
         </div>
+        <div>
+          <div className="flex flex-col text-slate-700 text-4xl pt-5 px-4 ">
+            <h1 className="font-bold">{mic?.name}</h1>
+            <h5 className="text-base">{mic?.mic_address.venue}</h5>
+            <h6 className="text-base">{mic?.neighborhood}</h6>
+          </div>
+          <div className="flex flex-row gap-1 text-blue-700 px-4 flex-wrap">
+            <p>{mic?.mic_address.unit_number}</p>
+            <p>{mic?.mic_address.street_name},</p>
+            <p className="font-semibold">{capitalizeDay(mic.borough.toString())}</p>
+          </div>
 
-        <div className="flex flex-row">
-          <p className="pr-1">Cost: </p>
-          <p>{mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
-        </div>
-        <div className="flex flex-row">
-          <p className="pr-1">Hosts: </p>
-          <p>{mic?.host_mics[0]?.first_host}</p>
-          <p>{hostLoop}</p>
-        </div>
-        <div className="flex flex-row">
-          <p className="pr-1">Notes: </p>
-          <p>{mic?.signup_instructions.instructions}</p>
+          <div className="flex flex-row px-4 pt-5 text-base">
+            <p className="pr-1 font-bold">Hosts: </p>
+            <p>{mic?.host_mics[0]?.first_host}</p>
+            <p>{hostLoop}</p>
+          </div>
+          <div className="flex flex-row px-4 pt-2">
+            <p className="pr-1 font-bold">Signup: </p>
+            <p>{mic?.signup_instructions.instructions}</p>
+          </div>
         </div>
         {/* <div>
         <h1>Reviews: </h1>

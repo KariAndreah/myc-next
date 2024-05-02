@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from 'react';
-import MicMap2 from '../map/MicMap';
+import MicMap2 from '../map/MicMapLoad';
 import MicCard from '../mic/MicCard';
 import PageLayout from '../pagelayout/PageLayout';
 import { MicListingContext } from '@/lib/context/MicListingContext';

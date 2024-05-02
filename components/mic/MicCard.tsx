@@ -8,6 +8,7 @@ import { MicListingContext } from '@/lib/context/MicListingContext';
 import '@mantine/core/styles.css';
 import changeTime from '@/lib/utils/changeTime';
 import ChatPagination2 from '../pagination/ChatPagination2';
+import capitalizeDay from '@/lib/utils/capitalizeDay';
 
 const MicCard = () => {
   const { mics, error } = useContext(MicListingContext);
@@ -64,39 +65,41 @@ const MicCard = () => {
 
   const openMic = mics?.mics.map((mic: any) => (
     <Card
-      className="flex lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[12px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300  group hover:cursor-pointer"
+      className="flex lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 group hover:cursor-pointer"
       component="div"
-      onClick={() => router.replace(`./mics/${mic?.id}`)}
+      onClick={() => router.push(`./mics/${mic?.id}`)}
       key={mic?.id}
       color="blue"
       withBorder
     >
       <div className="flex flex-row gap-3 lg:gap-10 ">
-        <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]">
-          <p className="pr-1 font-bold ">{mic?.day}</p>
+        <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]   text-base">
+          <p className="pr-1 font-bold">{capitalizeDay(mic.day.toString())}</p>
           <p>{changeTime(mic?.start_time)}</p>
-          <p className="text-slate-[700] text-xs pt-2">{mic?.mic_occurrence?.schedule}</p>
+          <p className="text-slate-[700] text-sm pt-10">{mic?.mic_occurrence?.schedule}</p>
         </div>
-        <div className="pt-1">
-          <div className="flex text-[slate-700]font-semibold group-hover:text-blue-700 ">
-            <h1 className="text-xl font-bold text-blue-700 group-hover:underline">{mic?.name}</h1>
+        <div className="">
+          <div className="flex whitespace-wrap text-[slate-700]font-semibold group-hover:text-blue-700 ">
+            <h1 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
+              {mic?.name}
+            </h1>
           </div>
-
-          <div className="flex flex-row gap-1 text-green-700">
-            <p>{mic.mic_address.unit_number}</p>
-            <p>{mic.mic_address.street_name},</p>
-            <p className="font-bold">{mic.borough}</p>
+          <div className="pr-1 text-slate-700 font-bold">{mic.mic_address.venue}</div>
+          <div className="flex flex-row flex-wrap text-green-700 text-base">
+            <p className="pr-1">{mic.mic_address.unit_number} </p>
+            <p className="pr-1">{mic.mic_address.street_name},</p>
+            <p className="font-bold">{capitalizeDay(mic.borough.toString())}</p>
           </div>
-          <div className="flex flex-row  text-] pt-1">
-            <p>Cost: </p>
-            <p className="pl-1 "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
+          <div className="flex flex-row pt-3 text-base">
+            <p className="pr-1">Cost: </p>
+            <p className="font-bold "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
           </div>
         </div>
       </div>
     </Card>
   ));
   return (
-    <div className="flex flex-col justify-center align-middle p-6 pt-40 lg:pt-48">
+    <div className="flex flex-col justify-between p-6 pt-40 lg:pt-48 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
       <div className="flex flex-col gap-2">{openMic}</div>
       <div className="flex w-auto lg:w-[50vw] justify-center pt-16">
         <ChatPagination2 />

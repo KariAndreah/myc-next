@@ -5,7 +5,7 @@ import { TbMicrophoneOff } from 'react-icons/tb';
 import MarkerWithInfowindow from './MarkerWithInfoWindow';
 import changeTime from '@/lib/utils/changeTime';
 
-const MicMap2 = ({ mics }: MicMap2Type) => {
+const MicMap = ({ mics }: MicMapType) => {
   const position = { lat: 40.7447, lng: -73.936 };
 
   if (mics?.totalMics === 0) {
@@ -35,7 +35,7 @@ const MicMap2 = ({ mics }: MicMap2Type) => {
 
   return (
     <APIProvider apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}>
-      <div className="flex w-[100vw] top-auto  h-[65vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh]">
+      <div className="flex w-[100vw] top-auto  h-[65vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh] pb-16 lg:pb-0">
         <Map zoom={10} center={position} mapId={`${process.env.NEXT_PUBLIC_MAP_ID}`}>
           {micPins}
         </Map>
@@ -44,8 +44,8 @@ const MicMap2 = ({ mics }: MicMap2Type) => {
   );
 };
 
-export default MicMap2;
+export default MicMap;
 
-export type MicMap2Type = {
+export type MicMapType = {
   mics: any;
 };

@@ -3,11 +3,21 @@ import '@mantine/core/styles.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
-function PageLayout({ children, className, hasFilter, hasMobileFilter }: PageLayoutProps) {
+function PageLayout({
+  children,
+  className,
+  hasFilter,
+  hasMobileFilter,
+  hasBackButton,
+}: PageLayoutProps) {
   return (
-    // bg-cyan-100 <-- blue color I like
-    <div className={`bg-black-white bg-cover shadow-box-shadow-background ${className} h-[100vh]`}>
-      <Header hasFilter={hasFilter} hasMobileFilter={hasMobileFilter} />
+    // bg-cyan-100 <-- blue color I like bg-black-white shadow-box-shadow-background bg-cover
+    <div className={`${className} h-[100vh]`}>
+      <Header
+        hasFilter={hasFilter}
+        hasMobileFilter={hasMobileFilter}
+        hasBackButton={hasBackButton}
+      />
       <section>{children}</section>
       <Footer />
     </div>
@@ -21,4 +31,5 @@ export type PageLayoutProps = {
   className?: any;
   hasFilter?: any;
   hasMobileFilter?: any;
+  hasBackButton?: any;
 };
