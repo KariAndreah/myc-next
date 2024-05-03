@@ -11,8 +11,8 @@ const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
     googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
   });
 
-  const micLat = Number(mics.mic?.mic_address.latitude);
-  const micLong = Number(mics.mic?.mic_address.longitude);
+  const micLat = Number(mics?.mic?.mic_address.latitude);
+  const micLong = Number(mics?.mic?.mic_address.longitude);
   const position = { lat: micLat, lng: micLong };
 
   const containerStyle = {
@@ -45,7 +45,7 @@ const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
           latitude={mics.mic?.mic_address.latitude}
           longitude={mics.mic?.mic_address.longitude}
           name={mics.mic?.name}
-          venue={mics?.mic_address.venue}
+          venue={mics?.mic.mic_address.venue}
           day={mics.mic?.day}
           time={changeTime(mics.mic?.start_time)}
           cost={mics.mic?.cost_id === 1 ? 'Free' : mics.mic?.mic_cost.cost_amount}

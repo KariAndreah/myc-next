@@ -1,10 +1,10 @@
 'use client';
 
 import { useContext } from 'react';
-import MicMap2 from '../map/MicMapLoad';
 import MicCard from '../mic/MicCard';
 import PageLayout from '../pagelayout/PageLayout';
 import { MicListingContext } from '@/lib/context/MicListingContext';
+import MicMapLoad from '../map/MicMapLoad';
 // import ChatPagination2 from '../pagination/ChatPagination2';
 
 export function MicListingPage2() {
@@ -15,7 +15,7 @@ export function MicListingPage2() {
     <PageLayout className="marker:pb-16" hasFilter hasMobileFilter>
       <MicCard />
       {/* <ChatPagination2 /> */}
-      <MicMap2 mics={mics} />
+      <MicMapLoad mics={mics} />
     </PageLayout>
   );
 }

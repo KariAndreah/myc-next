@@ -5,7 +5,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import InfoMarker from './InfoMarker';
 import changeTime from '@/lib/utils/changeTime';
 
-const MicMapLoad = ({ mics }: MicMapLoad) => {
+const MicMapLoad = ({ mics }: MicMapLoadProps) => {
   const { isLoaded } = useJsApiLoader({
     id: `${process.env.NEXT_PUBLIC_MAP_ID}`,
     googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
@@ -55,6 +55,6 @@ const MicMapLoad = ({ mics }: MicMapLoad) => {
 
 export default MicMapLoad;
 
-export type MicMapLoad = {
+export type MicMapLoadProps = {
   mics: any;
 };
