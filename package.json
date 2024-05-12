@@ -17,7 +17,7 @@
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "export": "npm run build && next export && mv out _static"
+    "export": "npm run build && next export -o _static"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
