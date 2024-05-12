@@ -5,6 +5,7 @@ import { createContext, useEffect } from 'react';
 import { TbMicrophoneOff } from 'react-icons/tb';
 import { useMics } from '../hooks/useMics';
 import { ClearQuery, GetQuery, SetPagination, SetQuery, useQuery } from '../hooks/useQuery';
+// import PageLayout from '@/components/pagelayout/PageLayout';
 
 export const MicListingContext = createContext<MicListingContextState>({
   mics: undefined,
@@ -12,6 +13,7 @@ export const MicListingContext = createContext<MicListingContextState>({
   getQuery: () => null,
   setQuery: () => null,
   setPagination: () => null,
+  isLoading: false,
 });
 
 export const MicListingContextProvider = ({ children }: MicListingContextProps) => {
@@ -57,7 +59,17 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   return (
     <MicListingContext.Provider
-      value={{ mics: data, refetch, getQuery, clearQuery, setPagination, setQuery, params, error }}
+      value={{
+        mics: data,
+        refetch,
+        getQuery,
+        clearQuery,
+        setPagination,
+        setQuery,
+        params,
+        error,
+        isLoading,
+      }}
     >
       {children}
     </MicListingContext.Provider>
@@ -69,6 +81,7 @@ type MicListingContextState = {
   mics?: any;
   refetch?: any;
   error?: any;
+  isLoading: any;
   // setQuery: SetQuery;
   // getQuery: GetQuery;
   params?: any;
