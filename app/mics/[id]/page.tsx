@@ -3,7 +3,12 @@ import { MicDetailPage2 } from '@/components/micdetailpage/MicDetailPage';
 import { MicDetailContextProvider } from '@/lib/context/MicDetailContext';
 
 export function generateStaticParams() {
-  return [{ id: '1' }, { id: '2' }, { id: '3' }];
+  const totalMics = Array.from(Array(1000).keys());
+  const openMic = totalMics.map((mic: any) => ({
+    id: mic.toString(),
+  }));
+
+  return openMic;
 }
 
 export default function Page() {
