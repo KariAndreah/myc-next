@@ -1,5 +1,8 @@
+'use client';
+
 import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import router from 'next/router';
 import classes from './Footer.module.css';
 import '@mantine/core/styles.css';
 
@@ -15,7 +18,10 @@ const Footer = () => {
       key={link.label}
       href={link.link}
       lh={1}
-      onClick={(event) => event.preventDefault()}
+      onClick={(event) => {
+        event.preventDefault();
+        router.push(link.link);
+      }}
       size="sm"
     >
       {link.label}

@@ -57,11 +57,11 @@ const MicPage = () => {
 
   console.log('This is on the PAGE', mics);
 
-  console.log('MicPage: Mic host is passing', mics.mic.host_mics);
+  // console.log('MicPage: Mic host is passing', mics?.mic.host_mics);
 
   // const hostLoop = mics?.mic.host_mics.map((x: any) => x.mic_host.first_host);
 
-  const hostLoop = mics?.mic.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
+  const hostLoop = mics?.mic?.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
 
   console.log('MicPage: Are these the hosts?', hostLoop);
 
@@ -72,7 +72,7 @@ const MicPage = () => {
       </div> */}
       <Container fluid className="flex flex-col-reverse md:flex-row p-3 pb-6 bg-white ">
         <div className="flex flex-row md:flex-col pt-6 pl-0 lg:pl-2 pr-6 border-none md:border-[slate-500] md:border-solid border-r-2 text-base md:text-3xl ">
-          <p className="pr-1 font-bold pl-4 md:pl-0">{capitalizeDay(mic.day.toString())}</p>
+          <p className="pr-1 font-bold pl-4 md:pl-0">{capitalizeDay(mic?.day.toString())}</p>
           <p className="pr-1">{changeTime(mic?.start_time)}</p>
           <p className="font-semibold pt-6">{mic?.schedule}</p>
           <p className="font-semibold text-base md:text-xl">{mic?.mic_occurrence?.schedule}</p>
