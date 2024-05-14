@@ -19,8 +19,8 @@ export const Title = () => (
         </span>{' '}
       </span>
     </h1>
-    <h1 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
+    <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
       The easiest way to find comedy open mics in the 5 Boroughs
-    </h1>
+    </h2>
   </div>
 );
