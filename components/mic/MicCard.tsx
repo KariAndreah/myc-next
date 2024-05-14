@@ -9,6 +9,7 @@ import '@mantine/core/styles.css';
 import changeTime from '@/lib/utils/changeTime';
 import ChatPagination2 from '../pagination/ChatPagination2';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
+import { SearchResults } from './SearchResults';
 
 const MicCard = () => {
   const { mics, error } = useContext(MicListingContext);
@@ -74,15 +75,15 @@ const MicCard = () => {
     >
       <div className="flex flex-row gap-3 lg:gap-10 ">
         <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]   text-base">
-          <p className="pr-1 font-bold">{capitalizeDay(mic.day.toString())}</p>
+          <p className="pr-1 font-bold">{capitalizeDay(mic?.day.toString())}</p>
           <p>{changeTime(mic?.start_time)}</p>
           <p className="text-slate-[700] text-sm pt-10">{mic?.mic_occurrence?.schedule}</p>
         </div>
         <div className="">
           <div className="flex whitespace-wrap text-[slate-700]font-semibold group-hover:text-blue-700 ">
-            <h1 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
+            <h2 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
               {mic?.name}
-            </h1>
+            </h2>
           </div>
           <div className="pr-1 text-slate-700 font-bold">{mic.mic_address.venue}</div>
           <div className="flex flex-row flex-wrap text-green-700 text-base">
@@ -100,6 +101,7 @@ const MicCard = () => {
   ));
   return (
     <div className="flex flex-col justify-between p-6 pt-40 lg:pt-48 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
+      <SearchResults />
       <div className="flex flex-col gap-2">{openMic}</div>
       <div className="flex w-auto lg:w-[50vw] justify-center pt-16">
         <ChatPagination2 />

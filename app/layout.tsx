@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata = {
-  title: 'Welcome to OpenMYC: NYC Comedy Open Mic Search',
+  title: 'OpenMYC: NYC Comedy Open Mic Search',
   description:
     'Find New York City comedy open mics at OpenMyc. OpenMyc is a Search Engine for comedy open mics in Manhattan, Brooklyn, Bronx, Queens and Staten Island.',
 };
