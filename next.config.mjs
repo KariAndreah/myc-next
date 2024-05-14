@@ -6,7 +6,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 export default withBundleAnalyzer({
   reactStrictMode: true,
-  output: 'export',
+  // output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
