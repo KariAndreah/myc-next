@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
     "typecheck": "tsc --noEmit",
     "lint": "next lint && npm run lint:stylelint",
     "lint:stylelint": "stylelint '**/*.css' --cache",
