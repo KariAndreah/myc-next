@@ -110,7 +110,7 @@ const SearchCard = () => {
 
   return (
     <div className="w-full md:max-w-4xl pb-12">
-      <div className="flex flex-col mx-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-6 gap-4 mt-4 bg-white">
+      <div className="flex flex-col mx-4 shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-6 gap-4 mt-4 bg-white">
         <div className="flex flex-col md:flex-row gap-4 md:mb-2 md:items-center">
           <div className="md:w-[35%]">
             <BoroughSelect value={borough} setValue={setBorough} />

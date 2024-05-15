@@ -14,9 +14,9 @@ export const Title = () => (
     <h1 className="font-black text-3xl lg:text-5xl md:text-4xl text-center">
       <span className=" pr-1">
         NYC Open{' '}
-        <span className="inherit bg-gradient-to-r from-blue-400 to-orange-600 inline-block text-transparent bg-clip-text">
+        <h2 className="inherit bg-gradient-to-r from-blue-400 to-orange-600 inline-block text-transparent bg-clip-text">
           Mic Search
-        </span>{' '}
+        </h2>
       </span>
     </h1>
     <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
