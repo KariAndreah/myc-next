@@ -31,7 +31,7 @@ module.exports = {
         'nyc-bridge': "url('../public/images/patrick-tomasso-SVVTZtTGyaU-unsplash.jpg')",
         'nyc-williamsburg': "url('../public/images/toms-rits.jpg')",
         'nyc-bridge2': "url('../public/images/juan-di.jpg')",
-        'black-white': "url('../public/opaque-modified.jpg')",
+        'black-white': "url('../public/opaque-modified.png')",
       },
     },
     boxShadow: {
