@@ -54,7 +54,7 @@ export const MicListingContextProvider = ({ children }: MicListingContextProps) 
 
   console.log('MIC LISTING RESPONSE ', data, isLoading);
 
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching mics</div>;
 
   return (

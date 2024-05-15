@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from 'react';
-import { Container } from '@mantine/core';
+import { Container, Loader } from '@mantine/core';
 import '@mantine/core/styles.css';
 // import { TbMicrophoneOff } from 'react-icons/tb';
 import { TbMicrophoneOff } from 'react-icons/tb';
@@ -11,7 +11,7 @@ import changeTime from '@/lib/utils/changeTime';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
 
 const MicPage = () => {
-  const { mics } = useContext(MicDetailContext);
+  const { mics, isLoading } = useContext(MicDetailContext);
   // console.log('Need the context MIC DETAILS', mics.mics[0].name);
   // console.log(mics);
 
@@ -26,8 +26,9 @@ const MicPage = () => {
 
   if (!mics) {
     return (
-      <div className="p-32">
-        <h1>Loading ...</h1>
+      <div className="flex justify-center">
+        <Loader color="blue" />
+        <h1>...Loading</h1>
       </div>
     );
   }
@@ -36,9 +37,19 @@ const MicPage = () => {
 
   if (mics?.totalMics === 0) {
     return (
-      <div className="p-32">
+      <div className="flex p-32 justify-center">
         <TbMicrophoneOff size={32} />
         <h1>No mics Found</h1>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Loader color="blue" />
+        {/* <TbMicrophoneOff size={32} />
+        <h1>No mics Found</h1> */}
       </div>
     );
   }

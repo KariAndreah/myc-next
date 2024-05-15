@@ -1,7 +1,8 @@
 'use client';
 
-import { TbMicrophoneOff } from 'react-icons/tb';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { Loader } from '@mantine/core';
 import InfoMarker from './InfoMarker';
 import changeTime from '@/lib/utils/changeTime';
 
@@ -21,8 +22,8 @@ const MicMapLoad = ({ mics }: MicMapLoadProps) => {
   if (mics?.totalMics === 0) {
     return (
       <div className="p-32">
-        <TbMicrophoneOff size={32} />
-        <h1>No mics Found</h1>
+        <Loader color="blue" />
+        <h1>... Loading</h1>
       </div>
     );
   }

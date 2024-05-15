@@ -2,17 +2,16 @@
 
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
-import { Card } from '@mantine/core';
-import { TbMicrophoneOff } from 'react-icons/tb';
+import { Card, Loader } from '@mantine/core';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-import '@mantine/core/styles.css';
 import changeTime from '@/lib/utils/changeTime';
 import ChatPagination2 from '../pagination/ChatPagination2';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
 import { SearchResults } from './SearchResults';
 
 const MicCard = () => {
-  const { mics, error } = useContext(MicListingContext);
+  const { mics, error, isLoading } = useContext(MicListingContext);
   console.log('Need the context', mics);
   // console.log(mics);
 
@@ -58,8 +57,19 @@ const MicCard = () => {
   if (mics?.totalMics === 0) {
     return (
       <div className="p-32">
-        <TbMicrophoneOff size={32} />
-        <h1>No mics Found</h1>
+        <Loader color="blue" />
+        {/* <TbMicrophoneOff size={32} />
+        <h1>No mics Found</h1> */}
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="p-32">
+        <Loader color="blue" />
+        {/* <TbMicrophoneOff size={32} />
+        <h1>No mics Found</h1> */}
       </div>
     );
   }
@@ -101,10 +111,10 @@ const MicCard = () => {
   ));
   return (
     <div className="flex flex-col justify-between p-6 pt-36 lg:pt-48 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
-      <SearchResults />
+      {mics && <SearchResults />}
       <div className="flex flex-col gap-2">{openMic}</div>
       <div className="flex w-auto lg:w-[50vw] justify-center pt-16">
-        <ChatPagination2 />
+        {mics && <ChatPagination2 />}
       </div>
     </div>
   );

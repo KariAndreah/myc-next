@@ -11,6 +11,7 @@ export const MicDetailContext = createContext<MicDetailContextState>({
   clearQuery: () => null,
   getQuery: () => null,
   setQuery: () => null,
+  isLoading: false,
 });
 
 export const MicDetailContextProvider = ({ children }: MicDetailContextProps) => {
@@ -52,7 +53,7 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   if (isError) return <div>Error fetching mic</div>;
 
   return (
-    <MicDetailContext.Provider value={{ mics: data, refetch }}>
+    <MicDetailContext.Provider value={{ mics: data, refetch, isLoading }}>
       {children}
     </MicDetailContext.Provider>
   );
@@ -71,6 +72,7 @@ type MicDetailContextState = {
   clearQuery?: ClearQuery;
   getQuery?: GetQuery;
   setQuery?: SetQuery;
+  isLoading: any;
 };
 
 type MicDetailContextProps = {
