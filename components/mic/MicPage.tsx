@@ -109,9 +109,31 @@ const MicPage = () => {
             <p>{mic?.host_mics[0]?.first_host}</p>
             <p>{hostLoop}</p>
           </div>
-          <div className="flex flex-row px-4 pt-2">
-            <p className="pr-1 font-bold">Signup: </p>
-            <p>{mic?.signup_instructions.instructions}</p>
+          <div className="flex flex-col px-4 pt-2">
+            <div className="flex">
+              <p className="pr-1 font-bold">Signup: </p>
+              <p>{mic?.signup_instructions.instructions}</p>
+            </div>
+            {mic?.email_address && (
+              <div className="flex">
+                <p>Email address:</p>
+                <p>{mic?.email_address}</p>
+              </div>
+            )}
+            {mic?.instagram && (
+              <div className="flex">
+                <p>Instagram:</p>
+                <p>{mic?.instagram}</p>
+              </div>
+            )}
+            {mic?.website && (
+              <div className="flex text-base">
+                <p className="font-bold pr-1">Website:</p>
+                <p>
+                  <a href={mic?.website}>{mic?.website}</a>
+                </p>
+              </div>
+            )}
           </div>
         </div>
         {/* <div>

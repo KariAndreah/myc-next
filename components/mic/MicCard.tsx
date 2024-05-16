@@ -110,7 +110,7 @@ const MicCard = () => {
     </Card>
   ));
   return (
-    <div className="flex flex-col justify-between p-6 pt-36 lg:pt-48 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
+    <div className="flex flex-col justify-between p-6 pt-28 lg:pt-48 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
       {mics && <SearchResults />}
       <div className="flex flex-col gap-2">{openMic}</div>
       <div className="flex w-auto lg:w-[50vw] justify-center pt-16">
