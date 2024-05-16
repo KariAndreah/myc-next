@@ -55,7 +55,7 @@ export const SearchResults = () => {
   }
   const startPage = 1 + (paramsPage - 1) * 10;
   let endPage = Number(paramsPage) * 10;
-  if (Number(mics.totalMics) < endPage) {
+  if (Number(mics?.totalMics) < endPage) {
     endPage = mics.totalMics;
   }
 

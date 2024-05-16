@@ -25,7 +25,7 @@ const MicPage = () => {
   //   return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
   // }
 
-  if (!mics) {
+  if (!mics || isLoading) {
     return (
       <div className="flex justify-center">
         <Loader color="blue" />
@@ -39,16 +39,6 @@ const MicPage = () => {
       <div className="flex p-32 justify-center">
         <TbMicrophoneOff size={32} />
         <h1>No mics Found</h1>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center">
-        <Loader color="blue" />
-        {/* <TbMicrophoneOff size={32} />
-        <h1>No mics Found</h1> */}
       </div>
     );
   }

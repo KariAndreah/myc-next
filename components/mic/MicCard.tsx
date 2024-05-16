@@ -13,28 +13,8 @@ import NoMicFound from '../not-found/NoMicFound';
 
 const MicCard = () => {
   const { mics, error, isLoading } = useContext(MicListingContext);
-  console.log('Need the context', mics);
-  // console.log(mics);
 
   const router = useRouter();
-
-  // if (mics === undefined) {
-  //   return (
-  //     <div className="p-32">
-  //       <h1>Loading ...</h1>
-  //     </div>
-  //   );
-  // }
-
-  // if (mics.message === 'No mics found') {
-  //   return (
-  //     <div className="p-32 flex flex-col items-center">
-  //       <h1 className="text-red-600">404 ... </h1>
-  //       <TbMicrophoneOff size={64} color="rgb(220 38 38)" />
-  //       <p className="text-red-600">No Mics Found</p>
-  //     </div>
-  //   );
-  // }
 
   if (error) {
     return (
@@ -44,15 +24,13 @@ const MicCard = () => {
     );
   }
 
-  // if (mics.has('message') === true) {
-  //   return <div>No mics</div>;
-  // }
-
-  // let mic_cost: any;
-
-  // if (mics.mics[0].cost_id === 1) {
-  //   mic_cost = 'Free';
-  // }
+  if (isLoading) {
+    return (
+      <div className="p-32">
+        <Loader color="blue" />
+      </div>
+    );
+  }
 
   if (mics?.totalMics === 0) {
     return (
@@ -62,12 +40,10 @@ const MicCard = () => {
     );
   }
 
-  if (isLoading) {
+  if (mics?.mics.length === 0) {
     return (
-      <div className="p-32">
-        <Loader color="blue" />
-        {/* <TbMicrophoneOff size={32} />
-        <h1>No mics Found</h1> */}
+      <div className="flex justify-center pt-36">
+        <NoMicFound />
       </div>
     );
   }

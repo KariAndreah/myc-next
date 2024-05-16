@@ -2,7 +2,6 @@
 
 // import { TbMicrophoneOff } from 'react-icons/tb';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Loader } from '@mantine/core';
 import InfoMarker from './InfoMarker';
 import changeTime from '@/lib/utils/changeTime';
 
@@ -19,17 +18,12 @@ const MicMapLoad = ({ mics, isLoading }: MicMapLoadProps) => {
     height: '100%',
   };
 
-  if (mics?.totalMics === 0) {
+  if (isLoading) {
     return <></>;
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center p-32">
-        <Loader color="blue" />
-        <h1>... Loading</h1>
-      </div>
-    );
+  if (mics?.mics.length === 0) {
+    return <></>;
   }
 
   const micPins = mics?.mics?.map((mic: any) => (

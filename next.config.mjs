@@ -5,7 +5,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 export default withBundleAnalyzer({
-  reactStrictMode: true,
+  reactStrictMode: false,
   // output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
