@@ -4,7 +4,7 @@ import '@mantine/core/styles.css';
 
 const SearchButton = ({ onClick }: SearchButtonProps) => (
   <Button size="md" fullWidth leftSection={<TbSearch size={20} />} onClick={onClick}>
-    Search for Mics
+    Search for mics
   </Button>
 );
 

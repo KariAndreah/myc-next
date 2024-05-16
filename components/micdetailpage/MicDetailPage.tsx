@@ -12,7 +12,7 @@ export function MicDetailPage2() {
   console.log('Mic Detail Page, Mic Detail Context:', mics);
 
   return (
-    <PageLayout className="h-[100%]" hasBackButton>
+    <PageLayout className="h-[100%]">
       <MicPage />
       <MicIndividualMapLoad mics={mics} />
     </PageLayout>
