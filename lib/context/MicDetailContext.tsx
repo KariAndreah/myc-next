@@ -39,7 +39,7 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
     // ...
   }, [params]);
 
-  console.log('Mic Detail Context Works', data);
+  // console.log('Mic Detail Context Works', data);
 
   if (!isLoading && !data?.mics) {
     <div className="p-32 flex flex-col">
@@ -49,7 +49,7 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
     </div>;
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching mic</div>;
 
   return (

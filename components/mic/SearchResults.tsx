@@ -47,9 +47,24 @@ export const SearchResults = () => {
     paramsFree = 'Free';
   }
 
+  let paramsPage: any;
+  if (params.get('pageNo')) {
+    paramsPage = params.get('pageNo');
+  } else {
+    paramsPage = 1;
+  }
+  const startPage = 1 + (paramsPage - 1) * 10;
+  let endPage = Number(paramsPage) * 10;
+  if (Number(mics.totalMics) < endPage) {
+    endPage = mics.totalMics;
+  }
+
+  const pagingString = `${startPage}-${endPage} of `;
+
   return (
     <h1 className="text-base pb-2">
-      {mics?.totalMics} {paramsFree} Open Mics in {boroughsArray.toString()}
+      {pagingString}
+      {mics?.totalMics} {paramsFree} mics in {boroughsArray.toString()}
       {daysArray}
       {timeArray}
     </h1>
