@@ -91,7 +91,7 @@ const Filter = () => {
     free,
   };
 
-  console.log('Input Terms from Filter', inputTerms);
+  // console.log('Input Terms from Filter', inputTerms);
 
   const handleSearch = () => {
     console.log(free);
@@ -105,8 +105,8 @@ const Filter = () => {
         <DaySelect value={day} setValue={setDay} />
         <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START AFTER" />
         <FreeSwitch checked={free} setChecked={setFree} />
-        <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
-          Search
+        <Button onClick={handleSearch} leftSection={<TbSearch size={20} />}>
+          Search for mics
         </Button>
       </Container>
     </header>

@@ -13,7 +13,7 @@ import { SearchResults } from './SearchResults';
 
 const MicCard = () => {
   const { mics, error, isLoading } = useContext(MicListingContext);
-  console.log('Need the context', mics);
+  // console.log('Need the context', mics);
   // console.log(mics);
 
   const router = useRouter();
@@ -43,17 +43,6 @@ const MicCard = () => {
       </div>
     );
   }
-
-  console.log('Mics in the MicCard', mics);
-  // if (mics.has('message') === true) {
-  //   return <div>No mics</div>;
-  // }
-
-  // let mic_cost: any;
-
-  // if (mics.mics[0].cost_id === 1) {
-  //   mic_cost = 'Free';
-  // }
 
   if (mics?.totalMics === 0) {
     return (

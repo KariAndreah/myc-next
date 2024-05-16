@@ -7,14 +7,14 @@ import MicPage from '../mic/MicPage';
 import MicIndividualMapLoad from '../map/MicIndividualMapLoad';
 
 export function MicDetailPage2() {
-  const { mics } = useContext(MicDetailContext);
+  const { mics, isLoading } = useContext(MicDetailContext);
 
   console.log('Mic Detail Page, Mic Detail Context:', mics);
 
   return (
     <PageLayout className="h-[100%]" hasBackButton>
       <MicPage />
-      <MicIndividualMapLoad mics={mics} />
+      <MicIndividualMapLoad mics={mics} isLoading={isLoading} />
     </PageLayout>
   );
 }
