@@ -13,7 +13,7 @@ import { SearchResults } from './SearchResults';
 
 const MicCard = () => {
   const { mics, error, isLoading } = useContext(MicListingContext);
-  // console.log('Need the context', mics);
+  console.log('Need the context', mics);
   // console.log(mics);
 
   const router = useRouter();

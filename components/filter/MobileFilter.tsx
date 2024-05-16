@@ -59,7 +59,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   } else {
     dayQuery = day;
   }
-  if (startTime === '' || null) {
+  if (startTime === '') {
     timeQuery = '00:00:00';
   } else {
     timeQuery = startTime;
@@ -72,7 +72,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     free,
   };
 
-  // console.log('Input terms from Mobile Filters:', inputTerms);
+  console.log('Input terms from Mobile Filters:', inputTerms);
 
   const handleSearch = () => {
     console.log('Mobile filter', free);
