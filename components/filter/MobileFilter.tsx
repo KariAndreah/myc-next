@@ -59,7 +59,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   } else {
     dayQuery = day;
   }
-  if (startTime === '') {
+  if (startTime === '' || null) {
     timeQuery = '00:00:00';
   } else {
     timeQuery = startTime;

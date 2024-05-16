@@ -9,6 +9,7 @@ import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import changeTime from '@/lib/utils/changeTime';
 // import { BackButton } from '../buttons/BackButton';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
+import NoMicFound from '../not-found/NoMicFound';
 
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
@@ -33,8 +34,6 @@ const MicPage = () => {
     );
   }
 
-  console.log('This is the mics in micPage', mics);
-
   if (mics?.totalMics === 0) {
     return (
       <div className="flex p-32 justify-center">
@@ -50,6 +49,14 @@ const MicPage = () => {
         <Loader color="blue" />
         {/* <TbMicrophoneOff size={32} />
         <h1>No mics Found</h1> */}
+      </div>
+    );
+  }
+
+  if (mics.mic === null) {
+    return (
+      <div className="flex justify-center pt-36">
+        <NoMicFound />
       </div>
     );
   }
