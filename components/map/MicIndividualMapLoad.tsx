@@ -1,7 +1,6 @@
 'use client';
 
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Loader } from '@mantine/core';
 import changeTime from '@/lib/utils/changeTime';
 import InfoMarker from './InfoMarker';
 
@@ -25,11 +24,7 @@ const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
   }
 
   if (!mics) {
-    return (
-      <div className="flex justify-center">
-        <Loader color="blue" />
-      </div>
-    );
+    return <></>;
   }
 
   if (mics?.mic === null) {

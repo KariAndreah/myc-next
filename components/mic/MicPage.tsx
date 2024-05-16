@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import { Container, Loader } from '@mantine/core';
 import '@mantine/core/styles.css';
 // import { TbMicrophoneOff } from 'react-icons/tb';
-import { TbMicrophoneOff } from 'react-icons/tb';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import changeTime from '@/lib/utils/changeTime';
 // import { BackButton } from '../buttons/BackButton';
@@ -13,32 +12,19 @@ import NoMicFound from '../not-found/NoMicFound';
 
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
-  // console.log('Need the context MIC DETAILS', mics.mics[0].name);
-  // console.log(mics);
-
-  // const mic = mics.mics[0];
-
-  // This is causing an error I don't like:
-  // function formatTime(timeString: { split: (arg0: string) => [any, any] }) {
-  //   const [hourString, minute] = timeString.split(':');
-  //   const hour = +hourString % 24;
-  //   return `${hour % 12 || 12}:${minute}${hour < 12 ? 'AM' : 'PM'}`;
-  // }
 
   if (!mics || isLoading) {
     return (
-      <div className="flex justify-center">
+      <div className="flex pt-36 justify-center">
         <Loader color="blue" />
-        <h1>...Loading</h1>
       </div>
     );
   }
 
   if (mics?.totalMics === 0) {
     return (
-      <div className="flex p-32 justify-center">
-        <TbMicrophoneOff size={32} />
-        <h1>No mics Found</h1>
+      <div className="flex pt-36 justify-center">
+        <NoMicFound />
       </div>
     );
   }
@@ -51,23 +37,7 @@ const MicPage = () => {
     );
   }
 
-  // if (mics.message === 'No mics found') {
-  //   return (
-  //     <div className="p-32 flex flex-col">
-  //       <h1>404 ... </h1>
-  //       <TbMicrophoneOff size={32} />
-  //       <p>No Mics Found</p>
-  //     </div>
-  //   );
-  // }
-
   const { mic } = mics;
-
-  console.log('This is on the PAGE', mics);
-
-  // console.log('MicPage: Mic host is passing', mics?.mic.host_mics);
-
-  // const hostLoop = mics?.mic.host_mics.map((x: any) => x.mic_host.first_host);
 
   const hostLoop = mics?.mic?.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
 
