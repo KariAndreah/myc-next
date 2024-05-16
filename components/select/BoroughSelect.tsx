@@ -6,7 +6,7 @@ import '@mantine/core/styles.css';
 
 const BoroughSelect = ({ value, setValue }: BoroughSelectProps) => (
   <MultiSelect
-    label="BOROUGH"
+    label="Borough"
     placeholder="Pick borough"
     data={[
       { value: 'manhattan', label: 'Manhattan' },

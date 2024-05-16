@@ -5,7 +5,7 @@ const FreeSwitch = ({ checked, setChecked }: FreeSwitchProps) => (
   <Switch
     defaultChecked
     labelPosition="left"
-    label="FREE"
+    label="Free"
     onChange={(event) => setChecked(event.currentTarget.checked)}
     checked={checked}
   />

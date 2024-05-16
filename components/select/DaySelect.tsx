@@ -6,7 +6,7 @@ import '@mantine/core/styles.css';
 
 const DaySelect = ({ value, setValue }: DaySelectProps) => (
   <Select
-    label="DAY"
+    label="Day"
     placeholder="Pick day"
     value={value}
     onChange={setValue}

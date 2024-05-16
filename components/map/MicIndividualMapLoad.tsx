@@ -38,6 +38,10 @@ const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
     );
   }
 
+  if (mics?.mic === null) {
+    return <></>;
+  }
+
   return isLoaded ? (
     <div className="flex w-[100vw] top-auto  h-[65vh] lg:fixed lg:top-0 lg:right-0 lg:w-[50vw] lg:h-[95vh] pb-16 lg:pb-0">
       <GoogleMap mapContainerStyle={containerStyle} center={position} zoom={10}>

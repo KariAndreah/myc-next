@@ -103,9 +103,9 @@ const Filter = () => {
       <Container size="md" className=" flex h-[rem(56px)] space-between items-center py-3 gap-8">
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
-        <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START AFTER" />
+        <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start After" />
         <FreeSwitch checked={free} setChecked={setFree} />
-        <Button onClick={handleSearch} rightSection={<TbSearch size={20} />}>
+        <Button onClick={handleSearch} leftSection={<TbSearch size={20} />}>
           Search
         </Button>
       </Container>
