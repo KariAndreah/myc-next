@@ -91,7 +91,7 @@ const Filter = () => {
     free,
   };
 
-  // console.log('Input Terms from Filter', inputTerms);
+  console.log('Input Terms from Filter', inputTerms);
 
   const handleSearch = () => {
     console.log(free);

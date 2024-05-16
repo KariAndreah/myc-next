@@ -4,7 +4,6 @@ import { Button, Group } from '@mantine/core';
 // import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { MicListingContext } from '@/lib/context/MicListingContext';
-import '@mantine/core/styles.css';
 
 const ChatPagination = ({ currentPage, totalPages }: ChatPaginationProps) => {
   const { params } = useContext(MicListingContext);

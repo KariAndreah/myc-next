@@ -3,7 +3,6 @@
 import { Button } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import { TbArrowLeft } from 'react-icons/tb';
-import '@mantine/core/styles.css';
 
 export function BackButton() {
   const router = useRouter();
