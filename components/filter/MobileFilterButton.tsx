@@ -2,6 +2,7 @@ import { TbSearch } from 'react-icons/tb';
 import { Button, Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import MobileFilter from './MobileFilter';
+import '@mantine/core/styles.css';
 
 const MobileFilterButton = () => {
   const [opened, { open, close }] = useDisclosure(false);
