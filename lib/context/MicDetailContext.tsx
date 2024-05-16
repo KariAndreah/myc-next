@@ -52,11 +52,9 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching mic</div>;
 
-  const micNotExist = data?.mic === null && <div>Hi</div>;
-
   return (
     <MicDetailContext.Provider value={{ mics: data, refetch, isLoading }}>
-      {children || micNotExist}
+      {children}
     </MicDetailContext.Provider>
   );
 };

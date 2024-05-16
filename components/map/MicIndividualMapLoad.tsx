@@ -6,7 +6,7 @@ import { Loader } from '@mantine/core';
 import changeTime from '@/lib/utils/changeTime';
 import InfoMarker from './InfoMarker';
 
-const MicIndividualMapLoad = ({ mics, isLoading }: MicIndividualMapLoadType) => {
+const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
   const { isLoaded } = useJsApiLoader({
     id: `${process.env.NEXT_PUBLIC_MAP_ID}`,
     googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
@@ -30,24 +30,12 @@ const MicIndividualMapLoad = ({ mics, isLoading }: MicIndividualMapLoadType) => 
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center p-32">
-        <Loader color="blue" />
-      </div>
-    );
-  }
-
   if (!mics) {
     return (
       <div className="flex justify-center">
         <Loader color="blue" />
       </div>
     );
-  }
-
-  if (mics?.mic === null) {
-    return <></>;
   }
 
   return isLoaded ? (
@@ -73,5 +61,4 @@ export default MicIndividualMapLoad;
 
 export type MicIndividualMapLoadType = {
   mics: any;
-  isLoading: any;
 };

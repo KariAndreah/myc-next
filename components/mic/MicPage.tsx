@@ -9,7 +9,6 @@ import { MicDetailContext } from '@/lib/context/MicDetailContext';
 import changeTime from '@/lib/utils/changeTime';
 // import { BackButton } from '../buttons/BackButton';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
-import NoMicFound from '../not-found/NoMicFound';
 
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
@@ -65,14 +64,6 @@ const MicPage = () => {
   //   );
   // }
 
-  if (mics?.mic === null) {
-    return (
-      <div className="pt-32">
-        <NoMicFound />
-      </div>
-    );
-  }
-
   const { mic } = mics;
 
   console.log('This is on the PAGE', mics);
@@ -125,18 +116,18 @@ const MicPage = () => {
             </div>
             {mic?.email_address && (
               <div className="flex">
-                <p className="font-bold pr-1">Email address:</p>
+                <p>Email address:</p>
                 <p>{mic?.email_address}</p>
               </div>
             )}
             {mic?.instagram && (
               <div className="flex">
-                <p className="font-bold pr-1">Instagram:</p>
+                <p>Instagram:</p>
                 <p>{mic?.instagram}</p>
               </div>
             )}
             {mic?.website && (
-              <div className="flex ">
+              <div className="flex text-base">
                 <p className="font-bold pr-1">Website:</p>
                 <p>
                   <a href={mic?.website}>{mic?.website}</a>

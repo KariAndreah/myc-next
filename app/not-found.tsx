@@ -9,15 +9,15 @@ const NotFound = () => (
         <h1 className="text-7xl inherit bg-gradient-to-r from-blue-400 to-orange-600 inline-block font-bold text-transparent bg-clip-text text-center">
           Oops!
         </h1>
-
         <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
-          We lost this page
-        </h2>
-        <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
-          Let me help you back
-          <a className="text-blue-400 underline pl-1 hover:decoration-dashed" href="/">
-            home.
-          </a>
+          <p>We lost this page</p>
+          <p>
+            Let me help you back
+            <a className="text-blue-400" href="/">
+              {' '}
+              home
+            </a>
+          </p>
         </h2>
       </Card>
     </div>
