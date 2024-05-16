@@ -43,7 +43,7 @@ const MicCard = () => {
     );
   }
 
-  console.log('Mics in the MicCard', mics);
+  // console.log('All Mics in the MicCard', mics);
   // if (mics.has('message') === true) {
   //   return <div>No mics</div>;
   // }
