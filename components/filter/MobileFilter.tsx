@@ -91,7 +91,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
           {/* <h1>LOOK HERE FOR Day</h1>
           <h2>{day}</h2> */}
 
-          <TimeSelect value={startTime} setValue={setStartTime} timePeriod="START AFTER" />
+          <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start after" />
           {/* <h2>{startTime}</h2> */}
           {/* <TimeSelect
               value={endTime}

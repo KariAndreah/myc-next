@@ -14,7 +14,7 @@ const NoMicFound = () => (
     <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
       <p>
         Let me help you back
-        <a className="text-blue-400 underline pl-1 hover:decoration-dashed" href="/">
+        <a className="text-blue-400 underline pl-1 hover:decoration-dashed hover:underline" href="/">
           home.
         </a>
       </p>

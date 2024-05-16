@@ -129,7 +129,7 @@ const MicPage = () => {
             )}
             {mic?.instagram && (
               <div className="flex">
-                <p>Instagram:</p>
+                <p className="font-bold pr-1">Instagram:</p>
                 <p>{mic?.instagram}</p>
               </div>
             )}

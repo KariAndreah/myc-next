@@ -43,12 +43,12 @@ const Header = ({ hasFilter, hasMobileFilter, hasBackButton }: HeaderProps) => {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <h2 className="font-extrabold whitespace-nowrap text-3xl">
+        <h2 className="font-extrabold whitespace-nowrap text-xl md:text-2xl">
           <a href="/" className="flex flex-row">
-            <h2>Open</h2>
-            <h2 className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">
+            <span>Open</span>
+            <span className="font-extrabold bg-gradient-to-r from-blue-400 to-orange-600 text-transparent bg-clip-text">
               MYC
-            </h2>
+            </span>
           </a>
         </h2>
         <HeaderDrawer opened={opened} close={close} />

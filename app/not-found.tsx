@@ -13,8 +13,7 @@ const NotFound = () => (
           <p>We lost this page</p>
           <p>
             Let me help you back
-            <a className="text-blue-400" href="/">
-              {' '}
+            <a className="text-blue-400  pl-1 hover:decoration-dashed hover:underline" href="/">
               home
             </a>
           </p>
