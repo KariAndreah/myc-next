@@ -12,21 +12,13 @@ import { SearchResults } from './SearchResults';
 import NoMicFound from '../not-found/NoMicFound';
 
 const MicCard = () => {
-  const { mics, error, isLoading } = useContext(MicListingContext);
+  const { mics, isLoading } = useContext(MicListingContext);
 
   const router = useRouter();
 
-  if (error) {
+  if (!mics || isLoading) {
     return (
-      <div className="p-32">
-        <h1>No mics Found</h1>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="p-32">
+      <div className="flex pt-36 justify-center">
         <Loader color="blue" />
       </div>
     );
@@ -83,6 +75,7 @@ const MicCard = () => {
       </div>
     </Card>
   ));
+
   return (
     <div className="flex flex-col justify-between p-6 pt-32 md:pt-40 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
       {mics && <SearchResults />}
