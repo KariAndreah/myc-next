@@ -30,9 +30,8 @@ const MicMapLoad = ({ mics, isLoading }: MicMapLoadProps) => {
 
   if (isLoading) {
     return (
-      <div className="p-32">
+      <div className="flex justify-center p-32">
         <Loader color="blue" />
-        <h1>... Loading</h1>
       </div>
     );
   }

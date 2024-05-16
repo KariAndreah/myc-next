@@ -11,13 +11,14 @@ const NotFound = () => (
         </h1>
         <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
           <p>We lost this page</p>
-          <p>
-            Let me help you back
-            <a className="text-blue-400" href="/">
-              {' '}
-              home
-            </a>
-          </p>
+          <h2 className="font-light text-2xl lg:text-4xl md:text-3xl px-2 text-center text-[#1A1F2C]">
+            <p>
+              Let me help you back
+              <a className="text-blue-400 underline pl-1 hover:decoration-dashed" href="/">
+                home.
+              </a>
+            </p>
+          </h2>
         </h2>
       </Card>
     </div>
