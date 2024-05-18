@@ -36,7 +36,10 @@ const MicCard = () => {
     <Card
       className="flex lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 group hover:cursor-pointer"
       component="div"
-      onClick={() => router.push(`/mics/${mic?.id}`)}
+      onClick={(e) => {
+        e.stopPropagation();
+        router.push(`/mics/${mic?.id}`);
+      }}
       key={mic?.id}
       color="blue"
       withBorder
