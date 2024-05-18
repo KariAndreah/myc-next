@@ -1,4 +1,4 @@
-import qs from 'query-string';
+// import qs from 'query-string';
 import { MicResponse } from '../../models/mic';
 import { request } from '../utils/request';
 // import { micResult } from '@/mocks/PrismaMicMock';
@@ -16,17 +16,17 @@ export const getIndividualMics: any = async (params: any) => {
   try {
     let micsSearch = `${params?.id}`;
 
-    const search = qs.stringify(params!, {
-      encode: true,
-      skipNull: true,
-    });
+    // const search = qs.stringify(params!, {
+    //   encode: true,
+    //   skipNull: true,
+    // });
     micsSearch = `${params?.id}`;
-    console.log('This is all cost getMics Search: ', search);
+    // console.log('This is all cost getMics Search: ', search);
     const localTest = `${process.env.NEXT_PUBLIC_API_URL}micHost?id=${micsSearch}`;
 
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
-    console.log(localTest);
+    // console.log(localTest);
     return await request(localTest);
     // return micResult;
   } catch (err) {

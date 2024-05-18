@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Container } from '@mantine/core';
+import { ActionIcon, Container } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useContext, useState } from 'react';
 import { TbSearch } from 'react-icons/tb';
@@ -99,15 +99,18 @@ const Filter = () => {
   };
 
   return (
-    <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2 ">
-      <Container size="md" className=" flex h-[rem(56px)] space-between items-center py-3 gap-8">
+    <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2">
+      <Container
+        size="md"
+        className="flex h-[rem(56px)] space-between items-center py-3 gap-8 align-middle justify-center"
+      >
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
         <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start After" />
         <FreeSwitch checked={free} setChecked={setFree} />
-        <Button onClick={handleSearch} leftSection={<TbSearch size={20} />}>
-          Search
-        </Button>
+        <ActionIcon onClick={handleSearch} size={36}>
+          <TbSearch size={20} />
+        </ActionIcon>
       </Container>
     </header>
   );
