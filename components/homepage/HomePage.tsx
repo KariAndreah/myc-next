@@ -1,5 +1,3 @@
-'use client';
-
 import SearchCard from '../searchcard/SearchCard';
 import { Title } from '../title/Title';
 import PageLayout from '../pagelayout/PageLayout';

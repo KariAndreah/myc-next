@@ -9,8 +9,6 @@ import MicIndividualMapLoad from '../map/MicIndividualMapLoad';
 export function MicDetailPage2() {
   const { mics } = useContext(MicDetailContext);
 
-  console.log('Mic Detail Page, Mic Detail Context:', mics);
-
   return (
     <PageLayout className="h-[100%]">
       <MicPage />

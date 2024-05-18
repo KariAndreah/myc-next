@@ -16,7 +16,15 @@ const MicCard = () => {
 
   const router = useRouter();
 
-  if (!mics || isLoading) {
+  if (!mics) {
+    return (
+      <div className="flex pt-36 justify-center">
+        <Loader color="blue" />
+      </div>
+    );
+  }
+
+  if (isLoading) {
     return (
       <div className="flex pt-36 justify-center">
         <Loader color="blue" />
@@ -34,14 +42,12 @@ const MicCard = () => {
 
   const openMic = mics?.mics.map((mic: any) => (
     <Card
-      className="flex lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 group hover:cursor-pointer"
       component="div"
-      onClick={(e) => {
-        e.stopPropagation();
+      onClick={() => {
         router.push(`/mics/${mic?.id}`);
       }}
+      className="flex group  lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 hover:cursor-pointer"
       key={mic?.id}
-      color="blue"
       withBorder
     >
       <div className="flex flex-row gap-3 lg:gap-10 ">
@@ -50,7 +56,7 @@ const MicCard = () => {
           <p>{changeTime(mic?.start_time)}</p>
           <p className="text-slate-[700] text-sm pt-10">{mic?.mic_occurrence?.schedule}</p>
         </div>
-        <div className="">
+        <div>
           <div className="flex whitespace-wrap text-[slate-700]font-semibold group-hover:text-blue-700 ">
             <h2 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
               {mic?.name}

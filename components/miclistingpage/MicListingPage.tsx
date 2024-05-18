@@ -8,9 +8,8 @@ import MicMapLoad from '../map/MicMapLoad';
 // import ChatPagination2 from '../pagination/ChatPagination2';
 
 export function MicListingPage2() {
-  const { mics, params, isLoading } = useContext(MicListingContext);
+  const { mics, isLoading } = useContext(MicListingContext);
 
-  console.log('Params in the Mic Listing page:', params.toString());
   return (
     <PageLayout className="marker:pb-16" hasFilter hasMobileFilter>
       <MicCard />

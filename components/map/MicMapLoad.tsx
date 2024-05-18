@@ -1,5 +1,3 @@
-'use client';
-
 // import { TbMicrophoneOff } from 'react-icons/tb';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import InfoMarker from './InfoMarker';

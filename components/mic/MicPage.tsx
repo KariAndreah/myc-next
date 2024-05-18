@@ -13,7 +13,15 @@ import NoMicFound from '../not-found/NoMicFound';
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
 
-  if (!mics || isLoading) {
+  if (!mics) {
+    return (
+      <div className="flex pt-36 justify-center">
+        <Loader color="blue" />
+      </div>
+    );
+  }
+
+  if (isLoading) {
     return (
       <div className="flex pt-36 justify-center">
         <Loader color="blue" />
@@ -41,13 +49,8 @@ const MicPage = () => {
 
   const hostLoop = mics?.mic?.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
 
-  console.log('MicPage: Are these the hosts?', hostLoop);
-
   return (
     <div className="flex flex-col gap-6 lg:w-[50%] w-auto py-32 min-w-[300px] bg-black-white bg-cover shadow-box-shadow-background lg:min-h-[100vh]  text-slate-700">
-      {/* <div className="pl-6">
-        <BackButton />
-      </div> */}
       <Container fluid className="flex flex-col-reverse md:flex-row p-3 pb-6 bg-white ">
         <div className="flex flex-row md:flex-col pt-6 pl-0 lg:pl-2 pr-6 border-none md:border-[slate-500] md:border-solid border-r-2 text-base md:text-3xl ">
           <p className="pr-1 font-bold pl-4 md:pl-0">{capitalizeDay(mic?.day.toString())}</p>
