@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css';
 import React from 'react';
 import type { Viewport } from 'next';
-import Script from 'next/script';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import './globals.css';
@@ -39,10 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </head>
           <body>
             <MantineProvider theme={theme}>{children}</MantineProvider>
-            <Script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2688526385644878"
-            />
           </body>
         </html>
       </ReactQueryProvider>

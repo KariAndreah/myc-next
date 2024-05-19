@@ -1,5 +1,6 @@
 import React from 'react';
 import '@mantine/core/styles.css';
+import Script from 'next/script';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
@@ -20,6 +21,10 @@ function PageLayout({
       />
       <section>{children}</section>
       <Footer />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2688526385644878"
+      />
     </div>
   );
 }
