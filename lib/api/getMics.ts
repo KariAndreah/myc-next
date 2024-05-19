@@ -14,7 +14,7 @@ export const getMics: any = async (params: any) => {
     throw new Error('Missing required search params');
   }
 
-  console.log('These params are passing to getMics Hook', params);
+  // console.log('These params are passing to getMics Hook', params);
 
   let micsSearch: any = '';
 
@@ -36,11 +36,11 @@ export const getMics: any = async (params: any) => {
       skipNull: true,
     });
     micsSearch = `?${search}`;
-    console.log('micsSearch ----->', micsSearch);
-    console.log('this is what I am missing kari', process.env.NEXT_PUBLIC_API_URL);
+    // console.log('micsSearch ----->', micsSearch);
+    // console.log('this is what I am missing kari', process.env.NEXT_PUBLIC_API_URL);
 
     const localTest = `${process.env.NEXT_PUBLIC_API_URL}micTimes${micsSearch}`;
-    console.log('this is the request url Kari ', localTest);
+    // console.log('this is the request url Kari ', localTest);
     // const localTest = `${process.env.NEXT_PUBLIC_API}/mics${micsSearch}`;
     // console.log('Response from mic search in Get Mics', micsSearch);
     // console.log('getMics Request Results', await request(localTest));

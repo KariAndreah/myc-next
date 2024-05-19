@@ -17,7 +17,7 @@ const ChatPagination = ({ currentPage, totalPages }: ChatPaginationProps) => {
     } else {
       params.set('pageNo', page.toString());
     }
-    console.log('There are the params with current Page Number from Pagination', params.toString());
+    // console.log('There are the params with current Page Number from Pagination', params.toString());
     ChatPagination!(params);
   };
 

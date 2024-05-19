@@ -5,13 +5,13 @@ import { request } from '../utils/request';
 
 // You need to put the IndividualMicSearch Type back later
 export const getIndividualMics: any = async (params: any) => {
-  console.log('The params are in the getMics hook', params);
+  // console.log('The params are in the getMics hook', params);
 
   if (!params) {
     throw new Error('Missing required search params');
   }
 
-  console.log('These params are passing to getMics Hook', params);
+  // console.log('These params are passing to getMics Hook', params);
 
   try {
     let micsSearch = `${params?.id}`;

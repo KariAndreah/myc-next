@@ -12,9 +12,9 @@ function MicPagination() {
 
   const totalPages = Math.ceil(Number(mics?.totalMics) / Number(mics?.limit));
 
-  console.log('is this what Im looking for:', totalPages);
+  // console.log('is this what Im looking for:', totalPages);
 
-  console.log('This is my active Pages', activePage);
+  // console.log('This is my active Pages', activePage);
 
   // useEffect(() => {
   //   const current = new URLSearchParams(Array.from(searchParams.entries()));

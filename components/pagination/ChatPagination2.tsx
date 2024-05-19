@@ -31,9 +31,9 @@ const ChatPagination2 = () => {
     // const value = event.target.value.trim();
     // const value = current.get('pageNo');
 
-    console.log('ChatPagination2: This is the current from handleChange', current);
+    // console.log('ChatPagination2: This is the current from handleChange', current);
 
-    console.log('ChatPagination2: This is the value from handleChange', currentPage);
+    // console.log('ChatPagination2: This is the value from handleChange', currentPage);
 
     if (!currentPage) {
       current.delete('pageNo');

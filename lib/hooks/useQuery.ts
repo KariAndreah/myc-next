@@ -81,8 +81,8 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = { ...update, free: false, offset: 1, limit: 10, day: 'all', borough: 'all' };
     }
 
-    console.log('this is the update kari', update);
-    console.log('This is the Q', q);
+    // console.log('this is the update kari', update);
+    // console.log('This is the Q', q);
 
     return { ...update, ...q };
   };
@@ -109,7 +109,7 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     if (!q) {
       return null;
     }
-    console.log('This is what I am passing a q', q.toString());
+    // console.log('This is what I am passing a q', q.toString());
     return (
       router.push(`${pathname}?${q}`),
       {

@@ -25,7 +25,7 @@ export const SearchResults = () => {
 
   let daysArray: any;
 
-  console.log('Looking for this day', getAllDays);
+  // console.log('Looking for this day', getAllDays);
 
   if (getAllDays === null) {
     daysArray = '';
@@ -46,7 +46,7 @@ export const SearchResults = () => {
     timeArray = '';
   } else {
     timeArray = getStartTime;
-    console.log('this is start time');
+    // console.log('this is start time');
     timeArray = ` after ${changeTime(timeArray.toString())}`;
   }
 

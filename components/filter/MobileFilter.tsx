@@ -73,10 +73,10 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     free,
   };
 
-  console.log('Input terms from Mobile Filters:', inputTerms);
+  // console.log('Input terms from Mobile Filters:', inputTerms);
 
   const handleSearch = () => {
-    console.log('Mobile filter', free);
+    // console.log('Mobile filter', free);
     setQuery!(inputTerms);
     onSubmit();
   };
