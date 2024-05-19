@@ -14,7 +14,7 @@ const NotFoundCard = () => (
         <p>
           Let me help you back
           <a
-            className="text-blue-400 underline pl-1 hover:decoration-dashed hover:underline"
+            className="text-blue-400 underline decoration-dashed pl-1 hover:decoration-solid hover:underline"
             href="/"
           >
             home.

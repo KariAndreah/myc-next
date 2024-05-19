@@ -12,6 +12,10 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
   const getQuery: GetQuery = (q = {}) => {
     let update = {};
 
+    if (pathname === '/mics') {
+      update = { ...update, free: false, offset: 1, limit: 10, day: 'all', borough: 'all' };
+    }
+
     // Getting day param
     if (params?.has('day')) {
       update = { ...update, day: params?.get('day') };
@@ -75,10 +79,6 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
     if (params?.get('free') === 'true') {
       checkFree = 'true';
       update = { ...update, free: checkFree };
-    }
-
-    if (pathname === '/mics' && !q) {
-      update = { ...update, free: false, offset: 1, limit: 10, day: 'all', borough: 'all' };
     }
 
     // console.log('this is the update kari', update);
