@@ -14,12 +14,12 @@ const Filter = () => {
   const { params, setQuery } = useContext(MicListingContext);
 
   // Getting Borough params to auto-populate search
-  const getAllBoroughs = params.get('borough');
-  const allBoroughsArray = getAllBoroughs.split(',');
+  const getAllBoroughs = params?.get('borough');
+  const allBoroughsArray = getAllBoroughs?.split(',');
 
   let boroughsArray: any;
 
-  if (allBoroughsArray.includes('all')) {
+  if (allBoroughsArray?.includes('all')) {
     boroughsArray = [];
   } else {
     boroughsArray = allBoroughsArray;
@@ -30,18 +30,18 @@ const Filter = () => {
 
   let daysArray: any;
 
-  if (getAllDays.includes('all')) {
+  if (getAllDays?.includes('all')) {
     daysArray = '';
   } else {
     daysArray = getAllDays;
   }
 
   // const [day, setDay] = useState([]);
-  const [startTime, setStartTime] = useState(params.getAll('start-time'));
+  const [startTime, setStartTime] = useState(params?.getAll('start-time'));
   // const [borough, setBorough] = useState([]);
 
   // Getting Cost params to auto-populate search
-  const val = params.get('free') === 'true';
+  const val = params?.get('free') === 'true';
 
   // const [cost, setCost] = useState(val);
 
@@ -68,7 +68,7 @@ const Filter = () => {
   let boroughQuery: any;
   let dayQuery: any;
   let timeQuery: any;
-  if (borough.length > 0) {
+  if (borough?.length > 0) {
     boroughQuery = borough;
   } else {
     boroughQuery = 'all';

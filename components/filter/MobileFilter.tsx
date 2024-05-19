@@ -17,13 +17,14 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
 
   // console.log('This is to find all of the params', params.toString());
   const getAllBoroughs = params.get('borough');
-  const allBoroughsArray = getAllBoroughs.split(',');
+  const allBoroughsArray = getAllBoroughs?.split(',');
 
   // console.log('this is the borough Param', allBoroughsArray);
 
   let boroughsArray: any;
-
-  if (allBoroughsArray.includes('all')) {
+  if (!allBoroughsArray) {
+    boroughsArray = [];
+  } else if (allBoroughsArray.includes('all')) {
     boroughsArray = [];
   } else {
     boroughsArray = allBoroughsArray;

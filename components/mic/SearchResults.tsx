@@ -8,11 +8,13 @@ export const SearchResults = () => {
 
   // Getting Borough params to auto-populate search
   const getAllBoroughs = params.get('borough');
-  const allBoroughsArray = getAllBoroughs.split(',');
+  const allBoroughsArray = getAllBoroughs?.split(',');
 
   let boroughsArray: any;
 
-  if (allBoroughsArray.includes('all')) {
+  if (!allBoroughsArray) {
+    boroughsArray = 'NYC';
+  } else if (allBoroughsArray?.includes('all')) {
     boroughsArray = 'NYC';
   } else {
     boroughsArray = allBoroughsArray;
@@ -23,7 +25,11 @@ export const SearchResults = () => {
 
   let daysArray: any;
 
-  if (getAllDays.includes('all')) {
+  console.log('Looking for this day', getAllDays);
+
+  if (getAllDays === null) {
+    daysArray = '';
+  } else if (getAllDays?.includes('all')) {
     daysArray = '';
   } else {
     daysArray = getAllDays;
@@ -34,8 +40,9 @@ export const SearchResults = () => {
   const getStartTime = params.get('start-time');
 
   let timeArray: any;
-
-  if (getStartTime.includes('00:00:00')) {
+  if (getStartTime === null) {
+    daysArray = '';
+  } else if (getStartTime?.includes('00:00:00')) {
     timeArray = '';
   } else {
     timeArray = getStartTime;

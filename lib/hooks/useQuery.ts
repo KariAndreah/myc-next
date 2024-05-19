@@ -77,6 +77,10 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
       update = { ...update, free: checkFree };
     }
 
+    if (pathname === '/mics') {
+      update = { ...update, free: false, offset: 1, limit: 10, day: 'all', borough: 'all' };
+    }
+
     console.log('this is the update kari', update);
     console.log('This is the Q', q);
 
@@ -86,6 +90,12 @@ export const useQuery = (): [URLSearchParams, SetQuery, ClearQuery, GetQuery, Se
   const setQuery: SetQuery = (q) => {
     if (!q) {
       return null;
+    }
+
+    if (pathname === '/mics' && !q) {
+      return router.push(
+        '/mics?borough=all&day=all&start-time=00:00:00&free=false&pageNo=1&pageSize=10'
+      );
     }
 
     return (

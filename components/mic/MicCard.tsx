@@ -42,12 +42,13 @@ const MicCard = () => {
 
   const openMic = mics?.mics.map((mic: any) => (
     <Card
-      component="div"
+      component="a"
       onClick={() => {
         router.push(`/mics/${mic?.id}`);
       }}
       className="flex group  lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 hover:cursor-pointer"
       key={mic?.id}
+      href={`/mics/${mic?.id}`}
       withBorder
     >
       <div className="flex flex-row gap-3 lg:gap-10 ">
