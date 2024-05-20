@@ -98,9 +98,11 @@ const MicPage = () => {
             )}
             {mic?.website && (
               <div className="flex text-base">
-                <p className="font-bold pr-1">Website:</p>
+                <p className="font-bold pr-1 border-black">Website:</p>
                 <p>
-                  <a href={mic?.website}>{mic?.website}</a>
+                  <a className="underline decoration-dashed " href={mic?.website}>
+                    {mic?.website}
+                  </a>
                 </p>
               </div>
             )}
