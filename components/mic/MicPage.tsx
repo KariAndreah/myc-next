@@ -52,7 +52,7 @@ const MicPage = () => {
   return (
     <div className="flex flex-col gap-6 lg:w-[50%] w-auto py-32 min-w-[300px] bg-black-white bg-cover shadow-box-shadow-background lg:min-h-[100vh]  text-slate-700">
       <Container fluid className="flex flex-col-reverse md:flex-row p-3 pb-6 bg-white ">
-        <div className="flex flex-row md:flex-col pt-6 pl-0 lg:pl-2 pr-6 border-none md:border-[slate-500] md:border-solid border-r-2 text-base md:text-3xl ">
+        <div className="flex flex-row md:flex-col pt-6 pl-0 lg:pl-2 pr-6 border-none md:border-[slate-500] md:border-solid border-r-2 text-base md:text-2xl ">
           <p className="pr-1 font-bold pl-4 md:pl-0">{capitalizeDay(mic.day.toString())}</p>
           <p className="pr-1">{changeTime(mic?.start_time)}</p>
           <p className="font-semibold pt-6">{mic?.schedule}</p>
@@ -64,11 +64,11 @@ const MicPage = () => {
         </div>
         <div>
           <div className="flex flex-col text-slate-700 text-4xl pt-5 px-4 ">
-            <h1 className="font-bold">{mic?.name}</h1>
-            <h5 className="text-base">{mic?.mic_address.venue}</h5>
+            <h1 className="font-bold text-blue-700">{mic?.name}</h1>
+            <h5 className="text-base font-semibold pt-1">{mic?.mic_address.venue}</h5>
             <h6 className="text-base">{mic?.neighborhood}</h6>
           </div>
-          <div className="flex flex-row gap-1 text-blue-700 px-4 flex-wrap">
+          <div className="flex flex-row gap-1 text-green-700 px-4 flex-wrap">
             <p>{mic?.mic_address.unit_number}</p>
             <p>{mic?.mic_address.street_name},</p>
             <p className="font-semibold">{capitalizeDay(mic.borough.toString())}</p>
@@ -86,7 +86,7 @@ const MicPage = () => {
             </div>
             {mic?.email_address && (
               <div className="flex">
-                <p>Email address:</p>
+                <p className="font-bold pr-1">Email address:</p>
                 <p>{mic?.email_address}</p>
               </div>
             )}

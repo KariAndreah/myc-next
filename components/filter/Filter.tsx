@@ -102,13 +102,13 @@ const Filter = () => {
     <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2">
       <Container
         size="md"
-        className="flex h-[rem(56px)] space-between items-center py-3 gap-8 align-middle justify-center"
+        className="flex h-[rem(56px)] space-between py-3 gap-8 space-between items-center"
       >
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />
         <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start After" />
         <FreeSwitch checked={free} setChecked={setFree} />
-        <ActionIcon onClick={handleSearch} size={36}>
+        <ActionIcon onClick={handleSearch} size={40}>
           <TbSearch size={20} />
         </ActionIcon>
       </Container>

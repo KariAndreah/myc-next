@@ -2,7 +2,7 @@
 
 import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import classes from './Footer.module.css';
 import '@mantine/core/styles.css';
 
@@ -12,18 +12,18 @@ const links = [
 ];
 
 const Footer = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const items = links.map((link) => (
     <Anchor
       c="dimmed"
       key={link.label}
-      href={link.link}
       lh={1}
-      onClick={(event) => {
-        event.preventDefault();
-        router.push(link.link);
-      }}
+      // onClick={(event) => {
+      //   event.preventDefault();
+      //   router.push(link.link);
+      // }}
       size="sm"
+      href="/about"
     >
       {link.label}
     </Anchor>

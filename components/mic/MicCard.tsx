@@ -46,9 +46,8 @@ const MicCard = () => {
       onClick={() => {
         router.push(`/mics/${mic?.id}`);
       }}
-      className="flex group  lg:max-w-[calc(50vw-50px)] min-w-[330px] border-[20px] border-solid hover:border-blue-700 shadow-xl shadow-slate-300 hover:cursor-pointer"
+      className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 hover:cursor-pointer hover:border-[1.5px]"
       key={mic?.id}
-      href={`/mics/${mic?.id}`}
       withBorder
     >
       <div className="flex flex-row gap-3 lg:gap-10 ">
