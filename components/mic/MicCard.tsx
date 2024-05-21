@@ -46,7 +46,7 @@ const MicCard = () => {
       onClick={() => {
         router.push(`/mics/${mic?.id}`);
       }}
-      className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 hover:cursor-pointer hover:border-[1.5px]"
+      className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 cursor-pointer hover:border-[1.5px]"
       key={mic?.id}
       withBorder
     >
