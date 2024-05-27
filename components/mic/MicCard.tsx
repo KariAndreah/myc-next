@@ -16,15 +16,7 @@ const MicCard = () => {
 
   const router = useRouter();
 
-  if (!mics) {
-    return (
-      <div className="flex pt-36 justify-center">
-        <Loader color="blue" />
-      </div>
-    );
-  }
-
-  if (isLoading) {
+  if (!mics || isLoading) {
     return (
       <div className="flex pt-36 justify-center">
         <Loader color="blue" />
@@ -40,42 +32,48 @@ const MicCard = () => {
     );
   }
 
-  const openMic = mics?.mics.map((mic: any) => (
-    <Card
-      component="a"
-      onClick={() => {
-        router.push(`/mics/${mic?.id}`);
-      }}
-      className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 cursor-pointer hover:border-[1.5px]"
-      key={mic?.id}
-      withBorder
-    >
-      <div className="flex flex-row gap-3 lg:gap-10 ">
-        <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]   text-base">
-          <p className="pr-1 font-bold">{capitalizeDay(mic?.day.toString())}</p>
-          <p>{changeTime(mic?.start_time)}</p>
-          <p className="text-slate-[700] text-sm pt-10">{mic?.mic_occurrence?.schedule}</p>
+  const mapMicsToCards = (x: any) =>
+    x?.mics.map((mic: any) => (
+      <Card
+        component="a"
+        onClick={() => {
+          router.push(`/mics/${mic?.id}`);
+        }}
+        className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 cursor-pointer hover:border-[1.5px]"
+        key={mic?.id}
+        withBorder
+      >
+        <div className="flex flex-row gap-3 lg:gap-10 ">
+          <div className="pr-2 lg:pr-4 pt-2 border-r-2 border-[slate-700]   text-base">
+            <p className="pr-1 font-bold">{capitalizeDay(mic?.day.toString())}</p>
+            <p>{changeTime(mic?.start_time)}</p>
+            <p className="text-slate-[700] text-sm pt-10">{mic?.mic_occurrence?.schedule}</p>
+          </div>
+          <div>
+            <div className="flex whitespace-wrap text-[slate-700]font-semibold group-hover:text-blue-700 ">
+              <h2 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
+                {mic?.name}
+              </h2>
+            </div>
+            <div className="pr-1 text-slate-700 font-bold">{mic.mic_address.venue}</div>
+            <div className="flex flex-row flex-wrap text-green-700 text-base">
+              <p className="pr-1">{mic.mic_address.unit_number} </p>
+              <p className="pr-1">{mic.mic_address.street_name},</p>
+              <p className="font-bold">{capitalizeDay(mic.borough.toString())}</p>
+            </div>
+            <div className="flex flex-row pt-3 text-base">
+              <p className="pr-1">Cost: </p>
+              <p className="font-bold ">
+                {' '}
+                {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <div className="flex whitespace-wrap text-[slate-700]font-semibold group-hover:text-blue-700 ">
-            <h2 className="lg:text-3xl text-2xl font-bold text-blue-700 group-hover:decoration-dashed group-hover:underline">
-              {mic?.name}
-            </h2>
-          </div>
-          <div className="pr-1 text-slate-700 font-bold">{mic.mic_address.venue}</div>
-          <div className="flex flex-row flex-wrap text-green-700 text-base">
-            <p className="pr-1">{mic.mic_address.unit_number} </p>
-            <p className="pr-1">{mic.mic_address.street_name},</p>
-            <p className="font-bold">{capitalizeDay(mic.borough.toString())}</p>
-          </div>
-          <div className="flex flex-row pt-3 text-base">
-            <p className="pr-1">Cost: </p>
-            <p className="font-bold "> {mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
-          </div>
-        </div>
-      </div>
-    </Card>
-  ));
+      </Card>
+    ));
+
+  const openMic = mapMicsToCards(mics);
 
   return (
     <div className="flex flex-col justify-between p-6 pt-32 md:pt-40 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">

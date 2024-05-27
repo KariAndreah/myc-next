@@ -1,5 +1,3 @@
-'use client';
-
 import { ActionIcon, Container } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useContext, useState } from 'react';
@@ -13,88 +11,28 @@ import TimeSelect from '../select/TimeSelect';
 const Filter = () => {
   const { params, setQuery } = useContext(MicListingContext);
 
-  // Getting Borough params to auto-populate search
-  const getAllBoroughs = params?.get('borough');
-  const allBoroughsArray = getAllBoroughs?.split(',');
+  const allBoroughsArray = params?.get('borough')?.split(',');
+  const boroughsArray = allBoroughsArray?.includes('all') ? [] : allBoroughsArray;
 
-  let boroughsArray: any;
+  const daysArray = params?.get('day')?.includes('all') ? '' : params.get('day');
 
-  if (allBoroughsArray?.includes('all')) {
-    boroughsArray = [];
-  } else {
-    boroughsArray = allBoroughsArray;
-  }
-
-  // Getting Day params to auto-populate search
-  const getAllDays = params.get('day');
-
-  let daysArray: any;
-
-  if (getAllDays?.includes('all')) {
-    daysArray = '';
-  } else {
-    daysArray = getAllDays;
-  }
-
-  // const [day, setDay] = useState([]);
-  const [startTime, setStartTime] = useState(params?.getAll('start-time'));
-  // const [borough, setBorough] = useState([]);
-
-  // Getting Cost params to auto-populate search
+  const startTimeString2 = params.get('start-time')?.includes('00:00:00')
+    ? ''
+    : params.getAll('start-time')[0];
+  // const startTimeString = useState(params?.getAll('start-time'))[0];
   const val = params?.get('free') === 'true';
-
-  // const [cost, setCost] = useState(val);
-
-  // console.log('What is passing in the switch', params.get('free'));
-
-  // console.log('What is passing in the switch passing', Boolean(params.get('free')));
-
-  // console.log('query in the FILTERS', params.toString());
-
-  // const findingBorough = params.get('borough');
-
-  // console.log('boroughs from FILTERS', findingBorough);
-
   const [borough, setBorough] = useState(boroughsArray);
   const [free, setFree] = useState(val);
   const [day, setDay] = useState(daysArray);
-  // const [startTime, setStartTime] = useState('');
-  // const searchParams = useSearchParams();
-  // const pathname = usePathname();
-
-  // const handleSearch = () => {
-  //   router.push(`/mics?day=${day}&borough=${borough}&free=${cost}&page=1`);
-  // };
-  let boroughQuery: any;
-  let dayQuery: any;
-  let timeQuery: any;
-  if (borough?.length > 0) {
-    boroughQuery = borough;
-  } else {
-    boroughQuery = 'all';
-  }
-  if (!day) {
-    dayQuery = 'all';
-  } else {
-    dayQuery = day;
-  }
-  if (startTime === ('' || null)) {
-    timeQuery = '00:00:00';
-  } else {
-    timeQuery = startTime;
-  }
-
-  const inputTerms = {
-    boroughQuery,
-    dayQuery,
-    timeQuery,
-    free,
-  };
-
-  // console.log('Input Terms from Filter', inputTerms);
+  const [startTime, setStartTime] = useState(startTimeString2);
 
   const handleSearch = () => {
-    // console.log(free);
+    const inputTerms = {
+      boroughQuery: borough.length > 0 ? borough : 'all',
+      dayQuery: day || 'all',
+      timeQuery: startTime || '00:00:00',
+      free,
+    };
     setQuery!(inputTerms);
   };
 

@@ -2,7 +2,7 @@
 
 import { createContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { TbMicrophoneOff } from 'react-icons/tb';
+// import { TbMicrophoneOff } from 'react-icons/tb';
 import { ClearQuery, GetQuery, SetQuery, useQuery } from '../hooks/useQuery';
 import { useIndividualMics } from '../hooks/useIndividualMics';
 
@@ -21,7 +21,6 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
   // Get selected objects
   // const params = new URLSearchParams();
   const params2 = usePathname();
-  console.log('Params inside of Mic Detail Context:', params);
 
   // const searchDetails = getQuery();
   const search = {
@@ -41,13 +40,13 @@ export const MicDetailContextProvider = ({ children }: MicDetailContextProps) =>
 
   // console.log('Mic Detail Context Works', data);
 
-  if (!isLoading && !data?.mics) {
-    <div className="p-32 flex flex-col">
-      <h1>404 ... </h1>
-      <TbMicrophoneOff size={32} />
-      <p>No Mics Found</p>
-    </div>;
-  }
+  // if (!isLoading && !data?.mics) {
+  //   <div className="p-32 flex flex-col">
+  //     <h1>404 ... </h1>
+  //     <TbMicrophoneOff size={32} />
+  //     <p>No Mics Found</p>
+  //   </div>;
+  // }
 
   // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching mic</div>;

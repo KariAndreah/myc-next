@@ -13,15 +13,7 @@ import NoMicFound from '../not-found/NoMicFound';
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
 
-  if (!mics) {
-    return (
-      <div className="flex pt-36 justify-center">
-        <Loader color="blue" />
-      </div>
-    );
-  }
-
-  if (isLoading) {
+  if (isLoading || !mics) {
     return (
       <div className="flex pt-36 justify-center">
         <Loader color="blue" />
@@ -98,19 +90,19 @@ const MicPage = () => {
             )}
             {mic?.website && (
               <div className="flex text-base">
-                <p className="font-bold pr-1 border-black">Website:</p>
-                <p>
-                  <a className="underline decoration-dashed " href={mic?.website}>
-                    {mic?.website}
+                {/* <p className="font-bold pr-1 border-black">Website:</p> */}
+                <p className="pl-16 text-blue-600 font-semibold">
+                  <a
+                    className="underline decoration-dashed hover:decoration-solid"
+                    href={mic?.website}
+                  >
+                    View Website
                   </a>
                 </p>
               </div>
             )}
           </div>
         </div>
-        {/* <div>
-        <h1>Reviews: </h1>
-      </div> */}
       </Container>
     </div>
   );
