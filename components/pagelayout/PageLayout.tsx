@@ -2,6 +2,7 @@ import React from 'react';
 import '@mantine/core/styles.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import AnalyticScripts from '../Scripts/AnalyticScripts';
 
 function PageLayout({
   children,
@@ -13,6 +14,7 @@ function PageLayout({
   return (
     // bg-cyan-100 <-- blue color I like bg-black-white shadow-box-shadow-background bg-cover
     <div className={`${className} h-[100vh]`}>
+      <AnalyticScripts />
       <Header
         hasFilter={hasFilter}
         hasMobileFilter={hasMobileFilter}
