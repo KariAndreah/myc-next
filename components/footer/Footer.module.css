@@ -20,6 +20,7 @@
 }
 
 .links {
+  color: '#1A2A2C';
   @media (max-width: mantine-breakpoint-sm) {
     margin-top: var(--mantine-spacing-lg);
     margin-bottom: var(--mantine-spacing-sm);
