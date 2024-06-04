@@ -48,7 +48,7 @@ const MicPage = () => {
           <p className="pr-1">{changeTime(mic?.start_time)}</p>
           <p className="font-semibold pt-6">{mic?.schedule}</p>
           <p className="font-semibold text-base md:text-xl">{mic?.mic_occurrence?.schedule}</p>
-          <div className="flex flex-row text-green-700 text-base md:text-xl pl-3 md:pl-0 ">
+          <div className="flex flex-row text-green-700 text-base md:text-lg pl-3 md:pl-0 ">
             <p>Cost: </p>
             <p className="font-bold">{mic?.cost_id === 1 ? 'Free' : mic?.mic_cost.cost_amount}</p>
           </div>
@@ -67,7 +67,7 @@ const MicPage = () => {
           <MicHosts />
           <div className="flex flex-col px-4 pt-2">
             {mic?.signup_instructions && (
-              <div className="flex text-blue-700 pt-3">
+              <div className="flex pt-3">
                 <p className="pr-1 font-bold">Signup: </p>
                 <p>{mic?.signup_instructions.instructions}</p>
               </div>
