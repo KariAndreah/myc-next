@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import React from 'react';
 import type { Viewport } from 'next';
+import Script from 'next/script';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import './globals.css';
@@ -35,17 +36,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name="viewport"
               content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
             /> */}
-            <script
-              async
-              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
-              crossOrigin="anonymous"
-            />
-            <script
-              data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOAT_COUNTER}.goatcounter.com/count`}
-              async
-              src="//gc.zgo.at/count.js"
-            />
           </head>
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
+            crossOrigin="anonymous"
+          />
+          <Script
+            data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOAT_COUNTER}.goatcounter.com/count`}
+            async
+            src="//gc.zgo.at/count.js"
+          />
           <body>
             <MantineProvider theme={theme}>{children}</MantineProvider>
           </body>
