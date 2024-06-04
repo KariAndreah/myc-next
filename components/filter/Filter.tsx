@@ -37,7 +37,7 @@ const Filter = () => {
   };
 
   return (
-    <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2">
+    <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 border-2 -mt-2 bg-[var(--mantine-color-body)]">
       <Container
         size="md"
         className="flex h-[rem(56px)] space-between py-3 gap-6 space-between items-center"

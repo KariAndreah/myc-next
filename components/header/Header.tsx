@@ -13,7 +13,7 @@ import { BackButton } from '../buttons/BackButton';
 
 const links = [
   { link: '/about', label: 'About' },
-  // { link: 'https://forms.gle/xAaTnwZNi2mq3UDE9', label: 'Submit a Mic' },
+  { link: 'https://forms.gle/xAaTnwZNi2mq3UDE9', label: 'Submit a Mic' },
   // { link: '/signin', label: 'Sign In/ Register' },
 ];
 

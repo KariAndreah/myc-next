@@ -41,8 +41,8 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-2 gap-4 bg-white">
-        <div className="flex flex-col gap-2">
+      <div className="flex flex-col shadow-[0_8px_24px_rgba(0,0,0,0.16)] p-3 gap-4 bg-white">
+        <div className="flex flex-col gap-4">
           <BoroughSelect value={borough} setValue={setBorough} />
           <DaySelect value={day} setValue={setDay} />
           <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start after" />

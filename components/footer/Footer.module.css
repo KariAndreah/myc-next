@@ -3,7 +3,7 @@
   border-top: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
   margin: auto;
   bottom: 0;
-  background-color: white;
+  background-color: var(--mantine-color-body);
   position: fixed;
   width: 100%;
 }

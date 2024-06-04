@@ -15,7 +15,14 @@ const MobileFilterButton = () => {
   return (
     <div>
       <div className="h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2 p-2">
-        <Button type="submit" value="Search" onClick={open} leftSection={<TbSearch size={20} />}>
+        <Button
+          aria-label="Update mic search"
+          radius="xl"
+          type="submit"
+          value="Search"
+          onClick={open}
+          leftSection={<TbSearch size={20} />}
+        >
           Update search
         </Button>
       </div>

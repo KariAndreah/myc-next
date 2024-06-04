@@ -3,7 +3,14 @@ import { TbSearch } from 'react-icons/tb';
 import '@mantine/core/styles.css';
 
 const SearchButton = ({ onClick }: SearchButtonProps) => (
-  <Button size="md" fullWidth leftSection={<TbSearch size={20} />} onClick={onClick}>
+  <Button
+    aria-label="Search for mics"
+    size="md"
+    radius="xl"
+    fullWidth
+    leftSection={<TbSearch size={20} />}
+    onClick={onClick}
+  >
     Search for mics
   </Button>
 );

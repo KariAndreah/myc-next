@@ -1,7 +1,7 @@
 'use client';
 
 import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { IconMail } from '@tabler/icons-react';
 // import { useRouter } from 'next/navigation';
 import classes from './Footer.module.css';
 import '@mantine/core/styles.css';
@@ -35,14 +35,15 @@ const Footer = () => {
         <Group className={classes.links}>{items}</Group>
 
         <Group gap="xs" justify="flex-end" wrap="nowrap">
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandTwitter style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandYoutube style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+          <ActionIcon
+            component="a"
+            href="mailto:openmycapp@gmail.com"
+            aria-label="Email support"
+            size="lg"
+            variant="default"
+            radius="xl"
+          >
+            <IconMail style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
           </ActionIcon>
         </Group>
       </div>
