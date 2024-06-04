@@ -19,15 +19,13 @@ export const getMics: any = async (params: any) => {
   let micsSearch: any = '';
 
   if (params?.free) {
-    console.log('Free Search');
-
     const free = '&free=true';
 
     micsSearch.concat(`${free}`);
 
-    console.log('This is the Free getMics search: ', free);
+    // console.log('This is the Free getMics search: ', free);
   } else {
-    console.log('Non Free Search');
+    // console.log('Non Free Search');
   }
 
   try {

@@ -40,7 +40,7 @@ const Filter = () => {
     <header className="hidden md:flex h-[rem(50px)] mb-[rem(120px)] fixed w-[100%] z-10 bg-white border-2 -mt-2">
       <Container
         size="md"
-        className="flex h-[rem(56px)] space-between py-3 gap-8 space-between items-center"
+        className="flex h-[rem(56px)] space-between py-3 gap-6 space-between items-center"
       >
         <BoroughSelect value={borough} setValue={setBorough} />
         <DaySelect value={day} setValue={setDay} />

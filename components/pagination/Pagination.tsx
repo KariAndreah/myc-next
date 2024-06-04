@@ -41,14 +41,14 @@ function MicPagination() {
   // }, [activePage]);
 
   useEffect(() => {
-    console.log('Use Effect from Pagination', params.toString());
+    // console.log('Use Effect from Pagination', params.toString());
 
     if (!params.has('pageNo')) {
       params.delete('pageNo');
     } else {
       params.set('pageNo', activePage.toString());
     }
-    console.log('There are the params with current Page Number from Pagination', params.toString());
+    // console.log('There are the params with current Page Number from Pagination', params.toString());
 
     setPagination!(params);
   }, [activePage]);

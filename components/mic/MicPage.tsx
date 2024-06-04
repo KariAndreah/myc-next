@@ -9,6 +9,7 @@ import changeTime from '@/lib/utils/changeTime';
 // import { BackButton } from '../buttons/BackButton';
 import capitalizeDay from '@/lib/utils/capitalizeDay';
 import NoMicFound from '../not-found/NoMicFound';
+import MicHosts from './MicHosts';
 
 const MicPage = () => {
   const { mics, isLoading } = useContext(MicDetailContext);
@@ -39,8 +40,6 @@ const MicPage = () => {
 
   const { mic } = mics;
 
-  const hostLoop = mics?.mic?.host_mics.map((x: any) => <p>{x.mic_host.first_host}</p>);
-
   return (
     <div className="flex flex-col gap-6 lg:w-[50%] w-auto py-32 min-w-[300px] bg-black-white bg-cover shadow-box-shadow-background lg:min-h-[100vh]  text-slate-700">
       <Container fluid className="flex flex-col-reverse md:flex-row p-3 pb-6 bg-white ">
@@ -65,17 +64,14 @@ const MicPage = () => {
             <p>{mic?.mic_address.street_name},</p>
             <p className="font-semibold">{capitalizeDay(mic.borough.toString())}</p>
           </div>
-
-          <div className="flex flex-row px-4 pt-5 text-base">
-            <p className="pr-1 font-bold">Hosts: </p>
-            <p>{mic?.host_mics[0]?.first_host}</p>
-            <p>{hostLoop}</p>
-          </div>
+          <MicHosts />
           <div className="flex flex-col px-4 pt-2">
-            <div className="flex">
-              <p className="pr-1 font-bold">Signup: </p>
-              <p>{mic?.signup_instructions.instructions}</p>
-            </div>
+            {mic?.signup_instructions && (
+              <div className="flex text-blue-700 pt-3">
+                <p className="pr-1 font-bold">Signup: </p>
+                <p>{mic?.signup_instructions.instructions}</p>
+              </div>
+            )}
             {mic?.email_address && (
               <div className="flex">
                 <p className="font-bold pr-1">Email address:</p>

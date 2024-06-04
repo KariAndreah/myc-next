@@ -29,6 +29,12 @@ const TimeSelect = ({ timePeriod, value, setValue }: TimeSelectProps) => {
         value={value}
         onChange={setValue}
         leftSection={<TbClock />}
+        styles={{
+          label: {
+            fontWeight: 600,
+            color: '#1A1F2C',
+          },
+        }}
       />
     </div>
   );

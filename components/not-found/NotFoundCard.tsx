@@ -15,7 +15,7 @@ const NotFoundCard = () => (
           Let me help you back
           <a
             className="text-blue-400 underline decoration-dashed pl-1 hover:decoration-solid hover:underline"
-            href="/"
+            href="https://findopenmyc.com/"
           >
             home.
           </a>

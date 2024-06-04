@@ -14,7 +14,7 @@ export const request = async <T>(input: RequestInfo | URL): Promise<T> => {
     // console.log('Request.ts is working', response);
     return response;
   } catch (err) {
-    console.log('Request.ts FAILED');
+    console.log('Request.ts Failed');
     throw err;
   }
 

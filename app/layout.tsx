@@ -40,6 +40,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
               crossOrigin="anonymous"
             />
+            <script
+              data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOAT_COUNTER}.goatcounter.com/count`}
+              async
+              src="//gc.zgo.at/count.js"
+            />
           </head>
           <body>
             <MantineProvider theme={theme}>{children}</MantineProvider>

@@ -17,11 +17,11 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     : params.getAll('start-time')[0];
 
   const [day, setDay] = useState(params.getAll('day'));
+  const val = params?.get('free') === 'true';
 
   const [startTime, setStartTime] = useState(startTimeString2);
   const [borough, setBorough] = useState(boroughsArray);
-  const free = params.get('free') === 'true';
-  const [freeInfo, setFree] = useState(free);
+  const [free, setFree] = useState(val);
 
   const boroughQuery = borough.length > 0 ? borough : 'all';
   const dayQuery = day || 'all';
@@ -35,8 +35,8 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
   };
 
   const handleSearch = () => {
-    setQuery!(inputTerms);
     onSubmit();
+    setQuery!(inputTerms);
   };
 
   return (
@@ -46,7 +46,7 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
           <BoroughSelect value={borough} setValue={setBorough} />
           <DaySelect value={day} setValue={setDay} />
           <TimeSelect value={startTime} setValue={setStartTime} timePeriod="Start after" />
-          <FreeSwitch checked={freeInfo} setChecked={() => setFree(!free)} />
+          <FreeSwitch checked={free} setChecked={() => setFree(!free)} />
         </div>
         <SearchButton onClick={handleSearch} />
       </div>
