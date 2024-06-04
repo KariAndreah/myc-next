@@ -16,24 +16,21 @@ const MobileFilter = ({ onSubmit }: MobileFilterProps) => {
     ? ''
     : params.getAll('start-time')[0];
 
-  const [day, setDay] = useState(params.getAll('day'));
+  const daysArray = params?.get('day')?.includes('all') ? '' : params.get('day');
+
+  const [day, setDay] = useState(daysArray);
   const val = params?.get('free') === 'true';
 
   const [startTime, setStartTime] = useState(startTimeString2);
   const [borough, setBorough] = useState(boroughsArray);
   const [free, setFree] = useState(val);
 
-  const boroughQuery = borough.length > 0 ? borough : 'all';
-  const dayQuery = day || 'all';
-  const timeQuery = startTime || '00:00:00';
-
   const inputTerms = {
-    dayQuery,
-    boroughQuery,
-    timeQuery,
+    boroughQuery: borough.length > 0 ? borough : 'all',
+    dayQuery: day || 'all',
+    timeQuery: startTime || '00:00:00',
     free,
   };
-
   const handleSearch = () => {
     onSubmit();
     setQuery!(inputTerms);
