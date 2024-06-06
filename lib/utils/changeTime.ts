@@ -19,7 +19,7 @@ const changeTime = (x: any) => {
 
   timeValue += minutes < 10 ? `:0${minutes}` : `:${minutes}`; // get minutes
 
-  timeValue += hours >= 12 ? ' pm' : 'am'; // get AM/PM
+  timeValue += hours >= 12 ? 'pm' : 'am'; // get AM/PM
 
   return timeValue;
 };

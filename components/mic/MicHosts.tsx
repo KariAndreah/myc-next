@@ -1,17 +1,26 @@
 import { useContext } from 'react';
+import { IconBrandInstagram, IconMail } from '@tabler/icons-react';
 import { MicDetailContext } from '@/lib/context/MicDetailContext';
 
 const MicHosts = () => {
   const { mics } = useContext(MicDetailContext);
 
   const hostLoop = mics?.mic?.host_mics?.map((x: any, index: any) => (
-    <p key={index}>{x.mic_host.first_host}</p>
-  ));
-  const emailLoop = mics?.mic?.host_mics?.map((x: any, index: any) => (
-    <p key={index}>{x.mic_host.email}</p>
-  ));
-  const instagramLoop = mics?.mic?.host_mics?.map((x: any, index: any) => (
-    <p key={index}>{x.mic_host.instagram}</p>
+    <div>
+      <p key={index}>{x.mic_host.first_host}</p>
+      {x.mic_host.email && (
+        <div className="flex gap-1 text-sm items-center">
+          <IconMail size="20px" />
+          <p key={index}>{x.mic_host.email}</p>
+        </div>
+      )}
+      {x.mic_host.instagram && (
+        <div className="flex gap-1 text-sm items-center">
+          <IconBrandInstagram size="20px" />
+          <p key={index}>{x.mic_host.instagram}</p>
+        </div>
+      )}
+    </div>
   ));
 
   return (
@@ -20,18 +29,6 @@ const MicHosts = () => {
         <p className="pr-1 font-bold">Hosts: </p>
         <div>{hostLoop}</div>
       </div>
-      {mics?.mic.host_mics[0]?.mic_host.email && (
-        <div className="flex flex-row text-xs pl-16 pt-1">
-          <p className="pr-1 font-bold">Email: </p>
-          <div>{emailLoop}</div>
-        </div>
-      )}
-      {mics?.mic.host_mics[0]?.mic_host.instagram && (
-        <div className="flex flex-row text-xs pl-16 pt-1">
-          <p className="pr-1 font-bold">Instagram: </p>
-          <div>{instagramLoop}</div>
-        </div>
-      )}
     </div>
   );
 };
