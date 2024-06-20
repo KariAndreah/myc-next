@@ -12,13 +12,13 @@ function PageLayout({
 }: PageLayoutProps) {
   return (
     // bg-cyan-100 <-- blue color I like bg-black-white shadow-box-shadow-background bg-cover
-    <div className={`${className} h-[100vh]`}>
+    <div className={`${className}`}>
       <Header
         hasFilter={hasFilter}
         hasMobileFilter={hasMobileFilter}
         hasBackButton={hasBackButton}
       />
-      <section>{children}</section>
+      <section className="bg-black-white bg-cover">{children}</section>
       <Footer />
     </div>
   );

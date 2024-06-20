@@ -6,7 +6,7 @@ const MicHosts = () => {
   const { mics } = useContext(MicDetailContext);
 
   const hostLoop = mics?.mic?.host_mics?.map((x: any, index: any) => (
-    <div>
+    <div key={index}>
       <p key={index}>{x.mic_host.first_host}</p>
       {x.mic_host.email && (
         <div className="flex gap-1 text-sm items-center">

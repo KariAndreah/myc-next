@@ -8,8 +8,8 @@ import { IoLogoVenmo } from 'react-icons/io5';
 import PageLayout from '../pagelayout/PageLayout';
 
 const About = () => (
-  <PageLayout className="items-center">
-    <div className="flex flex-col items-center justify-center py-36 bg-black-white bg-cover shadow-box-shadow-background min-h-[100vh]">
+  <PageLayout>
+    <div className="flex flex-col items-center justify-center py-36 min-h-[100vh]">
       <Card className="flex flex-1 bg-slate-500 pt-32 max-w-[800px]">
         <h1 className="font-bold text-4xl">About</h1>
         <h3 className="font-bold text-xl pt-6">What is this?</h3>

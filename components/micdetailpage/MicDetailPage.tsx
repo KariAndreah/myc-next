@@ -10,7 +10,7 @@ export function MicDetailPage2() {
   const { mics } = useContext(MicDetailContext);
 
   return (
-    <PageLayout className="h-[100%]">
+    <PageLayout hasBackButton>
       <MicPage />
       <MicIndividualMapLoad mics={mics} />
     </PageLayout>

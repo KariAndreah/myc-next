@@ -14,7 +14,7 @@ export function BackButton() {
         size="compact-md"
         leftSection={<TbArrowLeft size={20} />}
       >
-        Go back to search
+        Go to search
       </Button>
     </div>
   );

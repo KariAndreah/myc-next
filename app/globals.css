@@ -1,14 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 body {
   margin: 0;
-  /* background: url('../public/opaque-modified.png'); */
-  background-size: cover;
+  background: url('../public/opaque-modified.jpg');
+  background-size: auto;
   background-repeat: no-repeat;
   height: 100%;
-}
+} */
 
 h1,
 h2,
