@@ -18,7 +18,7 @@ function PageLayout({
         hasMobileFilter={hasMobileFilter}
         hasBackButton={hasBackButton}
       />
-      <section className="bg-black-white bg-cover">{children}</section>
+      <section className="bg-black-white bg-cover shadow-box-shadow-background">{children}</section>
       <Footer />
     </div>
   );

@@ -35,7 +35,8 @@ module.exports = {
       },
     },
     boxShadow: {
-      'box-shadow-background': 'inset 0 0 0 1000px rgba(227, 248, 251, 0.75)',
+      'box-shadow-background': 'inset 0 0 0 1000px rgba(240, 255, 255, 0.35)',
+      'box-shadow-background3': 'inset 0 0 0 1000px rgba(227, 248, 251, 0.15)',
       'box-shadow-background2': 'inset 0 0 0 1000px rgba(242, 242, 242, 0.75)',
     },
   },
