@@ -12,6 +12,7 @@ export function BackButton() {
       <Button
         onClick={() => router.push('/')}
         size="compact-md"
+        radius="xl"
         leftSection={<TbArrowLeft size={20} />}
       >
         Go to search
