@@ -18,7 +18,7 @@ const MicPage = () => {
 
   if (isLoading || !mics) {
     return (
-      <div className="flex pt-36 justify-center">
+      <div className="flex pt-36 justify-center min-h-[100vh]">
         <Loader color="blue" />
       </div>
     );

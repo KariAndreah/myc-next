@@ -42,6 +42,7 @@ const MicIndividualMapLoad = ({ mics }: MicIndividualMapLoadType) => {
           day={mics.mic?.day}
           time={changeTime(mics.mic?.start_time)}
           cost={mics.mic?.cost_id === 1 ? 'Free' : mics.mic?.mic_cost.cost_amount}
+          href={`https://maps.google.com/maps?q=${mics?.mic.mic_address.venue},${mics?.mic.mic_address.unit_number},${mics?.mic.mic_address.street_name}+NewYork+NY&hl=es;z=14&amp;output=embed`}
         />
       </GoogleMap>
     </div>

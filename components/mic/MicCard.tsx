@@ -18,7 +18,7 @@ const MicCard = () => {
 
   if (!mics || isLoading) {
     return (
-      <div className="flex pt-36 justify-center">
+      <div className="flex pt-36 justify-center min-h-[100vh]">
         <Loader color="blue" />
       </div>
     );
@@ -39,7 +39,7 @@ const MicCard = () => {
         onClick={() => {
           router.push(`/mics/${mic?.id}`);
         }}
-        className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  border-solid hover:border-blue-700 cursor-pointer hover:border-[1.5px]"
+        className="flex group lg:max-w-[calc(50vw-50px)] min-w-[330px]  hover:border-blue-700 cursor-pointer hover:border-[1.5px] shadow-[0_8px_24px_rgba(0,0,0,0.20)]"
         key={mic?.id}
         withBorder
       >
